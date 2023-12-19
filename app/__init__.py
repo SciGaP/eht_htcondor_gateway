@@ -1,11 +1,15 @@
-from os import environ as env
-
-from authlib.integrations.flask_client import OAuth
-from dotenv import find_dotenv, load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
+
+from whoosh.fields import Schema, TEXT
+from whoosh.index import create_in
+from os import environ as env
+import os
+
+from authlib.integrations.flask_client import OAuth
+from dotenv import find_dotenv, load_dotenv
 
 ENV_FILE = find_dotenv()
 if ENV_FILE:
@@ -37,5 +41,13 @@ db = SQLAlchemy(app)
 # Setup migration rules
 migrate = Migrate(app, db)
 migrate = Migrate(app, db, command='db')
+
+# Setup Whoosh index for search
+index_dir = 'index'
+if not os.path.exists(index_dir):
+    os.mkdir(index_dir)
+    
+schema = Schema(content=TEXT(stored=True))
+ix = create_in(index_dir, schema=schema)
 
 from app import routes

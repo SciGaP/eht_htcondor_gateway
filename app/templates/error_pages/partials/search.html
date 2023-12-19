@@ -1,0 +1,15 @@
+<form method="GET" action="{{ url_for('website.search') }}">
+    <div class="rvt-p-top-xs rvt-p-bottom-xxl rvt-border-bottom">
+        <label for="search" class="rvt-label rvt-sr-only">Search</label>
+        <div class="rvt-flex rvt-justify-center">
+            <div class="rvt-input-group rvt-width-xxl">
+                <input class="rvt-text-input rvt-input-group__input" type="text" id="search" name="query">
+                <div class="rvt-input-group__append">
+                    <button type="submit" class="rvt-button">
+                    <span>Search site</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

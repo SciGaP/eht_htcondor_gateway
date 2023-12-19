@@ -16,3 +16,6 @@ class User(db.Model, UserMixin):
     family_name = Column(String)
     email = Column(String, unique=True, nullable=False)
     profile_picture = Column(String)
+
+    def __repr__(self):
+        return f"<{self.id}>"
