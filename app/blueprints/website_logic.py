@@ -11,7 +11,7 @@ def home():
     return render_template("home.html", user=current_user)
 
 @website_blueprint.route("/about")
-@login_required
+#@login_required
 def about():
     return render_template("about.html", user=current_user)
 
