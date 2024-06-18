@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="rvt-flow">
+  <div class="rvt-container-lg rvt-p-tb-sm">
+  <div class="rvt-row  [ rvt-m-top-md ]">
+    <div class="rvt-cols-4-md">
+      <div class="rvt-card rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__body">
+          <h2 class="rvt-card__title">
+            <a href="https://google.com"><i class="fa fa-rocket" style="color:green"></i> iPole - Batch</a>
+          </h2>
+          <div class="rvt-card__content [ rvt-flow ]">
+            <p>Execute iPole application with the pre-set images and parameters.</p><br/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rvt-cols-4-md">
+      <div class="rvt-card rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__body">
+          <h2 class="rvt-card__title">
+            <a href="{{ url_for('website.ipoleexplorer') }}"><i class="fa fa-rocket" style="color:green"></i> iPole - Explorer</a>
+          </h2>
+          <div class="rvt-card__content [ rvt-flow ]">
+            <p>Explore iPole application with user selected images and the combination of parameters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rvt-cols-4-md">
+      <div class="rvt-card rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__body">
+          <h2 class="rvt-card__title">
+            <a href="https://google.com"><i class="fa fa-tasks" style="color:green"></i> Experiments</a>
+          </h2>
+          <div class="rvt-card__content [ rvt-flow ]">
+            <p>No experiment is running.<br/><br/>
+            Recents experiments: 5</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of row -->
+</div>
+<div class="rvt-container-lg rvt-p-tb-sm">
+  <div class="rvt-row  [ rvt-m-top-md ]">
+       <div class="rvt-cols-4-md">
+      <div class="rvt-card rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__body">
+          <h2 class="rvt-card__title">
+            <a href="https://google.com"><i class="fa fa-bar-chart" style="color:darkorange"  aria-hidden="true"></i> Analysis Tools</a>
+          </h2>
+          <div class="rvt-card__content [ rvt-flow ]">
+            <p>Plotting results, computing overall statistics.</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+       <div class="rvt-cols-4-md">
+      <div class="rvt-card rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__body">
+          <h2 class="rvt-card__title">
+            <a href="https://google.com"><i class="fa fa-jupyter" style="color:darkorange"></i> Jupyter Notebook</a>
+          </h2>
+          <div class="rvt-card__content [ rvt-flow ]">
+            <p>Launch Jupyter Notebook with pre-defined workflows.</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <!-- end of second row -->
+</div>
+<!-- end of containter -->
+  <div class="rvt-container-lg rvt-p-tb-sm">
+  <div class="rvt-row  [ rvt-m-top-md ]">
+       <div class="rvt-cols-4-md">
+      <div class="rvt-card rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__body">
+          <h2 class="rvt-card__title">
+            <a href="https://google.com"><i class="fa fa-cubes" style="color:blue"  aria-hidden="true"></i> Data Management</a>
+          </h2>
+          <div class="rvt-card__content [ rvt-flow ]">
+            <p>Set up network storage and data sources, move/download outputs.</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+       <div class="rvt-cols-4-md">
+      <div class="rvt-card rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__body">
+          <h2 class="rvt-card__title">
+            <a href="https://google.com"><i class="fa fa-user-circle-o" style="color:blue"></i> User Prefeneces</a>
+          </h2>
+          <div class="rvt-card__content [ rvt-flow ]">
+            <p>Set up user notification and other workflow related options.</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <!-- end of second row -->
+</div>
+</div>
+{% endblock %}

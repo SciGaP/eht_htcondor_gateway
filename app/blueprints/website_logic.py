@@ -20,6 +20,11 @@ def about():
 def dashboard():
     return render_template("dashboard.html", user=current_user)
 
+@website_blueprint.route("/ipoleexplorer")
+#@login_required
+def ipoleexplorer():
+    return render_template("ipoleexplorer.html", user=current_user)
+
 @website_blueprint.route('/search', methods=['GET'])
 def search():
     query = request.args.get('query')

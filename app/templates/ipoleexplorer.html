@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% block title %}iPole Explorer{% endblock %}
+{% block content %}
+<!-- 
+Rhigh-Ratio
+Theta-Viewing-Angle
+Rho0-Density-Mormalization
+-->
+<!-- rr -->
+<div class="rvt-layout__wrapper [ rvt-p-tb-sm ]">
+  <div class="rvt-bg-black-000 rvt-border-bottom rvt-p-top-sm">
+    <div class="rvt-container-lg rvt-prose rvt-flow rvt-p-bottom-sm">
+
+      <!-- **************************************************************
+                Page title
+            *************************************************************** -->
+
+      <h1 class="rvt-m-top-xs"><i class="fa fa-rocket" style="color:green"></i> iPole - Explorer</h1>
+    </div>
+  </div>
+  <div class="rvt-container-sm rvt-p-tb-sm">
+    <legend class="rvt-text-bold">Experiment Name</legend>
+    <input type="text" id="expriment_name_text_input" class="rvt-text-input" style="width:60%">
+    <br>
+    <hr><br>
+    <!-- select dataset -->
+    <legend class="rvt-text-bold">Data Collection</legend>
+    <select id="select-datacollection" class="rvt-select" style="width:60%">
+      <option value="GRMHD_kharma-v3" selected>GRMHD_kharma-v3</option>
+    </select>
+    <br>
+    <legend class="rvt-text-bold">Data Set</legend>
+    <select id="select-dataset" class="rvt-select" style="width:60%">
+      <option value="Ma+0.5_w4" selected>Ma+0.5_w4</option>
+      </option>
+      <option value="Ma+0.5_w5" selected>Ma+0.5_w5</option>
+      <option value="Ma-0.5_w4" selected>Ma-0.5_w4</option>
+      <option value="Ma-0.5_w5" selected>Ma-0.5_w5</option>
+      <option value="Ma+0.94_w4" selected>Ma+0.94_w4</option>
+      <option value="Ma+0.94_w5" selected>Ma+0.94_w5</option>
+      <option value="Ma-0.94_w4" selected>Ma-0.94_w4</option>
+      <option value="Ma-0.94_w5" selected>Ma-0.94_w5</option>
+      <option value="Ma0_w4" selected>Ma0_w4</option>
+      <option value="Ma0_w5" selected>Ma0_w5</option>
+    </select>
+    <br>
+    <legend class="rvt-text-bold">Search images by pattern</legend>
+    <div class="rvt-input-group" style="width:60%">
+      <input class="rvt-text-input rvt-input-group__input" type="text" id="search">
+      <div class="rvt-input-group__append">
+        <button type="button" class="rvt-button">
+          <span>Search</span>
+        </button>
+      </div>
+    </div>
+    <br>
+    <legend class="rvt-text-bold">Selected Images</legend><textarea id="textarea-default" class="rvt-textarea rvt-validation-info" style="width:60%">torus.out0.04516.h5
+torus.out0.04406.h5
+torus.out0.04262.h5
+torus.out0.04967.h5
+torus.out0.04741.h5
+torus.out0.04389.h5
+torus.out0.04707.h5
+torus.out0.04788.h5
+torus.out0.04292.h5
+torus.out0.04586.h5
+torus.out0.04843.h5
+torus.out0.04723.h5
+torus.out0.04667.h5
+torus.out0.04322.h5
+torus.out0.04901.h5
+torus.out0.04094.h5
+torus.out0.04645.h5
+torus.out0.04666.h5
+torus.out0.04971.h5</textarea>
+    <div class="rvt-inline-alert rvt-inline-alert--info">
+      <span class="rvt-inline-alert__icon">
+        <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
+          <path d="M9 7v5H7V7h2ZM8 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"></path>
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"></path>
+        </svg>
+      </span>
+      <span class="rvt-inline-alert__message" id="image-description-message">Serarch images by string pattern or directly paste list of images.</span>
+    </div>
+    <br />
+    <hr><br>
+    <!-- set up parameter -->
+    <fieldset class="rvt-fieldset">
+      <legend class="rvt-text-bold">Rhigh-Ratio</legend>
+      <ul class="rvt-list-inline">
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-rr" id="rr-radio-1-1" checked>
+            <label for="rr-radio-1-1">Single</label>
+          </div>
+        </li>
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-rr" id="rr-radio-1-2">
+            <label for="rr-radio-1-2">Multiple</label>
+          </div>
+        </li>
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-rr" id="rr-radio-1-3">
+            <label for="rr-radio-1-3">Range</label>
+          </div>
+        </li>
+      </ul>
+    </fieldset>
+    <!-- Info -->
+    <br />
+    <div>
+      <input type="text" id="rr_text_input" class="rvt-text-input rvt-validation-info" style="width:60%">
+      <div class="rvt-inline-alert rvt-inline-alert--info">
+        <span class="rvt-inline-alert__icon">
+          <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
+            <path d="M9 7v5H7V7h2ZM8 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"></path>
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"></path>
+          </svg>
+        </span>
+        <span class="rvt-inline-alert__message" id="rr-description-message">input a single vaule.</span>
+      </div>
+    </div>
+  </div>
+  <!-- end of rr -->
+  <!-- tva -->
+  <div class="rvt-container-sm rvt-p-tb-sm">
+    <fieldset class="rvt-fieldset">
+      <legend class="rvt-text-bold">Theta-Viewing-Angle</legend>
+      <ul class="rvt-list-inline">
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-tva" id="tva-radio-1-1" checked>
+            <label for="tva-radio-1-1">Single</label>
+          </div>
+        </li>
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-tva" id="tva-radio-1-2">
+            <label for="tva-radio-1-2">Multiple</label>
+          </div>
+        </li>
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-tva" id="tva-radio-1-3">
+            <label for="tva-radio-1-3">Range</label>
+          </div>
+        </li>
+      </ul>
+    </fieldset>
+    <!-- Info -->
+    <br />
+    <div>
+      <input type="text" id="tva_text_input" class="rvt-text-input rvt-validation-info" style="width:60%">
+      <div class="rvt-inline-alert rvt-inline-alert--info">
+        <span class="rvt-inline-alert__icon">
+          <svg fill="cutvaentColor" width="16" height="16" viewBox="0 0 16 16">
+            <path d="M9 7v5H7V7h2ZM8 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"></path>
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"></path>
+          </svg>
+        </span>
+        <span class="rvt-inline-alert__message" id="tva-description-message">input a single vaule.</span>
+      </div>
+    </div>
+  </div>
+  <!-- end of tva -->
+  <!-- rdm -->
+  <div class="rvt-container-sm rvt-p-tb-sm">
+    <fieldset class="rvt-fieldset">
+      <legend class="rvt-text-bold">Rho0-Density-Mormalization</legend>
+      <ul class="rvt-list-inline">
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-rdm" id="rdm-radio-1-1" checked>
+            <label for="rdm-radio-1-1">Single</label>
+          </div>
+        </li>
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-rdm" id="rdm-radio-1-2">
+            <label for="rdm-radio-1-2">Multiple</label>
+          </div>
+        </li>
+        <li>
+          <div class="rvt-radio">
+            <input type="radio" name="radiogroup-rdm" id="rdm-radio-1-3">
+            <label for="rdm-radio-1-3">Range</label>
+          </div>
+        </li>
+      </ul>
+    </fieldset>
+    <!-- Info -->
+    <br />
+    <div>
+      <input type="text" id="rdm_text_input" class="rvt-text-input rvt-validation-info" style="width:60%">
+      <div class="rvt-inline-alert rvt-inline-alert--info">
+        <span class="rvt-inline-alert__icon">
+          <svg fill="curdmentColor" width="16" height="16" viewBox="0 0 16 16">
+            <path d="M9 7v5H7V7h2ZM8 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"></path>
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"></path>
+          </svg>
+        </span>
+        <span class="rvt-inline-alert__message" id="rdm-description-message">input a single vaule.</span>
+      </div>
+    </div>
+  </div>
+  <!-- end of rdm -->
+  <hr>
+  <div class="rvt-container-sm rvt-p-tb-sm">
+    <div class="rvt-button-group">
+      <button class="rvt-button rvt-button--success" id="bn-create-validate">Validate</button>
+      <button class="rvt-button" id="bn-create-experiment" disabled>Create Experiment</button>
+    </div>
+  </div>
+</div>
+<script>
+  window.onload = function () {
+  $('input[name^="radiogroup-"]').change(function () {
+    // Handle the change event here
+    var tid = $(this).attr("id");
+    var paraname = $(this).attr("name").split("-")[1];
+    tid = tid.replace(paraname, "");
+    var vst;
+    switch (tid) {
+      case "-radio-1-2":
+        vst = "input multiple values seperated by commas";
+        break;
+      case "-radio-1-3":
+        vst = "input a range in format: start, stop, step";
+        break;
+      default:
+        vst = "input a single vaule.";
+    }
+    var msgid = "#" + paraname + "-description-message";
+    document.querySelector(msgid).innerHTML = vst;
+  });
+};
+
+</script>
+{% endblock %}
