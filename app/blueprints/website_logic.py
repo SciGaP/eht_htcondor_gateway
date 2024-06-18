@@ -25,6 +25,11 @@ def dashboard():
 def ipoleexplorer():
     return render_template("ipoleexplorer.html", user=current_user)
 
+@website_blueprint.route("/ipolebatch")
+#@login_required
+def ipolebatch():
+    return render_template("ipolebatch.html", user=current_user)
+
 @website_blueprint.route('/search', methods=['GET'])
 def search():
     query = request.args.get('query')
