@@ -15,6 +15,11 @@ def home():
 def about():
     return render_template("about.html", user=current_user)
 
+@website_blueprint.route("/dashboard")
+#@login_required
+def dashboard():
+    return render_template("dashboard.html", user=current_user)
+
 @website_blueprint.route('/search', methods=['GET'])
 def search():
     query = request.args.get('query')

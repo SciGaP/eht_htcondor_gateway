@@ -71,7 +71,7 @@ def callback():
 
         app.logger.info(f"{user} created in the database and logged in")
 
-    return redirect("/")
+    return redirect("/dashboard")
 
 
 @login_blueprint.route("/logout")
