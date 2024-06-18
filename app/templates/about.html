@@ -1,6 +1,34 @@
 {% extends "base.html" %}
 {% block title %}About{% endblock %}
 {% block content %}
-    <h1>About</h1>
-    <p class="lead">This is a simple gateway to demonstrate HTCondor usage in EHT.</p>
+<div class="rvt-container-lg rvt-p-tb-sm">
+    <div class="rvt-card rvt-card--raised">
+      <div class="rvt-card__body">
+        <div class="rvt-billboard">
+  
+          <div class="rvt-billboard__body">
+            <h2 class="rvt-billboard__title">EHT HTCondor Developement Portal</h2>
+            <div class="rvt-billboard__content [ rvt-flow ]">
+              <p> This work leveraged the Open Science Grid (OSG) high throughput resources
+                provided by the Partnership to Advance Throughput Computing (PATh). While EHT has successfully utilized
+                PATh to create the most extensive black hole simulation library to date, the broad adoption of this resource
+                for data processing has been slower. The sophisticated command-line-driven HTCondor environment creates
+                barriers for less technical researchers, limiting PATh’s reach and impact on the broader astronomy and science
+                communities. In May of 2023, the Cyberinfrastructure Integration Research Center (CIRC) at Indiana University
+                was awarded an NSF EAGER award to collaborate with EHT and PATh in implementing a targeted science
+                gateway instance that integrates critical EHT application functionality to leverage OSG within the Apache
+                Airavata framework. The project leverages modern state-of-the-art User Experience (UX) techniques and
+                participatory design methods to lower the barrier to adopting OSG resources for researchers trying to discover
+                the properties of black holes.</p>
+              <div style="width:100%;text-align: center;">
+                <img src="https://github.com/SciGaP/eht_gateway/assets/6643873/70716ef0-0a0f-4f69-98a9-d1f08be9a67d/" alt="Diagram of EHT Gateway" title="A depiction of the EHT science gateway, which will enable users to interact with Apache Airavata’s gateway services and access the OSPool through HTCondor access points." />
+              </div>
+              <p>This portal is developed to address the underlying technical challenges in processing a huge amount of images through HTCondor. The final product will be integrated as part of the EHT science gateway.</p>
+              <a class="rvt-cta" target="_blank" href="https://eht.scigap.org/">Explore more of Event Horizon Science Gateway</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
