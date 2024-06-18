@@ -1,9 +1,55 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-{% if user.is_authenticated  %}
-    user: {{ user.nickname }}
-{% else %}
-    user is not set.
-{% endif %}
+<div class="rvt-flow">
+    <div class="rvt-container-lg rvt-p-tb-sm">
+      <div class="rvt-card rvt-card--horizontal rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__image">
+          <img src="https://scitechdaily.com/images/Supermassive-Black-Hole-M87-in-Polarized-Light.jpg" style="width:200px;height:180px;overflow:hidden" title="Event Horizon Telescope Images Magnetic Fields at the Edge of M87’s Supermassive Black Hole" alt="">
+        </div>
+        <div class="rvt-card__body">
+          <div class="rvt-card__eyebrow">Darkness made visible</div>
+          <h2 class="rvt-card__title">
+            <a target=_blank href="https://eventhorizontelescope.org/">Event Horizon Telescope</a>
+          </h2>
+          <div class="rvt-card__content">
+            <p>The EHT is an international collaboration that has formed to continue the steady long-term progress on improving the capability of Very Long Baseline Interferometry (VLBI) at short wavelengths in pursuit of this goal. This technique of linking radio dishes across the globe to create an Earth-sized interferometer, has been used to measure the size of the emission regions of the two supermassive black holes with the largest apparent event horizons: SgrA* at the center of the Milky Way and M87 in the center of the Virgo A galaxy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rvt-container-lg rvt-p-tb-sm">
+      <div class="rvt-card rvt-card--horizontal rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__image">
+          <img src="https://htcondor.org/assets/images/CondorAlpha.png" style="width:200px;height:180px;overflow:hidden" alt="">
+        </div>
+        <div class="rvt-card__body">
+          <div class="rvt-card__eyebrow">High Throughput Computing</div>
+          <h2 class="rvt-card__title">
+            <a target=_blank href="https://htcondor.org/">HTCondor</a>
+          </h2>
+          <div class="rvt-card__content">
+            <p>HTCondor is a software system that creates a High-Throughput Computing (HTC) environment. It effectively uses the computing power of machines connected over a network, be they a single cluster, a set of clusters on a campus, cloud resources either standalone or temporarily joined to a local cluster, or international grids. Power comes from the ability to effectively harness shared resources with distributed ownership.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rvt-container-lg rvt-p-tb-sm">
+      <div class="rvt-card rvt-card--horizontal rvt-card--raised rvt-card--clickable">
+        <div class="rvt-card__image">
+          <img src="https://airavata.apache.org/assets/img/airavata-logo-shadow.png" style="width:200px;height:180px;overflow:hidden" title="Apache Airavata" alt="">
+        </div>
+        <div class="rvt-card__body">
+          <div class="rvt-card__eyebrow">Cyberinfrastructure Integration</div>
+          <h2 class="rvt-card__title">
+            <a target=_blank href="https://eht.scigap.org/">EHT Science Gateway</a>
+          </h2>
+          <div class="rvt-card__content">
+            <p>Deliver a highly functional, UX-centric gateway to the EHT project. This gateway will enable the integration of existing workflows that leverage OSPool resources; Address the technical hurdles to allow the utilization of HTC resources from a science gateway environment within the Apache Airavata framework; Conduct targeted outreach efforts aimed at astronomy researchers and the CI community to amplify the impact
+              of the project.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
