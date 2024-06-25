@@ -13,3 +13,14 @@ def userinfo(username):
     response = checkuser(username)
     
     return jsonify(response)
+
+@htcondor_blueprint.route("/htcondor/validate")
+def validate():
+    args = request.args
+    v = {}
+    v['datacollection'] = args["datacollection"]
+    v['dataset'] = args["dataset"]
+    v['parameters'] = args["parameters"]
+
+    return jsonify(v)
+

@@ -1,31 +1,37 @@
-{% extends "base.html" %}
-{% block title %}iPole Batch{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% block title %}iPole Batch{% endblock %} {% block
+content %}
 <!-- rr -->
 <div class="rvt-layout__wrapper [ rvt-p-tb-sm ]">
   <div class="rvt-bg-black-000 rvt-border-bottom rvt-p-top-sm">
     <div class="rvt-container-lg rvt-prose rvt-flow rvt-p-bottom-sm">
-
       <!-- **************************************************************
                 Page title
             *************************************************************** -->
 
-      <h1 class="rvt-m-top-xs"><i class="fa fa-rocket" style="color:green"></i> iPole - Batch</h1>
+      <h1 class="rvt-m-top-xs">
+        <i class="fa fa-rocket" style="color: green"></i> iPole - Batch
+      </h1>
     </div>
   </div>
   <div class="rvt-container-sm rvt-p-tb-sm">
     <legend class="rvt-text-bold">Experiment Name</legend>
-    <input type="text" id="expriment_name_text_input" class="rvt-text-input" style="width:60%">
-    <br>
-    <hr><br>
+    <input
+      type="text"
+      id="expriment_name_text_input"
+      class="rvt-text-input"
+      style="width: 60%"
+    />
+    <br />
+    <hr />
+    <br />
     <!-- select dataset -->
     <legend class="rvt-text-bold">Data Collection</legend>
-    <select id="select-datacollection" class="rvt-select" style="width:60%">
+    <select id="select-datacollection" class="rvt-select" style="width: 60%">
       <option value="GRMHD_kharma-v3" selected>GRMHD_kharma-v3</option>
     </select>
-    <br>
+    <br />
     <legend class="rvt-text-bold">Data Set</legend>
-    <select id="select-dataset" class="rvt-select" style="width:60%">
+    <select id="select-dataset" class="rvt-select" style="width: 60%">
       <option value="Ma+0.5_w4" selected>Ma+0.5_w4</option>
       <option value="Ma+0.5_w5" selected>Ma+0.5_w5</option>
       <option value="Ma-0.5_w4" selected>Ma-0.5_w4</option>
@@ -37,9 +43,9 @@
       <option value="Ma0_w4" selected>Ma0_w4</option>
       <option value="Ma0_w5" selected>Ma0_w5</option>
     </select>
-    <br>
+    <br />
     <legend class="rvt-text-bold">Set Parameters</legend>
-    <select id="select-parameters" class="rvt-select" style="width:60%">
+    <select id="select-parameters" class="rvt-select" style="width: 60%">
       <option value="rho0-Ma+0.5_w4" selected>rho0-Ma+0.5_w4</option>
       <option value="rho0-Ma+0.5_w5" selected>rho0-Ma+0.5_w5</option>
       <option value="rho0-Ma-0.5_w4" selected>rho0-Ma-0.5_w4</option>
@@ -52,45 +58,75 @@
       <option value="rho0-Ma0_w5" selected>rho0-Ma0_w5</option>
     </select>
 
-    <br>
+    <br />
     <div class="rvt-file" data-rvt-file-input="example-file-input">
-      <input type="file" data-rvt-file-input-button="example-file-input" id="example-file-input" aria-describedby="file-description">
+      <input
+        type="file"
+        data-rvt-file-input-button="example-file-input"
+        id="example-file-input"
+        aria-describedby="file-description"
+      />
       <label for="example-file-input" class="rvt-button">
         <span>Upload a file</span>
         <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
-          <path d="M2 1h8.414L14 4.586V15H2V1Zm2 2v10h8V7.5H7.5V3H4Zm5.5 0v2.5H12v-.086L9.586 3H9.5Z"></path>
+          <path
+            d="M2 1h8.414L14 4.586V15H2V1Zm2 2v10h8V7.5H7.5V3H4Zm5.5 0v2.5H12v-.086L9.586 3H9.5Z"
+          ></path>
         </svg>
       </label>
-      <div class="rvt-file__preview" data-rvt-file-input-preview="example-file-input" id="file-description">
+      <div
+        class="rvt-file__preview"
+        data-rvt-file-input-preview="example-file-input"
+        id="file-description"
+      >
         No file selected
       </div>
     </div>
-    <br>
+    <br />
     <div class="rvt-inline-alert rvt-inline-alert--info">
       <span class="rvt-inline-alert__icon">
         <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
           <path d="M9 7v5H7V7h2ZM8 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"></path>
-          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"></path>
+          <path
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"
+          ></path>
         </svg>
       </span>
-      <span class="rvt-inline-alert__message" id="info-message">Select a preconfiged paramters files or upload a new one.</span>
+      <span class="rvt-inline-alert__message" id="info-message"
+        >Select a preconfiged paramters files or upload a new one.</span
+      >
     </div>
 
-<!-- end of rdm -->
-<hr>
-  <div class="rvt-button-group">
-    <button class="rvt-button rvt-button--success" id="bn-create-validate">Validate</button>
-    <button class="rvt-button" id="bn-create-experiment" disabled>Create Experiment</button>
+    <!-- end of rdm -->
+    <hr />
+    <div class="rvt-button-group">
+      <button class="rvt-button rvt-button--success" id="bn-validate">
+        Validate
+      </button>
+      <button class="rvt-button" id="bn-create-experiment" disabled>
+        Create Experiment
+      </button>
+    </div>
   </div>
+  <script>
+    $(document).ready(function () {
+      $("#select-dataset").change(function () {
+        let para = "rho0-" + this.value;
+        $("#select-parameters").val(para);
+      });
+      $("#bn-validate").click(function () {
+        var baseurl = "/htcondor/validate";
+        $.ajax({
+          url: baseurl,
+          type: "get", //send it through get method
+          data: {
+            "datacollection": "test",
+            "dataset": "test",
+            "parameters": "test", }
+          }).done(function(response){
+console.log(response['dataset']);
+});});
+    });
+  </script>
+  {% endblock %}
 </div>
-<script>
-  $(document).ready(function () {
-  $('#select-dataset').change(function () {
-    let para = "rho0-" + this.value;
-    $('#select-parameters').val(para);
-
-  });
-});
-
-</script>
-{% endblock %}
