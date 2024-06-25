@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from whoosh.qparser import QueryParser
 from whoosh.index import open_dir
 
+from .htcondor_logic import checkuser
 website_blueprint = Blueprint("website", __name__)
 
 @website_blueprint.route("/")
@@ -18,7 +19,8 @@ def about():
 @website_blueprint.route("/dashboard")
 #@login_required
 def dashboard():
-    return render_template("dashboard.html", user=current_user)
+    message = checkuser(current_user.nickname)
+    return render_template("dashboard.html", user=current_user,message=message)
 
 @website_blueprint.route("/ipoleexplorer")
 #@login_required
