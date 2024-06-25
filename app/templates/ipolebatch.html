@@ -17,7 +17,8 @@ content %}
     <legend class="rvt-text-bold">Experiment Name</legend>
     <input
       type="text"
-      id="expriment_name_text_input"
+      id="experiment-name"
+      placeholder="Experiment"
       class="rvt-text-input"
       style="width: 60%"
     />
@@ -99,34 +100,83 @@ content %}
 
     <!-- end of rdm -->
     <hr />
+    <div id="validation-result" style="display: none">
+      <!-- Success -->
+      <label for="textarea-success" class="rvt-label"
+        >Validation: <span class="rvt-badge rvt-badge--success">Success</span>
+      </label>
+      <textarea
+        id="experiment-info"
+        class="rvt-textarea rvt-validation-success"
+      ></textarea>
+      <div class="rvt-inline-alert rvt-inline-alert--success">
+        <span class="rvt-inline-alert__icon">
+          <svg fill="currentColor" width="16" height="16" viewBox="0 0 16 16">
+            <path
+              d="M7 11.414 11.914 6.5 10.5 5.086 7 8.586l-1.5-1.5L4.086 8.5 7 11.414Z"
+            ></path>
+            <path
+              d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM2 8a6 6 0 1 1 12 0A6 6 0 0 1 2 8Z"
+            ></path>
+          </svg>
+        </span>
+        <span class="rvt-inline-alert__message" id="essay-message"
+          >Your Experiment is ready to submit.</span
+        >
+      </div>
+      <br />
+    </div>
     <div class="rvt-button-group">
-      <button class="rvt-button rvt-button--success" id="bn-validate">
-        Validate
-      </button>
-      <button class="rvt-button" id="bn-create-experiment" disabled>
-        Create Experiment
+      <button class="rvt-button" id="bn-validate">Validate</button>
+      <button class="rvt-button rvt-button--success" id="bn-submit" disabled>
+        Submit
       </button>
     </div>
   </div>
+</div>
+
   <script>
-    $(document).ready(function () {
-      $("#select-dataset").change(function () {
-        let para = "rho0-" + this.value;
-        $("#select-parameters").val(para);
+
+      $(document).ready(function () {
+
+        let inputstr = document.getElementById("experiment-name");
+        const d = new Date();
+        const localTimeStr = d.toISOString();
+        inputstr.placeholder = "Experiment on " + localTimeStr;
+
+        $("#select-dataset").change(function () {
+          let para = "rho0-" + this.value;
+          $("#select-parameters").val(para);
+        });
+
+        $("#bn-validate").click(function () {
+          var baseurl = "/htcondor/validate";
+          let experimentname = $('#experiment-name').val();
+          let datacollection = $('#select-datacollection').val();
+          let dataset = $('#select-dataset').val();
+          let parameters = $('#select-parameters').val();
+          $.ajax({
+            url: baseurl,
+            type: "get", //send it through get method
+            data: {
+              "experimentname": experimentname,
+              "datacollection": datacollection,
+              "dataset": dataset,
+              "parameters": parameters,
+            },
+          }).done(function (results) {
+            let validateinfo = document.getElementById("validation-result");
+            if (validateinfo.style.display == "none") {
+             validateinfo.style.display = "block";}
+            var infolist = "";
+            for (key in results) {
+              infolist += key + ": " + results[key] + "\n"
+            }
+            document.getElementById("experiment-info").innerHTML = infolist;
+            //enable submit button
+            $('#bn-submit').removeAttr("disabled");
+        });
       });
-      $("#bn-validate").click(function () {
-        var baseurl = "/htcondor/validate";
-        $.ajax({
-          url: baseurl,
-          type: "get", //send it through get method
-          data: {
-            "datacollection": "test",
-            "dataset": "test",
-            "parameters": "test", }
-          }).done(function(response){
-console.log(response['dataset']);
-});});
     });
   </script>
   {% endblock %}
-</div>

@@ -22,5 +22,8 @@ def validate():
     v['dataset'] = args["dataset"]
     v['parameters'] = args["parameters"]
 
+    v['expectedoutput'] = 32600
+    v['outputsize'] = "260 GB"
+
     return jsonify(v)
 
