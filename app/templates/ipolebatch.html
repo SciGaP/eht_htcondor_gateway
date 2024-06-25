@@ -83,4 +83,14 @@
     <button class="rvt-button" id="bn-create-experiment" disabled>Create Experiment</button>
   </div>
 </div>
+<script>
+  $(document).ready(function () {
+  $('#select-dataset').change(function () {
+    let para = "rho0-" + this.value;
+    $('#select-parameters').val(para);
+
+  });
+});
+
+</script>
 {% endblock %}
