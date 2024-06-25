@@ -154,6 +154,7 @@ content %}
         $("#bn-validate").click(function () {
           var baseurl = "/htcondor/validate";
           let experimentname = $('#experiment-name').val();
+          if (experimentname == "") {experimentname = $('#experiment-name').attr('placeholder');}
           let datacollection = $('#select-datacollection').val();
           let dataset = $('#select-dataset').val();
           let parameters = $('#select-parameters').val();
