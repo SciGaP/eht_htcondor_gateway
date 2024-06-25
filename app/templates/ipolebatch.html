@@ -136,14 +136,16 @@ content %}
 </div>
 
   <script>
-
-      $(document).ready(function () {
-
+    function init_experimentname() {
         let inputstr = document.getElementById("experiment-name");
         const d = new Date();
         const localTimeStr = d.toISOString();
         inputstr.placeholder = "Experiment on " + localTimeStr;
+    }
 
+      $(document).ready(function () {
+
+        init_experimentname();
         $("#select-dataset").change(function () {
           let para = "rho0-" + this.value;
           $("#select-parameters").val(para);

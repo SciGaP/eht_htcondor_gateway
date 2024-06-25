@@ -21,7 +21,7 @@ def validate():
     v['datacollection'] = args["datacollection"]
     v['dataset'] = args["dataset"]
     v['parameters'] = args["parameters"]
-
+    v['experimentname'] = args['experimentname']
     v['expectedoutput'] = 32600
     v['outputsize'] = "260 GB"
 
