@@ -152,20 +152,23 @@ content %}
         });
 
         $("#bn-validate").click(function () {
-          var baseurl = "/htcondor/validate";
+          var baseurl = "/htcondor/validate/batch";
           let experimentname = $('#experiment-name').val();
           if (experimentname == "") {experimentname = $('#experiment-name').attr('placeholder');}
           let datacollection = $('#select-datacollection').val();
           let dataset = $('#select-dataset').val();
           let parameters = $('#select-parameters').val();
+          let username = document.getElementById("usernickname").innerText;
+          console.log(username);
           $.ajax({
             url: baseurl,
             type: "get", //send it through get method
             data: {
-              "experimentname": experimentname,
-              "datacollection": datacollection,
+              "userName": username,
+              "experimentName": experimentname,
+              "dataCollection": datacollection,
               "dataset": dataset,
-              "parameters": parameters,
+              "parameterFile": parameters,
             },
           }).done(function (results) {
             let validateinfo = document.getElementById("validation-result");

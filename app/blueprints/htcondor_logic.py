@@ -14,16 +14,32 @@ def userinfo(username):
     
     return jsonify(response)
 
-@htcondor_blueprint.route("/htcondor/validate")
-def validate():
+# validate the batch job
+@htcondor_blueprint.route("/htcondor/validate/batch")
+def validate_batch():
+    """
+        validate batch job
+        parameters:
+            userName
+            experimentName
+            dataCollection
+            dataset
+            parameterFile
+        return:
+            experimentId
+            expectedOutput
+            outputSize
+    """
     args = request.args
     v = {}
-    v['datacollection'] = args["datacollection"]
+    v['userName'] = args['userName']
+    v['dataCollection'] = args["dataCollection"]
     v['dataset'] = args["dataset"]
-    v['parameters'] = args["parameters"]
-    v['experimentname'] = args['experimentname']
-    v['expectedoutput'] = 32600
-    v['outputsize'] = "260 GB"
+    v['parameterFile'] = args["parameterFile"]
+    v['experimentName'] = args['experimentName']
+    v['eperimentId'] = "w1486"
+    v['expectedOutput'] = 32600
+    v['outputSize'] = "260 GB"
 
     return jsonify(v)
 
