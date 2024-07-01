@@ -28,3 +28,17 @@ def checkuser(username):
     userstatus['experiments'] = history['experiments']
     userstatus['running'] = 0
     return userstatus
+
+def get_experimentid(username):
+    """return an experiment id for a user
+        experiment id: 
+    """
+
+    import uuid
+
+    longid = uuid.uuid4()
+    uniqueid = username[0]+"-"+str(longid).split("-")[0]
+
+    return uniqueid
+
+

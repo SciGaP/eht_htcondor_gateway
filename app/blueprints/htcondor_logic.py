@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, send_from_directory, jsonify
 
-from .htcondor import checkuser
+from .htcondor import checkuser, get_experimentid
 
 htcondor_blueprint = Blueprint("htcondor", __name__)
 
@@ -37,7 +37,7 @@ def validate_batch():
     v['dataset'] = args["dataset"]
     v['parameterFile'] = args["parameterFile"]
     v['experimentName'] = args['experimentName']
-    v['eperimentId'] = "w1486"
+    v['eperimentId'] = get_experimentid(username = v['userName'])
     v['expectedOutput'] = 32600
     v['outputSize'] = "260 GB"
 

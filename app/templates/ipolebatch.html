@@ -33,30 +33,25 @@ content %}
     <br />
     <legend class="rvt-text-bold">Data Set</legend>
     <select id="select-dataset" class="rvt-select" style="width: 60%">
-      <option value="Ma+0.5_w4" selected>Ma+0.5_w4</option>
-      <option value="Ma+0.5_w5" selected>Ma+0.5_w5</option>
-      <option value="Ma-0.5_w4" selected>Ma-0.5_w4</option>
-      <option value="Ma-0.5_w5" selected>Ma-0.5_w5</option>
+      <option value="Ma+0.5_w4">Ma+0.5_w4</option>
+      <option value="Ma+0.5_w5" >Ma+0.5_w5</option>
+      <option value="Ma-0.5_w4" >Ma-0.5_w4</option>
+      <option value="Ma-0.5_w5" >Ma-0.5_w5</option>
       <option value="Ma+0.94_w4" selected>Ma+0.94_w4</option>
-      <option value="Ma+0.94_w5" selected>Ma+0.94_w5</option>
-      <option value="Ma-0.94_w4" selected>Ma-0.94_w4</option>
-      <option value="Ma-0.94_w5" selected>Ma-0.94_w5</option>
-      <option value="Ma0_w4" selected>Ma0_w4</option>
-      <option value="Ma0_w5" selected>Ma0_w5</option>
+      <option value="Ma+0.94_w5" >Ma+0.94_w5</option>
+      <option value="Ma-0.94_w4" >Ma-0.94_w4</option>
+      <option value="Ma-0.94_w5" >Ma-0.94_w5</option>
+      <option value="Ma0_w4" >Ma0_w4</option>
+      <option value="Ma0_w5" >Ma0_w5</option>
     </select>
     <br />
     <legend class="rvt-text-bold">Set Parameters</legend>
     <select id="select-parameters" class="rvt-select" style="width: 60%">
-      <option value="rho0-Ma+0.5_w4" selected>rho0-Ma+0.5_w4</option>
-      <option value="rho0-Ma+0.5_w5" selected>rho0-Ma+0.5_w5</option>
-      <option value="rho0-Ma-0.5_w4" selected>rho0-Ma-0.5_w4</option>
-      <option value="rho0-Ma-0.5_w5" selected>rho0-Ma-0.5_w5</option>
-      <option value="rho0-Ma+0.94_w4" selected>rho0-Ma+0.94_w4</option>
-      <option value="rho0-Ma+0.94_w5" selected>rho0-Ma+0.94_w5</option>
-      <option value="rho0-Ma-0.94_w4" selected>rho0-Ma-0.94_w4</option>
-      <option value="rho0-Ma-0.94_w5" selected>rho0-Ma-0.94_w5</option>
-      <option value="rho0-Ma0_w4" selected>rho0-Ma0_w4</option>
-      <option value="rho0-Ma0_w5" selected>rho0-Ma0_w5</option>
+      <option value="rho0-Ma+0.5" >rho0-Ma+0.5</option>
+      <option value="rho0-Ma-0.5" >rho0-Ma-0.5</option>
+      <option value="rho0-Ma+0.94" selected >rho0-Ma+0.94</option>
+      <option value="rho0-Ma-0.94" >rho0-Ma-0.94</option>
+      <option value="rho0-Ma0" >rho0-Ma0</option>
     </select>
 
     <br />
@@ -147,7 +142,8 @@ content %}
 
         init_experimentname();
         $("#select-dataset").change(function () {
-          let para = "rho0-" + this.value;
+          // the default one is the name without _w*
+          let para = "rho0-" + this.value.split("_")[0];
           $("#select-parameters").val(para);
         });
 
