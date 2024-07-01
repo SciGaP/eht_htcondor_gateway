@@ -171,8 +171,9 @@ content %}
             if (validateinfo.style.display == "none") {
              validateinfo.style.display = "block";}
             var infolist = "";
-            for (key in results) {
-              infolist += key + ": " + results[key] + "\n"
+            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Parameters":"parameterFile","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
+            for (key in displayfield) {
+              infolist += key + ": " + results[displayfield[key]] + "\n"
             }
             document.getElementById("experiment-info").innerHTML = infolist;
             //enable submit button
