@@ -148,6 +148,11 @@ content %}
         inputstr.placeholder = "Experiment on " + localTimeStr;
     }
 
+    //submit a job by id
+    function sumbit_experiment(username,eid) {
+      console.log(username,eid);
+    }
+
       $(document).ready(function () {
 
         init_experimentname();
@@ -188,6 +193,9 @@ content %}
             document.getElementById("experiment-info").innerHTML = infolist;
             //enable submit button
             $('#bn-submit').removeAttr("disabled");
+            $('#bn-submit').click(function(){
+              sumbit_experiment(results['userName'],results['experimentId']);
+            });
             // disable validate button
             $('#bn-validate').prop('disabled', true);
 
