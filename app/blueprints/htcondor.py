@@ -1,6 +1,6 @@
 
 
-import os, sys
+import os, sys, json
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -24,7 +24,6 @@ def get_workspace():
         os.makedirs(d_w["users"], exist_ok=True)
     return d_w
     
-
 
 def get_userfolder(username):
     """return the folder for a user"""
@@ -65,4 +64,70 @@ def get_experimentid(username):
 
     return uniqueid
 
+def load_preconfig(input):
+    """load preconfig data"""
 
+    dataCollection_root = os.path.expanduser("~/eht_dataset")
+    dataCollection_json = os.path.join(dataCollection_root, input["dataCollection"],f'{input["dataCollection"]}.json')
+    with open(dataCollection_json,"r") as f:
+        dataCollection = json.load(f)
+
+    # find information 
+    match = [x for x in dataCollection['datasets'] if input['dataset'] == x['dataset']]
+    #     {
+    #         "dataset": "Ma+0.5_w4",
+    #         "size": 1000,
+    #         "h5_list": "Ma+0.5_w4.txt",
+    #         "rho0": "rho0_Ma+0.5.tsv",
+    #         "BATCH": "Ma+0.5_w4_BATCH.ALL",
+    #         "BATCH_size": 36000
+    #     },
+    match = match[0]
+
+    return match 
+
+
+def validate_batch_staging(input):
+    """ input parameters
+        -- dict object:
+            userName
+            experimentName
+            dataCollection
+            dataset
+            parameterFile
+        -- return 
+            experimentId
+            jobFile
+            expectedOutput
+            outputSize
+            validate
+            BATCH
+    """
+
+    v = {}
+    v['experimentId'] = get_experimentid(username = input['userName'])
+    
+    dataset = input['dataset']
+    parameter = input['parameterFile']
+
+    # Ma-0.5_w5 -> rho0_Ma-0.5
+    # use pre-config
+    if (dataset.split("_")[0] == parameter.split("_")[1]):
+        batchinfo = load_preconfig(input)
+    
+    v['expectedOutput'] = batchinfo['BATCH_size']
+    v['BATCH'] = batchinfo['BATCH']
+    # use pre-config
+    v['outputSize'] = str(8 * v['expectedOutput'] /1000) + " GB"
+    # yes or no
+    # if no, need add validateInformation
+    v['validate'] = "yes"
+    v['validateInformation'] = ""
+
+    workspace = get_workspace()
+    stage_json = {**input, **v}
+    stage_file = os.path.join(workspace['staging'],f'{v["experimentId"]}.json')
+    with open(stage_file, 'w') as f:
+        json.dump(stage_json,f)
+
+    return stage_json

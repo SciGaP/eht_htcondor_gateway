@@ -47,11 +47,11 @@ content %}
     <br />
     <legend class="rvt-text-bold">Set Parameters</legend>
     <select id="select-parameters" class="rvt-select" style="width: 60%">
-      <option value="rho0-Ma+0.5" >rho0-Ma+0.5</option>
-      <option value="rho0-Ma-0.5" >rho0-Ma-0.5</option>
-      <option value="rho0-Ma+0.94" selected >rho0-Ma+0.94</option>
-      <option value="rho0-Ma-0.94" >rho0-Ma-0.94</option>
-      <option value="rho0-Ma0" >rho0-Ma0</option>
+      <option value="rho0_Ma+0.5" >rho0_Ma+0.5</option>
+      <option value="rho0_Ma-0.5" >rho0_Ma-0.5</option>
+      <option value="rho0_Ma+0.94" selected >rho0_Ma+0.94</option>
+      <option value="rho0_Ma-0.94" >rho0_Ma-0.94</option>
+      <option value="rho0_Ma0" >rho0_Ma0</option>
     </select>
 
     <br />
@@ -178,6 +178,9 @@ content %}
             document.getElementById("experiment-info").innerHTML = infolist;
             //enable submit button
             $('#bn-submit').removeAttr("disabled");
+            // disable validate button
+            $('#bn-validate').prop('disabled', true);
+
         });
       });
     });
