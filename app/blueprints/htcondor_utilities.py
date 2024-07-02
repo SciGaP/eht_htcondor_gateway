@@ -87,6 +87,13 @@ def htcondor_status():
     condor_q = condor_q.stdout
 
     print(condor_q)
+    # find header
+    header = [x for x in condor_q.split("\n") if "OWNER" in x.strip()]
+    header = header[0]
+    holdflag = False
+    if "HOLD" in header:
+        holdflag = True
+
     ehtbot_status = [x for x in condor_q.split("\n") if x.strip().startswith('ehtbot')]
     if len(ehtbot_status) == 0:
         return None
@@ -99,8 +106,12 @@ def htcondor_status():
     jobdone = int(raw[4])
     jobrun = int(raw[5])
     jobidle = int(raw[6])
-    jobhold = int(raw[7])
-    jobtotal = int(raw[8])
+    if holdflag:
+        jobhold = int(raw[7])
+        jobtotal = int(raw[8])
+    else:
+        jobhold = 0
+        jobtotal = int(raw[7])
 
     status = {}
     status['ID'] = jobid
