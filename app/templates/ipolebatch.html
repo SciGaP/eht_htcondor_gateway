@@ -173,7 +173,8 @@ content %}
         init_experimentname();
         $("#select-dataset").change(function () {
           // the default one is the name without _w*
-          let para = "rho0-" + this.value.split("_")[0];
+          let para = "rho0_" + this.value.split("_")[0];
+          console.log(para);
           $("#select-parameters").val(para);
         });
 
