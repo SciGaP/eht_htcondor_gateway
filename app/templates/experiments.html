@@ -13,13 +13,15 @@
     </div>
   </div>
 <div class="rvt-container-lg rvt-p-tb-sm">
+{% if message['experiments'] == 0 %}
 <div id="no_experiment">  
   <h2>No experiments found, plesse create experiments with <a href="{{ url_for('website.ipolebatch') }}">iPole - Batch</a> or <a href="{{ url_for('website.ipoleexplorer') }}">iPole-explorer</a>.</h2>
   </div>
+  {% endif %}
 <div id="running">
 </div>
-<div id="inqeue">
-</div>
+<!-- <div id="inqeue">
+</div> -->
 <div id="recents">
 </div>
 </div>

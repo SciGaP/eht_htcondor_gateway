@@ -2,6 +2,7 @@
 
 import os, sys, json
 from dotenv import load_dotenv
+from .htcondor_utilities import htcondor_status
 load_dotenv()
 
 def get_workspace():
@@ -43,13 +44,21 @@ def userhistory(username):
     ex_num = len(experiments)
     return {"experiments": ex_num}
 
-def checkuser(username):
-    """check user information"""
+def checkuser(username, simple=False):
+    """check user information
+        if simple = true, only return 
+    """
     userstatus = {}
     userstatus['username'] = username
     history = userhistory(username)
     userstatus['experiments'] = history['experiments']
     userstatus['running'] = 0
+    if simple:
+        return userstatus
+    # other wise return the full records
+    userstatus["inqueue"] = ""
+    userstatus["recents"] = ""
+
     return userstatus
 
 def get_experimentid(username):
@@ -60,7 +69,7 @@ def get_experimentid(username):
     import uuid
 
     longid = uuid.uuid4()
-    uniqueid = username[0]+"-"+str(longid).split("-")[0]
+    uniqueid = username+"-"+str(longid).split("-")[0]
 
     return uniqueid
 
@@ -147,4 +156,18 @@ def job_submit_batch(username, experimentid):
     
     return {"submit":"yes","submitInformation":""}
 
+def checkexperiment(experimentid):
+    """ check status of the experiments"""
+
+    username, eid = experimentid.split("-")
+
+    # find the job json file
+    workspace = get_workspace()
+    jobjson = os.path.join(workspace['users'],username,eid,f'{experimentid}.json')
+    with open(jobjson,'r') as f:
+        data = json.load(f)
     
+    jobstatus = htcondor_status()
+
+    newdata = {**{"job":data}, **{"status":jobstatus}}
+    return newdata

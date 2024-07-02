@@ -4,7 +4,8 @@ from flask_login import current_user, login_required
 from whoosh.qparser import QueryParser
 from whoosh.index import open_dir
 
-from .htcondor_logic import checkuser
+from .htcondor import checkuser, checkexperiment
+
 website_blueprint = Blueprint("website", __name__)
 
 @website_blueprint.route("/")
@@ -19,7 +20,7 @@ def about():
 @website_blueprint.route("/dashboard")
 #@login_required
 def dashboard():
-    message = checkuser(current_user.nickname)
+    message = checkuser(current_user.nickname,simple=True)
     return render_template("dashboard.html", user=current_user,message=message)
 
 @website_blueprint.route("/ipoleexplorer")
@@ -35,7 +36,17 @@ def ipolebatch():
 @website_blueprint.route("/experiments")
 #@login_required
 def experiments():
-    return render_template("experiments.html", user=current_user)
+    message = checkuser(current_user.nickname)
+    return render_template("experiments.html", user=current_user,message = message)
+
+@website_blueprint.route("/experiment/<experimentid>")
+#@login_required
+def experiment(experimentid):
+    """show the status of the experiment with id"""
+
+    message = checkexperiment(experimentid)
+
+    return render_template("experiment.html", user=current_user,message = message)
 
 @website_blueprint.route('/search', methods=['GET'])
 def search():
