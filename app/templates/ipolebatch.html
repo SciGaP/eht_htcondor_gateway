@@ -151,7 +151,22 @@ content %}
     //submit a job by id
     function sumbit_experiment(username,eid) {
       console.log(username,eid);
-    }
+      var baseurl = "/htcondor/submit/batch";
+      $.ajax({
+        url: baseurl,
+        type: "get",
+        data: {
+          "userName": username,
+          "experimentId": eid,
+        },
+    }).done (function (results) {
+        if (results['submit'] == "yes") {
+          alert("job is submitted successfully!");
+        } else {
+          alert("job submission failed: " + results['submitInformation']);
+        }
+    });
+     }
 
       $(document).ready(function () {
 

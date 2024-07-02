@@ -131,3 +131,20 @@ def validate_batch_staging(input):
         json.dump(stage_json,f)
 
     return stage_json
+
+def job_submit_batch(username, experimentid):
+    """submit batch job"""
+
+    workspace = get_workspace()
+    userfolder = os.path.join(workspace["users"], username)
+
+    job_json = os.path.join(workspace['staging'],f'{experimentid}.json')
+    if not os.path.exists(job_json):
+        return {"submit":"no","submitInformation":f'{job_json} is not found!'}
+                            
+    # copy job_json to user folder
+    # submit the job
+    
+    return {"submit":"yes","submitInformation":""}
+
+    

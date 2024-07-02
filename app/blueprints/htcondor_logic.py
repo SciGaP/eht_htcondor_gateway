@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, send_from_directory, jsonify
 
-from .htcondor import checkuser, validate_batch_staging
+from .htcondor import checkuser, validate_batch_staging, job_submit_batch
 
 htcondor_blueprint = Blueprint("htcondor", __name__)
 
@@ -45,3 +45,15 @@ def validate_batch():
 
     return jsonify(validate_results)
 
+# submit batch job
+@htcondor_blueprint.route("/htcondor/submit/batch")
+def submit_batch():
+    """
+        parameters:
+            userName, experimentId
+    """
+
+    args = request.args
+    results = job_submit_batch(username = args['userName'], experimentid = args['experimentId'])
+
+    return jsonify(results)
