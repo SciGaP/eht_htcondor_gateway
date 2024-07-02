@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Experiments{% endblock %}
+{% block content %}
+<div class="rvt-layout__wrapper [ rvt-p-tb-sm ]">
+  <div class="rvt-bg-black-000 rvt-border-bottom rvt-p-top-sm">
+    <div class="rvt-container-lg rvt-prose rvt-flow rvt-p-bottom-sm">
+
+      <!-- **************************************************************
+                Page title
+            *************************************************************** -->
+
+      <h1 class="rvt-m-top-xs"><i class="fa fa-tasks" style="color:green"></i> Experiments</h1>
+    </div>
+  </div>
+<div class="rvt-container-lg rvt-p-tb-sm">
+<div id="no_experiment">  
+  <h2>No experiments found, plesse create experiments with <a href="{{ url_for('website.ipolebatch') }}">iPole - Batch</a> or <a href="{{ url_for('website.ipoleexplorer') }}">iPole-explorer</a>.</h2>
+  </div>
+<div id="running">
+</div>
+<div id="inqeue">
+</div>
+<div id="recents">
+</div>
+</div>
+</div>
+{% endblock %}

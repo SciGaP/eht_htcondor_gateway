@@ -32,6 +32,11 @@ def ipoleexplorer():
 def ipolebatch():
     return render_template("ipolebatch.html", user=current_user)
 
+@website_blueprint.route("/experiments")
+#@login_required
+def experiments():
+    return render_template("experiments.html", user=current_user)
+
 @website_blueprint.route('/search', methods=['GET'])
 def search():
     query = request.args.get('query')

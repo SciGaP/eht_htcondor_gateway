@@ -57,3 +57,4 @@ def submit_batch():
     results = job_submit_batch(username = args['userName'], experimentid = args['experimentId'])
 
     return jsonify(results)
+
