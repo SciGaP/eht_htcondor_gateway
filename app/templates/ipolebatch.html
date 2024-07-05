@@ -161,7 +161,7 @@ content %}
         },
     }).done (function (results) {
         if (results['submit'] == "yes") {
-          alert("The job is sent to OSG access point, it may take several minutes to finish submitting.");
+          alert("The job is submitted.");
         } else {
           alert("job submission failed: " + results['submitInformation']);
         }

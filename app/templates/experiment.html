@@ -16,7 +16,7 @@
 <div class="rvt-stat rvt-card--raised">
   <div class="rvt-stat__content [ rvt-flow ]">
     <div class="rvt-stat__number rvt-color-crimson-500">{{ '%0.2f' | format(message['status']['DONE']/message['status']['TOTAL']*100.0) }}%</div>
-    <div class="rvt-stat__description"><strong>Done: {{message['status']['DONE']}}, Running: {{message['status']['RUN']}}, Idle: {{message['status']['IDLE']}}, HOLD: {{message['status']['HOLD']}}, Total: {{message['status']['TOTAL']}}</strong>
+    <div class="rvt-stat__description"><strong>Condor Status: Done: {{message['status']['DONE']}}, Running: {{message['status']['RUN']}}, Idle: {{message['status']['IDLE']}}, HOLD: {{message['status']['HOLD']}}, Total: {{message['status']['TOTAL']}}</strong>
     </div>
     <div class="rvt-stat__description">submit time: {{message['status']['SUBMITTED']}}</strong>
     </div>

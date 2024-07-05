@@ -97,32 +97,33 @@ def htcondor_status():
     ehtbot_status = [x for x in condor_q.split("\n") if x.strip().startswith('ehtbot')]
     if len(ehtbot_status) == 0:
         return None
-    ehtbot_status = ehtbot_status[0]
-    raw = ehtbot_status.replace("_","0").split()
-    print(raw)
-    # ['ehtbot', 'straycatcoder-3cbf15ae', '7/2', '09:03', '0', '1757', '34243', '36000', '87.0', '...', '98.2999']
-    jobid = raw[1]
-    jobtime = raw[2]+" " + raw[3]
-    jobdone = int(raw[4])
-    jobrun = int(raw[5])
-    jobidle = int(raw[6])
-    if holdflag:
-        jobhold = int(raw[7])
-        jobtotal = int(raw[8])
-    else:
-        jobhold = 0
-        jobtotal = int(raw[7])
+    jobstatus_list = []
+    for entry in ehtbot_status:
+        raw = entry.replace("_","0").split()
+        # ['ehtbot', 'straycatcoder-3cbf15ae', '7/2', '09:03', '0', '1757', '34243', '36000', '87.0', '...', '98.2999']
+        jobid = raw[1]
+        jobtime = raw[2]+" " + raw[3]
+        jobdone = int(raw[4])
+        jobrun = int(raw[5])
+        jobidle = int(raw[6])
+        if holdflag:
+            jobhold = int(raw[7])
+            jobtotal = int(raw[8])
+        else:
+            jobhold = 0
+            jobtotal = int(raw[7])
 
-    status = {}
-    status['ID'] = jobid
-    status['SUBMITTED'] = jobtime
-    status['DONE'] = jobdone
-    status['RUN'] = jobrun
-    status['IDLE'] = jobidle
-    status['HOLD'] = jobhold
-    status['TOTAL'] = jobtotal
+        status = {}
+        status['ID'] = jobid
+        status['SUBMITTED'] = jobtime
+        status['DONE'] = jobdone
+        status['RUN'] = jobrun
+        status['IDLE'] = jobidle
+        status['HOLD'] = jobhold
+        status['TOTAL'] = jobtotal
+        jobstatus_list.append(status)
     
-    return status
+    return jobstatus_list
 
     # this is for the remaining jobs
     # status_line = [x for x in condor_q.stdout.split("\n") if "Total for query" in x]

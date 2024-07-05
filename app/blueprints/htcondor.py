@@ -163,7 +163,7 @@ def job_submit_batch(username, experimentid):
     logfile = os.path.join(jobfolder, "submit.log")
     with open(logfile,"w") as f:
         f.write(joblog)
-        
+
     return {"submit":"yes","submitInformation":""}
 
 def checkexperiment(experimentid):
@@ -177,7 +177,9 @@ def checkexperiment(experimentid):
     with open(jobjson,'r') as f:
         data = json.load(f)
     
-    jobstatus = htcondor_status()
+    jobstatus_list = htcondor_status()
+    jobstatus = [x for x in jobstatus_list if x['ID']==experimentid]
+    jobstatus = jobstatus[0]
 
     newdata = {**{"job":data}, **{"status":jobstatus}}
     return newdata
