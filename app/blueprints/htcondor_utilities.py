@@ -227,6 +227,17 @@ def run_testjob(submit=False):
         dryrun = False
     job_submission(job_paras, dryrun=dryrun)
 
+def run_jobscript(experimentid):
+    """run job script on the osg node"""
+
+    scriptfolder = "/home/ehtbot/eht_workdirs"
+    scriptfile = f"jobsubmit.sh {experimentid}"
+    submitcmd = f"cd {scriptfolder} ; ./{scriptfile}"
+    output = run_ssh_cmd(submitcmd)
+
+    return (output.stdout)
+
+
 def main():
     """test the routines"""
     output = run_ssh_cmd("hostname")

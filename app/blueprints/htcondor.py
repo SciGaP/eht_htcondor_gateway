@@ -2,7 +2,7 @@
 
 import os, sys, json
 from dotenv import load_dotenv
-from .htcondor_utilities import htcondor_status
+from .htcondor_utilities import htcondor_status, run_jobscript
 load_dotenv()
 
 def get_workspace():
@@ -159,7 +159,11 @@ def job_submit_batch(username, experimentid):
     os.system(f"cp {job_json} {jobfolder}")
 
     # submit the job
-    
+    joblog = run_jobscript(experimentid)
+    logfile = os.path.join(jobfolder, "submit.log")
+    with open(logfile,"w") as f:
+        f.write(joblog)
+        
     return {"submit":"yes","submitInformation":""}
 
 def checkexperiment(experimentid):
