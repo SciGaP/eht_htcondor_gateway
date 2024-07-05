@@ -30,6 +30,7 @@ def login():
 @login_blueprint.route("/login")
 def login():
     app.logger.debug("Redirecting to the Auth0 login page")
+    print(url_for("user.callback"))
     return oauth.auth0.authorize_redirect(
         redirect_uri=url_for("user.callback", _external=True)
     )

@@ -127,7 +127,7 @@ def validate_batch_staging(input):
     v['expectedOutput'] = batchinfo['BATCH_size']
     v['BATCH'] = batchinfo['BATCH']
     # use pre-config
-    v['outputSize'] = str(8 * v['expectedOutput'] /1000) + " GB"
+    v['outputSize'] = str(8.8 * v['expectedOutput'] /1000) + " GB"
     # yes or no
     # if no, need add validateInformation
     v['validate'] = "yes"
