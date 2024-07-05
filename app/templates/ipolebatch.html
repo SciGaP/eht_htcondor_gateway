@@ -161,10 +161,16 @@ content %}
         },
     }).done (function (results) {
         if (results['submit'] == "yes") {
-          alert("job is submitted successfully!");
+          alert("The job is sent to OSG access point, it may take several minutes to finish submitting.");
         } else {
           alert("job submission failed: " + results['submitInformation']);
         }
+        $('#bn-submit').prop("disabled", true);
+        $('#bn-validate').removeAttr("disabled");
+        let validateinfo = document.getElementById("validation-result");
+            if (validateinfo.style.display == "block") {
+             validateinfo.style.display = "none";}
+
     });
      }
 

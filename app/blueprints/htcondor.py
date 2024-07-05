@@ -151,7 +151,13 @@ def job_submit_batch(username, experimentid):
     if not os.path.exists(job_json):
         return {"submit":"no","submitInformation":f'{job_json} is not found!'}
                             
-    # copy job_json to user folder
+    # copy job_json to user folder, 
+    jobfolder = experimentid.split("-")[1]
+    jobfolder = os.path.join(userfolder, jobfolder)
+    if not os.path.exists(jobfolder):
+        os.makedirs(jobfolder, exist_ok=True)
+    os.system(f"cp {job_json} {jobfolder}")
+
     # submit the job
     
     return {"submit":"yes","submitInformation":""}
