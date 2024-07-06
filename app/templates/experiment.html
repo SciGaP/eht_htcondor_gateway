@@ -15,18 +15,31 @@
 <div class="rvt-container-lg rvt-p-tb-sm">
 <div class="rvt-stat rvt-card--raised">
   <div class="rvt-stat__content [ rvt-flow ]">
-    <div class="rvt-stat__number rvt-color-crimson-500">{{ '%0.2f' | format(message['status']['DONE']/message['status']['TOTAL']*100.0) }}%</div>
+    <div class="rvt-stat__number rvt-color-crimson-500">{{ '%0.2f' | format(message["outputs"]["num"]/message['job']['expectedOutput']*100.0) }}%</div>
     <div class="rvt-stat__description"><strong>Condor Status: Done: {{message['status']['DONE']}}, Running: {{message['status']['RUN']}}, Idle: {{message['status']['IDLE']}}, HOLD: {{message['status']['HOLD']}}, Total: {{message['status']['TOTAL']}}</strong>
     </div>
-    <div class="rvt-stat__description">submit time: {{message['status']['SUBMITTED']}}</strong>
-    </div>
-    
+    <div class="rvt-stat__description">Submit time: {{message['status']['SUBMITTED']}}</div>
+    <br>
+    <div class="rvt-stat__description">Report Time: {{ message['status']['reportTime'] }}</div>
   </div>
 </div>
 <br>
-<h2>Job details</h2>
-{{ message['job'] }}
+<span class="rvt-badge rvt-badge--info">Job Details</span>
+<ul class="rvt-list-inline">
+  <li><strong>DataCollection</strong> {{message['job']['dataCollection']}}</li>
+  <li><strong>Dataset</strong> {{message['job']['dataset']}}</li>
+  <li><strong>Parmeter File</strong> {{message['job']['parameterFile']}}</li>
+  <li><strong>Application</strong> {{message['job']['application']}}</li>
+</ul>
+<br>
 
+<span class="rvt-badge rvt-badge--success">Outputs</span>
+<ul class="rvt-list-inline">
+  <li><strong>Outputs</strong> {{message["outputs"]["num"]}}</li>
+</ul>
+<!-- <label for="textarea-default" class="rvt-label">Textarea</label> -->
+ <br>
+<textarea id="textarea-default" class="rvt-textarea" readonly style="height:300px;">{{message["outputs"]["files"]}}</textarea>
 </div>
 
 {% endblock %}

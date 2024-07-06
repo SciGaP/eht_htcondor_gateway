@@ -2,7 +2,7 @@
 
 import os, sys, json
 from dotenv import load_dotenv
-from .htcondor_utilities import htcondor_status, run_jobscript
+from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist
 load_dotenv()
 
 def get_workspace():
@@ -181,5 +181,10 @@ def checkexperiment(experimentid):
     jobstatus = [x for x in jobstatus_list if x['ID']==experimentid]
     jobstatus = jobstatus[0]
 
-    newdata = {**{"job":data}, **{"status":jobstatus}}
+    outputlist = get_outputlist(experimentid)
+    outstatus = {}
+    outstatus['num'] = len(outputlist)
+    outstatus['files'] = outputlist
+
+    newdata = {**{"job":data}, **{"status":jobstatus},**{"outputs":outstatus}}
     return newdata

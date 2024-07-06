@@ -69,6 +69,10 @@ def extract_numbers_from_line(line):
     numbers = re.findall(r"\d+", line)
     return list(map(int, numbers))
 
+def get_reporttime():
+    """ return a report time"""
+    now = datetime.now() # current date and time
+    return now.strftime("%m/%d, %H:%M")
 
 def htcondor_status():
     """query the htcondor status
@@ -98,6 +102,7 @@ def htcondor_status():
     if len(ehtbot_status) == 0:
         return None
     jobstatus_list = []
+    reporttime = get_reporttime()
     for entry in ehtbot_status:
         raw = entry.replace("_","0").split()
         # ['ehtbot', 'straycatcoder-3cbf15ae', '7/2', '09:03', '0', '1757', '34243', '36000', '87.0', '...', '98.2999']
@@ -121,6 +126,7 @@ def htcondor_status():
         status['IDLE'] = jobidle
         status['HOLD'] = jobhold
         status['TOTAL'] = jobtotal
+        status['reportTime'] = reporttime
         jobstatus_list.append(status)
     
     return jobstatus_list
@@ -166,6 +172,17 @@ def check_output():
     h5list = response.stdout.split("\n")
     relist = [x for x in h5list if ".h5" in x]
     #print(relist)
+    return relist
+
+def get_outputlist(experimentid):
+    """get job list based on experimentid"""
+
+    outputdir = f"/home/ehtbot/eht_workdirs/jobs/{experimentid}/job/out"
+    sshcmd = f"ls {outputdir}"
+    response = run_ssh_cmd(sshcmd)
+    h5list = response.stdout.split("\n")
+    relist = [x for x in h5list if ".h5" in x]
+
     return relist
 
 def get_output(outputfile, localpath="."):
