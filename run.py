@@ -1,3 +1,6 @@
+# to run in the background
+# nohup python run_nodebug.py > log.txt 2>&1 &
+
 from app import app, env
 
 if __name__ == "__main__":
