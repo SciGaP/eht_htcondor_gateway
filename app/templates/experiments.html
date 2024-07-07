@@ -18,10 +18,17 @@
   <h2>No experiments found, plesse create experiments with <a href="{{ url_for('website.ipolebatch') }}">iPole - Batch</a> or <a href="{{ url_for('website.ipoleexplorer') }}">iPole-explorer</a>.</h2>
   </div>
   {% endif %}
+{% if message['running'] > 0 %}
 <div id="running">
+  <span class="rvt-badge rvt-badge--info">Jobs in HTcondor</span>
+  <ul>
+    {% for item in message['runningExperiments'] %}
+    <li><a href="{{ url_for('website.experiment', experimentid = item['ID']) }}"><strong>ExperimentID:</strong> {{item["ID"]}} <strong>Submit time:</strong> {{item["SUBMITTED"]}} <strong>Done:</strong> {{item["DONE"]}}</a></li>
+    {% endfor %}
+  </ul>
 </div>
-<!-- <div id="inqeue">
-</div> -->
+{% endif %}
+<!-- {{ message }} -->
 <div id="recents">
 </div>
 </div>

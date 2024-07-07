@@ -40,7 +40,7 @@ def userhistory(username):
     userfolder = get_userfolder(username)
     # find any folder list as experiment
     # experiment_id
-    experiments = [x for x in os.listdir(userfolder) if "experiment" in x]
+    experiments=[ name for name in os.listdir(userfolder) if os.path.isdir(os.path.join(userfolder, name)) ]
     ex_num = len(experiments)
     return {"experiments": ex_num}
 
@@ -59,6 +59,12 @@ def checkuser(username, simple=False):
     userstatus["inqueue"] = ""
     userstatus["recents"] = ""
 
+    # check if there is jobs in htcondor
+    joblist = htcondor_status()
+    jobincondor = [x for x in joblist if username in x['ID']]
+    if len(jobincondor) > 0:
+        userstatus['running'] = len(jobincondor)
+        userstatus['runningExperiments'] = jobincondor
     return userstatus
 
 def get_experimentid(username):
