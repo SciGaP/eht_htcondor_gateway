@@ -61,10 +61,14 @@ def checkuser(username, simple=False):
 
     # check if there is jobs in htcondor
     joblist = htcondor_status()
-    jobincondor = [x for x in joblist if username in x['ID']]
-    if len(jobincondor) > 0:
-        userstatus['running'] = len(jobincondor)
-        userstatus['runningExperiments'] = jobincondor
+    if ((joblist is None) or (len(joblist) == 0)):
+        userstatus['running'] = 0
+        userstatus['runningExperiments'] = ""
+    else:
+        jobincondor = [x for x in joblist if username in x['ID']]
+        if len(jobincondor) > 0:
+            userstatus['running'] = len(jobincondor)
+            userstatus['runningExperiments'] = jobincondor
     return userstatus
 
 def get_experimentid(username):
