@@ -10,7 +10,7 @@ website_blueprint = Blueprint("website", __name__)
 
 @website_blueprint.route("/")
 def home():
-    return render_template("home.html", user=current_user)
+    return render_template("EHTGatewayHome.html", user=current_user)
 
 @website_blueprint.route("/about")
 #@login_required

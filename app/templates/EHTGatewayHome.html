@@ -11,18 +11,18 @@
       src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
       style="width: 0px; height: 0px; display: none"
     />
-    <link rel="stylesheet" type="text/css" href="./css/index.css" />
-    <link rel="stylesheet" type="text/css" href="./css/font.css" />
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="./css/components.css" />
-    <link rel="stylesheet" type="text/css" href="./css/EHTGatewayHome.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehthome/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehthome/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehthome/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehthome/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehthome/css/EHTGatewayHome.css') }}" />
   </head>
   <body>
     <div class="eht-gateway-home">
       <header class="headercalculato">
         <div class="row">
           <div class="rowcalculator">
-            <img src="public/images/img_calculator.svg" alt="Calculator" class="calculator_one" />
+            <img src="{{ url_for('static', filename='ehthome/public/images/img_calculator.svg') }}" alt="Calculator" class="calculator_one" />
             <h5 class="eventhorizon ui heading size-headingxs">Event Horizon Telescope</h5>
           </div>
           <ul class="rowdocumentatio">
@@ -49,7 +49,7 @@
           <div class="stacktitle">
             <h1 class="title ui heading size-headingmd">Event Horizon Telescope</h1>
             <div class="columnvector">
-              <img src="public/images/img_vector.svg" alt="Vector" class="vector_one" />
+              <img src="{{ url_for('static', filename='ehthome/public/images/img_vector.svg') }}" alt="Vector" class="vector_one" />
               <div class="rowdescription">
                 <p class="description ui text size-textxs">
                   <span>
@@ -87,14 +87,14 @@
                 </div>
                 <div class="stackview">
                   <div class="view"></div>
-                  <img src="public/images/img_eht_array.png" alt="Ehtarray" class="ehtarray_one" />
+                  <img src="{{ url_for('static', filename='ehthome/public/images/img_eht_array.png') }}" alt="Ehtarray" class="ehtarray_one" />
                 </div>
               </div>
             </div>
             <div class="container-xs">
               <div class="rowlineninety">
                 <div class="lineninety_one"></div>
-                <img src="public/images/img_globe.svg" alt="Globe" class="globe_one" />
+                <img src="{{ url_for('static', filename='ehthome/public/images/img_globe.svg') }}" alt="Globe" class="globe_one" />
                 <div class="lineninety_one"></div>
               </div>
             </div>
@@ -112,7 +112,7 @@
                 </p>
                 <div class="stackview_one">
                   <div class="view_one"></div>
-                  <img src="public/images/img_eht_meeting.png" alt="Ehtmeeting" class="ehtmeeting_one" />
+                  <img src="{{ url_for('static', filename='ehthome/public/images/img_eht_meeting.png') }}" alt="Ehtmeeting" class="ehtmeeting_one" />
                 </div>
                 <p class="description-2 ui text size-textxs">
                   In both cases, the sizes match that of the predicted silhouette caused by the extreme lensing of light
@@ -137,7 +137,7 @@
                 <div class="eht_gateway">
                   <div class="columnseptember">
                     <div class="stack-1">
-                      <img src="public/images/img_image_4.png" alt="Image" class="image-1" />
+                      <img src="{{ url_for('static', filename='ehthome/public/images/img_image_4.png') }}" alt="Image" class="image-1" />
                       <h3 class="imagesofa ui heading size-textmd">
                         Images of a black hole reveal how cosmic beasts change over time
                       </h3>
@@ -149,7 +149,7 @@
                   </div>
                   <div class="columnseptember">
                     <div class="stack-1">
-                      <img src="public/images/img_image_4.png" alt="Image" class="image-1" />
+                      <img src="{{ url_for('static', filename='ehthome/public/images/img_image_4.png') }}" alt="Image" class="image-1" />
                       <h4 class="imagesofa ui heading size-textmd">
                         Images of a black hole reveal how cosmic beasts change over time
                       </h4>
@@ -161,7 +161,7 @@
                   </div>
                   <div class="columnseptember">
                     <div class="stack-1">
-                      <img src="public/images/img_image_4.png" alt="Image" class="image-1" />
+                      <img src="{{ url_for('static', filename='ehthome/public/images/img_image_4.png') }}" alt="Image" class="image-1" />
                       <h5 class="imagesofa ui heading size-textmd">
                         Images of a black hole reveal how cosmic beasts change over time
                       </h5>
@@ -175,27 +175,25 @@
                 <button class="flex-row-center-center view_more_media">View More Media</button>
               </div>
             </div>
-          </div>
-        </div>
       </div>
       <div class="poweredby">
         <div class="column_three">
           <div class="columnpoweredby">
             <div class="stackpoweredby">
               <div class="stack">
-                <img src="public/images/img_image_7.png" alt="Imageseven" class="imageseven_one" />
-                <img src="public/images/img_rectangle_24.png" alt="Image" class="image" />
+                <img src="{{ url_for('static', filename='ehthome/public/images/img_image_7.png') }}" alt="Imageseven" class="imageseven_one" />
+                <img src="{{ url_for('static', filename='ehthome/public/images/img_rectangle_24.png') }}" alt="Image" class="image" />
               </div>
               <h2 class="poweredby-1 ui heading size-headingxs">powered by</h2>
             </div>
-            <img src="public/images/img_image_12.png" alt="Imagetwelve" class="imagetwelve_one" />
+            <img src="{{ url_for('static', filename='ehthome/public/images/img_image_12.png') }}" alt="Imagetwelve" class="imagetwelve_one" />
           </div>
           <div class="column_two container-xs">
-            <img src="public/images/img_image_10.png" alt="Imageten" class="imageten_one" />
+            <img src="{{ url_for('static', filename='ehthome/public/images/img_image_10.png') }}" alt="Imageten" class="imageten_one" />
           </div>
         </div>
-        <img src="public/images/img_image_11.png" alt="Imageeleven" class="imageeleven_one" />
-        <img src="public/images/img_image_9.png" alt="Imagenine" class="imagenine_one" />
+        <img src="{{ url_for('static', filename='ehthome/public/images/img_image_11.png') }}" alt="Imageeleven" class="imageeleven_one" />
+        <img src="{{ url_for('static', filename='ehthome/public/images/img_image_9.png') }}" alt="Imagenine" class="imagenine_one" />
       </div>
     </div>
   </body>
