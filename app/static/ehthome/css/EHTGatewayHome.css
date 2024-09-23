@@ -1,0 +1,795 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.lineninety_one {
+    height: 2px;
+    margin-bottom: 14px;
+    background-color: var(--blue_gray_100);
+    flex: 1;
+    @media only screen and (max-width: 1050px) {
+        align-self: stretch;
+    }
+}
+
+.columnseptember {
+    gap: var(--space-xs);
+    display: flex;
+    background-color: var(--white_a700);
+    box-shadow: var(--shadow-sm);
+    width: 32%;
+    flex-direction: column;
+    border-radius: var(--radius-xs);
+    @media only screen and (max-width: 1050px) {
+        width: 100%;
+    }
+}
+
+.stack-1 {
+    height: 134px;
+    position: relative;
+    align-content: center;
+    @media only screen and (max-width: 1050px) {
+        height: auto;
+    }
+}
+
+.image-1 {
+    height: 134px;
+    border-top-right-radius: var(--radius-xs);
+    border-top-left-radius: var(--radius-xs);
+    flex: 1;
+    object-fit: cover;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imagesofa {
+    text-transform: capitalize;
+    width: 84%;
+    line-height: 120%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    height: max-content;
+    margin: auto;
+}
+
+.rowseptembertwe {
+    margin-bottom: 12px;
+    margin-left: 18px;
+    margin-right: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    @media only screen and (max-width: 1050px) {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+.septembertwenty {
+    color: var(--gray_900_59) !important;
+    text-transform: capitalize;
+    align-self: end;
+}
+
+.view_article {
+    color: var(--white_a700);
+    padding-left: 22px;
+    padding-right: 22px;
+    letter-spacing: 0.67px;
+    text-transform: uppercase;
+    font-size: 8.38px;
+    font-weight: 600;
+    background-color: var(--red_900);
+    text-align: center;
+    height: 26px;
+    min-width: 108px;
+    border-radius: var(--radius-sm);
+    @media only screen and (max-width: 550px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.eht-gateway-home {
+    background-color: var(--white_a700);
+    width: 100%;
+}
+
+.headercalculato {
+    background-color: var(--gray_900);
+}
+
+.row {
+    background-color: var(--white_a700);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 36px;
+    @media only screen and (max-width: 1050px) {
+        flex-direction: column;
+    }
+
+    @media only screen and (max-width: 550px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.rowcalculator {
+    margin-top: 10px;
+    gap: var(--space-sm);
+    align-self: end;
+    display: flex;
+    align-items: start;
+    @media only screen and (max-width: 1050px) {
+        align-self: auto;
+    }
+}
+
+.calculator_one {
+    height: 58px;
+    align-self: center;
+    width: 16%;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+}
+
+.eventhorizon {
+    color: var(--black_900) !important;
+    margin-top: 12px;
+    text-transform: uppercase;
+}
+
+.rowdocumentatio {
+    margin-right: 20px !important;
+    gap: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    @media only screen and (max-width: 1050px) {
+        margin-right: 0px;
+    }
+}
+
+.rowtitle {
+    height: 578px;
+    margin-top: -2px;
+    position: relative;
+    background-image: url(../public/images/img_group_2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media only screen and (max-width: 1050px) {
+        height: auto;
+    }
+}
+
+.stackcreate {
+    height: 572px;
+    background-image: url(../public/images/img_group_10.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 116px 124px;
+    @media only screen and (max-width: 1050px) {
+        padding: 20px;
+    }
+}
+
+.stacktitle {
+    height: 332px;
+    width: 96%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    margin: auto;
+}
+
+.title {
+    text-transform: capitalize;
+    width: 28%;
+    line-height: 100%;
+    position: absolute;
+    left: 23.49px;
+    top: 0px;
+    margin: auto;
+}
+
+.columnvector {
+    gap: 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    bottom: -1.75px;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+}
+
+.vector_one {
+    height: 182px;
+    margin-left: 338px;
+    width: 22%;
+    object-fit: contain;
+    @media only screen and (max-width: 1050px) {
+        margin-left: 0px;
+    }
+}
+
+.rowdescription {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--blue_gray_900_a5);
+    width: 46%;
+    display: flex;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    @media only screen and (max-width: 1050px) {
+        width: 100%;
+    }
+}
+
+.description {
+    color: var(--white_a700) !important;
+    font-size: 18px !important;
+    width: 96%;
+    line-height: 27px;
+}
+
+.description-span {
+    color: var(--white_a700) !important;
+    text-decoration: underline;
+    display: inline;
+}
+
+.rowcreate {
+    gap: 26px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 5%;
+    top: 0px;
+    height: max-content;
+    margin: auto;
+}
+
+.create_account {
+    color: var(--white_a700);
+    padding-left: 21px;
+    padding-right: 21px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--red_900);
+    text-align: center;
+    height: 72px;
+    min-width: 242px;
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--black_900);
+    @media only screen and (max-width: 550px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+.login {
+    color: var(--white_a700);
+    padding-left: 33px;
+    padding-right: 33px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    align-self: end;
+    background-color: var(--black_900_4c);
+    text-align: center;
+    height: 68px;
+    min-width: 230px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--white_a700);
+    @media only screen and (max-width: 550px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+.rowlearn_more {
+    height: 1398px;
+    margin-top: 10px;
+    padding-top: 94px;
+    padding-bottom: 94px;
+    background-image: url(../public/images/img_group_5.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media only screen and (max-width: 1050px) {
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.column_one {
+    gap: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    @media only screen and (max-width: 550px) {
+        gap: 29px;
+    }
+}
+
+.columnview {
+    gap: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media only screen and (max-width: 550px) {
+        gap: 29px;
+    }
+}
+
+.row_one {
+    width: 96%;
+    display: flex;
+    justify-content: center;
+    @media only screen and (max-width: 1050px) {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.rowwhatiseht {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    @media only screen and (max-width: 1050px) {
+        flex-direction: column;
+    }
+}
+
+.columnwhatiseht {
+    padding-left: 30px;
+    padding-right: 30px;
+    gap: var(--space-sm);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: start;
+    @media only screen and (max-width: 1050px) {
+        align-self: stretch;
+    }
+
+    @media only screen and (max-width: 550px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.whatiseht {
+    color: var(--gray_900_01) !important;
+    margin-left: 128px;
+    text-transform: capitalize;
+    @media only screen and (max-width: 1050px) {
+        margin-left: 0px;
+    }
+}
+
+.description-3 {
+    font-size: 18px !important;
+    align-self: end;
+    width: 78%;
+    line-height: 27px;
+    @media only screen and (max-width: 1050px) {
+        width: 100%;
+    }
+}
+
+.stackview {
+    height: 368px;
+    margin-top: 34px;
+    align-self: end;
+    width: 48%;
+    position: relative;
+    @media only screen and (max-width: 1050px) {
+        align-self: auto;
+        width: 100%;
+    }
+}
+
+.view {
+    height: 344px;
+    background-color: var(--deep_orange_a200_19);
+    box-shadow: var(--shadow-xs);
+    width: 90%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--black_900);
+}
+
+.ehtarray_one {
+    height: 346px;
+    width: 92%;
+    object-fit: contain;
+    position: absolute;
+    bottom: -1px;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+    border-radius: var(--radius-sm);
+}
+
+.rowlineninety {
+    gap: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    @media only screen and (max-width: 1050px) {
+        flex-direction: column;
+    }
+}
+
+.globe_one {
+    height: 34px;
+    align-self: center;
+    width: 34px;
+    @media only screen and (max-width: 1050px) {
+        width: 100%;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.columnview_one {
+    gap: 144px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media only screen and (max-width: 1050px) {
+        gap: 108px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    @media only screen and (max-width: 550px) {
+        gap: 72px;
+    }
+}
+
+.rowview_one {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    @media only screen and (max-width: 1050px) {
+        flex-direction: column;
+    }
+}
+
+.description-1 {
+    font-size: 18px !important;
+    width: 24%;
+    line-height: 27px;
+    @media only screen and (max-width: 1050px) {
+        width: 100%;
+    }
+}
+
+.stackview_one {
+    height: 316px;
+    flex: 1;
+    position: relative;
+    @media only screen and (max-width: 1050px) {
+        align-self: stretch;
+        width: 100%;
+        flex: unset;
+    }
+}
+
+.view_one {
+    height: 302px;
+    background-color: var(--deep_orange_900_19);
+    width: 84%;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--black_900);
+}
+
+.ehtmeeting_one {
+    height: 300px;
+    width: 90%;
+    object-fit: contain;
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+    margin: auto;
+    border-radius: var(--radius-sm);
+}
+
+.description-2 {
+    margin-left: 36px;
+    font-size: 18px !important;
+    width: 24%;
+    line-height: 27px;
+    @media only screen and (max-width: 1050px) {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+.learn_more {
+    color: var(--white_a700);
+    padding-left: 34px;
+    padding-right: 34px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--red_900);
+    text-align: center;
+    height: 78px;
+    min-width: 280px;
+    border-radius: var(--radius-3xl);
+    @media only screen and (max-width: 550px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.sectionmedia {
+    background: linear-gradient(180deg, #6c6c6c, #d2d2d2);
+}
+
+.row_two {
+    height: 674px;
+    padding-top: 82px;
+    padding-bottom: 82px;
+    background-image: url(../public/images/img_group_6.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media only screen and (max-width: 1050px) {
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.rowehtinthe {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    @media only screen and (max-width: 1050px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.columnehtinthe {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ehtinthe {
+    text-transform: capitalize;
+}
+
+.eht_gateway {
+    margin-top: 30px;
+    gap: var(--space-md);
+    display: flex;
+    align-self: stretch;
+    @media only screen and (max-width: 1050px) {
+        flex-direction: column;
+    }
+}
+
+.view_more_media {
+    color: var(--white_a700);
+    margin-top: 126px;
+    padding-left: 34px;
+    padding-right: 34px;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--red_900);
+    text-align: center;
+    height: 78px;
+    min-width: 344px;
+    border-radius: var(--radius-3xl);
+    @media only screen and (max-width: 550px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.poweredby {
+    height: 564px;
+    margin-bottom: 4px;
+    position: relative;
+    align-content: center;
+    @media only screen and (max-width: 1050px) {
+        height: auto;
+    }
+}
+
+.column_three {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.columnpoweredby {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.stackpoweredby {
+    height: 546px;
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+    background-image: url(../public/images/img_group_4.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: stretch;
+    position: relative;
+    @media only screen and (max-width: 1050px) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.stack {
+    height: 292px;
+    flex: 1;
+    position: absolute;
+    align-content: center;
+    bottom: 18%;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+    @media only screen and (max-width: 1050px) {
+        height: auto;
+    }
+}
+
+.imageseven_one {
+    height: 280px;
+    width: 84%;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: var(--radius-md);
+}
+
+.image {
+    height: 292px;
+    flex: 1;
+    object-fit: cover;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    margin: auto;
+}
+
+.poweredby-1 {
+    color: var(--gray_900_01) !important;
+    text-transform: capitalize;
+    font-size: 57px !important;
+    position: absolute;
+    top: 9%;
+    right: 0px;
+    left: 0px;
+    width: max-content;
+    margin: auto;
+    @media only screen and (max-width: 1050px) {
+        font-size: 49px !important;
+    }
+
+    @media only screen and (max-width: 550px) {
+        font-size: 43px !important;
+    }
+}
+
+.imagetwelve_one {
+    height: 90px;
+    margin-top: -72px;
+    margin-right: 168px;
+    z-index: 1;
+    position: relative;
+    width: 16%;
+    object-fit: contain;
+    @media only screen and (max-width: 1050px) {
+        margin-right: 0px;
+    }
+}
+
+.column_two {
+    margin-top: -76px;
+    padding-left: 232px;
+    padding-right: 56px;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    @media only screen and (max-width: 1050px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.imageten_one {
+    height: 76px;
+    width: 38%;
+    object-fit: contain;
+}
+
+.imageeleven_one {
+    height: 72px;
+    z-index: 3;
+    width: 26%;
+    position: absolute;
+    object-fit: contain;
+    bottom: 3.58px;
+    right: 28%;
+    margin: auto;
+}
+
+.imagenine_one {
+    height: 78px;
+    z-index: 4;
+    width: 14%;
+    position: absolute;
+    object-fit: contain;
+    bottom: 5.01px;
+    left: 14%;
+    margin: auto;
+}
