@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eht gateway - register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/EHTGatewayRegister.css') }}" />
+  </head>
+  <body>
+    <div class="stackglobe-one">
+      <div class="column_two">
+        <img src="{{ url_for('static', filename='ehtregister/public/images/img_ellipse_10.png') }}" alt="Image" class="image" />
+        <div class="column_one">
+          <div class="container-xs">
+            <div class="columnglobe_one">
+              <div class="rowglobe_one">
+                <img src="{{ url_for('static', filename='ehtregister/public/images/img_globe_white_a700.svg') }}" alt="Globe" class="globe_one" />
+                <h1 class="eventhorizon ui heading size-headings" style="white-space: nowrap;">Event Horizon Telescope</h1>
+              </div>
+              <div class="row_two">
+                <div class="rowusername">
+                  <div class="columnprice">
+                    <div class="rowprice">
+                      <p class="price ui text size-textxs">Create an EHT Gateway account</p>
+                      <button class="flex-row-center-center already">Already Registered? Sign In</button>
+                    </div>
+                    <div class="columnusername">
+                      <p class="ui text size-textxs">Username:</p>
+                      <label class="username">
+                        <input name="userName" placeholder="Username" type="text" />
+                      </label>
+                    </div>
+                    <div class="rowpassword">
+                      <div class="columnpassword">
+                        <p class="ui text size-textxs">Password:</p>
+                        <label class="password">
+                          <input name="password" placeholder="Password" type="password" />
+                          <div class="dhi-group">
+                            <img src="{{ url_for('static', filename='ehtregister/public/images/img_inbox_indigo_a100.svg') }}" alt="Inbox" class="inbox" />
+                          </div>
+                        </label>
+                      </div>
+                      <div class="columnpassword">
+                        <p class="ui text size-textxs">Password (again):</p>
+                        <label class="username">
+                          <input name="password" placeholder="Password (again)" type="password" />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="rowemail">
+                      <div class="columnemail">
+                        <p class="ui text size-textxs">Email Address:</p>
+                        <label class="username">
+                          <input name="email" placeholder="email@example.com" type="email" />
+                        </label>
+                      </div>
+                      <div class="columnpassword">
+                        <p class="ui text size-textxs">Email Address (again):</p>
+                        <label class="username">
+                          <input name="email" placeholder="email@example.com (again)" type="email" />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="rowpassword">
+                      <div class="columnpassword">
+                        <p class="ui text size-textxs">First Name:</p>
+                        <label class="username">
+                          <input name="firstName" placeholder="First Name" type="text" />
+                        </label>
+                      </div>
+                      <div class="columnpassword">
+                        <p class="ui text size-textxs">Last Name:</p>
+                        <label class="username">
+                          <input name="lastName" placeholder="Last Name" type="text" />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="rowcreate">
+                      <button class="flex-row-center-center create_account">Create Account</button>
+                      <button class="flex-row-center-center clear_form">Clear Form</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="{{ url_for('static', filename='ehtregister/public/images/img_ellipse_11.png') }}" alt="Image" class="image_one" />
+    </div>
+          <div class="row_two">
+            <div class="row_one">
+              <div class="rowregisterwith container-xs">
+                <p class="registerwithyou ui text size-textxs">Register with your existing organizational info</p>
+                <div class="rowregisterwith-1">
+                  <h2 class="registerwith ui heading size-headingxs">Register with Institution Credentials</h2>
+                  <img src="{{ url_for('static', filename='ehtregister/public/images/img_cilogon_3.png') }}" alt="Cilogonthree" class="cilogonthree" />
+                </div>
+              </div>
+            </div>
+          </div>
+  </body>
+</html>

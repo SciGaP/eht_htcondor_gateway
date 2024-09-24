@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 from app import db
 
 auth_blueprint = Blueprint('auth', __name__)
@@ -6,7 +6,7 @@ auth_blueprint = Blueprint('auth', __name__)
 
 @auth_blueprint.route('/signup')
 def signup():
-    return 'Signup'
+    return render_template('EHTGatewayRegister.html')
 
 # @auth.route('/login')
 # def login():

@@ -1,0 +1,340 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.row_two {
+  align-self: stretch;
+  z-index:2;
+}
+
+.rowpassword {
+  margin-top: 26px;
+  gap: var(--space-sm);
+  display: flex;
+  align-self: stretch;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+}
+
+.columnpassword {
+  gap: var(--space-xs);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: start;
+}
+
+.username {
+  color: var(--gray_400);
+  padding-left: 16px;
+  padding-right: 16px;
+  font-size: 14px;
+  background-color: var(--white_a700);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--gray_300);
+}
+
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.stackglobe-one {
+  height: 916px;
+  background-color: var(--deep_orange_900);
+  width: 100%;
+  position: relative;
+  align-content: center;
+  @media only screen and (max-width: 1050px) {
+    height: auto;
+  }
+}
+
+.column_two {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image {
+  height: 466px;
+  width: 24%;
+  object-fit: contain;
+  background: rgba(224, 127, 42, 0.6);
+  filter: blur(105px);
+}
+
+.column_one {
+  margin-top: -378px;
+  gap: 80px;
+  position: relative;
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    gap: 60px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    gap: 40px;
+  }
+}
+
+.columnglobe_one {
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rowglobe_one {
+  gap: var(--space-sm);
+  display: flex;
+  align-items: center;
+
+}
+
+.globe_one {
+  height: 52px;
+  width: 16%;
+  object-fit: contain;
+}
+
+.eventhorizon {
+  text-transform: uppercase;
+}
+
+.rowusername {
+  background-color: var(--white_a700);
+  padding: 22px;
+  border-radius: var(--radius-sm);
+  @media only screen and (max-width: 550px) {
+    padding: 20px;
+  }
+}
+
+.columnprice {
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rowprice {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.price {
+  margin-bottom: 4px;
+  font-size: 18px !important;
+  align-self: end;
+}
+
+.already {
+  color: var(--indigo_300);
+  padding-left: 33px;
+  padding-right: 33px;
+  font-size: 14px;
+  background-color: var(--white_a700);
+  text-align: center;
+  height: 36px;
+  min-width: 274px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--indigo_300);
+  @media only screen and (max-width: 550px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.columnusername {
+  margin-top: 24px;
+  gap: var(--space-xs);
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: start;
+}
+
+.password {
+  color: var(--gray_400);
+  padding-left: 16px;
+  padding-right: 10px;
+  font-size: 14px;
+  gap: 16px;
+  display: flex;
+  background-color: var(--white_a700);
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--gray_300);
+}
+
+.dhi-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14px;
+  height: 14px;
+}
+
+.inbox {
+  height: 14px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 14px;
+}
+
+.rowemail {
+  margin-top: 26px;
+  gap: var(--space-sm);
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+}
+
+.columnemail {
+  gap: 6px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: start;
+}
+
+.rowcreate {
+  margin-top: 46px;
+  gap: var(--space-sm);
+  display: flex;
+}
+
+.create_account {
+  color: var(--white_a700);
+  padding-left: 34px;
+  padding-right: 34px;
+  letter-spacing: 0.89px;
+  font-family: Outfit;
+  text-transform: uppercase;
+  font-size: 11.08px;
+  font-weight: 600;
+  background-color: var(--red_900);
+  text-align: center;
+  height: 42px;
+  min-width: 186px;
+  border-radius: var(--radius-lg);
+  @media only screen and (max-width: 550px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.clear_form {
+  color: var(--indigo_a100);
+  padding-left: 33px;
+  padding-right: 33px;
+  letter-spacing: 0.89px;
+  font-family: Outfit;
+  text-transform: uppercase;
+  font-size: 11.08px;
+  font-weight: 600;
+  background-color: var(--white_a700);
+  text-align: center;
+  height: 42px;
+  min-width: 186px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--indigo_a100);
+  @media only screen and (max-width: 550px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.row_one {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: var(--white_a700);
+  display: flex;
+  justify-content: center;
+
+}
+
+.rowregisterwith {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.registerwithyou {
+  margin-bottom: 4px;
+  font-size: 18px !important;
+  align-self: end;
+  @media only screen and (max-width: 1050px) {
+    align-self: auto;
+  }
+}
+
+.rowregisterwith-1 {
+  gap: var(--space-sm);
+  background-color: var(--red_900);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: var(--radius-lg);
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+
+.registerwith {
+  letter-spacing: 0.89px;
+  text-transform: uppercase;
+  font-size: 11.08px !important;
+}
+
+.cilogonthree {
+  height: 22px;
+  width: 24%;
+  object-fit: contain;
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
+
+.image_one {
+  height: 436px;
+  width: 30%;
+  object-fit: contain;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  background: rgba(224, 127, 42, 0.6);
+  filter: blur(105px);
+  z-index:1;
+}
