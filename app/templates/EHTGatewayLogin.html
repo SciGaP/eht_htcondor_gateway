@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eht gateway - login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/EHTGatewayLogin.css') }}" />
+  </head>
+  <body>
+    <div class="eht-gateway-login">
+      <div class="column">
+        <img src="{{ url_for('static', filename='ehtlogin/public/images/img_ellipse_10.png') }}" alt="Image" class="image" />
+        <div class="columnloginwith">
+          <!-- <img src="public/images/img_ellipse_33.png" alt="Image" class="image_one" /> 
+           -->
+           <div class="rc image_one">
+            <video src="{{ url_for('static', filename='ehtlogin/public/images/loginvideo.mp4') }}" id="localVideoStream"  class="video-circle" width="683" height="579" autoplay muted loop></video>
+            </div>
+          <div class="row_two">
+            <img src="{{ url_for('static', filename='ehtlogin/public/images/img_ellipse_11.png') }}" alt="Image" class="image_two" />
+            <div class="row_one">
+              <div class="row">
+                <div class="rowloginwithyou">
+                  <p class="loginwithyourex ui text size-textxs">Log in with your existing organizational info</p>
+                  <div class="rowsigninwith">
+                    <p class="signinwith ui size-textxs">Sign in with Institution Credentials</p>
+                    <img src="{{ url_for('static', filename='ehtlogin/public/images/img_cilogon_2.png') }}" alt="Cilogontwo" class="cilogontwo_one" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columnprice">
+        <p class="price ui text size-textxs">Log in with EHT Gateway</p>
+        <div class="columnusername">
+          <label class="username">
+            <input name="userName" placeholder="Username" type="text" />
+          </label>
+          <label class="password">
+            <input name="password" placeholder="Password" type="password" />
+          </label>
+          <div class="rowsign_in">
+            <button class="flex-row-center-center sign_in">Sign In</button>
+            <p class="forgotusernameo ui text size-textxs">Forgot username or password?</p>
+          </div>
+        </div>
+      </div>
+      <div class="columnlineninet">
+        <div class="lineninetytwo"></div>
+        <div class="rownot">
+          <p class="not_registered ui text size-textxs">Not Registered?</p>
+          <button class="flex-row-center-center create_account">Create Account</button>
+        </div>
+      </div>
+      <div class="rowglobe_one">
+        <img src="{{ url_for('static', filename='ehtlogin/public/images/img_globe.svg') }}" alt="Globe" class="globe_one" />
+        <h2 class="eventhorizon ui heading size-headings">Event Horizon Telescope</h2>
+      </div>
+    </div>
+  </body>
+</html>

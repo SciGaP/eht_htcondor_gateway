@@ -8,9 +8,9 @@ auth_blueprint = Blueprint('auth', __name__)
 def signup():
     return render_template('EHTGatewayRegister.html')
 
-# @auth.route('/login')
-# def login():
-#     return 'Login'
+@auth_blueprint.route('/login')
+def login():
+    return render_template('EHTGatewayLogin.html')
 
 # @auth.route('/logout')
 # def logout():

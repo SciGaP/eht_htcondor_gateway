@@ -1,0 +1,38 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Text CSS
+2. Heading CSS
+==========================================*/
+
+/*-------------------------------------
+  1. Text CSS
+--------------------------------------*/
+.ui.text.size-textxs {
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ui.text {
+  color: var(--black_900);
+  font-family: Roboto;
+}
+
+/*-------------------------------------
+  2. Heading CSS
+--------------------------------------*/
+.ui.heading.size-headingxs {
+  font-size: 11px;
+  font-weight: 600;
+  font-style: bold;
+}
+
+.ui.heading.size-headings {
+  font-size: 20px;
+  font-weight: 700;
+  font-style: bold;
+}
+
+.ui.heading {
+  color: var(--white_a700);
+  font-family: Outfit;
+}
