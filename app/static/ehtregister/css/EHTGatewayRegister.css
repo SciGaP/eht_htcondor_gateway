@@ -68,7 +68,7 @@
 }
 
 .image {
-  height: 466px;
+  height: 200px;
   width: 24%;
   object-fit: contain;
   background: rgba(224, 127, 42, 0.6);
