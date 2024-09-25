@@ -161,6 +161,7 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  cursor: pointer; /* Mouse pointer on hover */
 }
 
 .columnusername {
@@ -246,6 +247,7 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  cursor: pointer; /* Mouse pointer on hover */
 }
 
 .clear_form {
@@ -267,6 +269,7 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  cursor: pointer; /* Mouse pointer on hover */
 }
 
 .row_one {
@@ -309,6 +312,7 @@
   @media only screen and (max-width: 550px) {
     flex-direction: column;
   }
+  cursor: pointer; /* Mouse pointer on hover */
 }
 
 .registerwith {
