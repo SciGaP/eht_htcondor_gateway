@@ -32,9 +32,11 @@
                 <div class="rowusername">
                   <div class="columnprice">
                     <div class="rowprice">
-                      <p class="price ui text size-textxs">Create an EHT Gateway account</p>
+                      <p class="price ui</p> text size-textxs">Create an EHT Gateway account</p>
                       <button class="flex-row-center-center already">Already Registered? Sign In</button>
                     </div>
+
+                    <form id="registerform" style="width: 100%;" method="POST" action="{{ url_for('auth.signup') }}">
                     <div class="columnusername">
                       <p class="ui text size-textxs">Username:</p>
                       <label class="username">
@@ -83,14 +85,15 @@
                         <p class="ui text size-textxs">Last Name:</p>
                         <label class="username">
                           <input name="lastName" placeholder="Last Name" type="text" />
-                        </label>
+                        </label> 
                       </div>
                     </div>
-                    <div class="rowcreate">
-                      <button class="flex-row-center-center create_account">Create Account</button>
-                      <button class="flex-row-center-center clear_form">Clear Form</button>
-                    </div>
+                  </form>
+                  <div class="rowcreate">
+                    <button type="submit" form="registerform" class="flex-row-center-center create_account">Create Account</button> 
+                    <button class="flex-row-center-center clear_form" onclick="clearform()">Clear Form</button>
                   </div>
+              </div>
                 </div>
               </div>
             </div>
@@ -110,5 +113,10 @@
               </div>
             </div>
           </div>
+  <script>
+  function clearform() {
+    document.getElementById("registerform").reset();
+  }
+  </script>
   </body>
 </html>
