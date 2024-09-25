@@ -48,7 +48,7 @@
   2. Page CSS
 --------------------------------------*/
 .stackglobe-one {
-  height: 916px;
+  height: 800px;
   background-color: var(--deep_orange_900);
   width: 100%;
   position: relative;
@@ -76,7 +76,7 @@
 }
 
 .column_one {
-  margin-top: -378px;
+  margin-top: -200px;
   gap: 80px;
   position: relative;
   display: flex;
