@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request
 from app import db
+from app.models import User
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -11,8 +12,36 @@ def signup():
 @auth_blueprint.route('/signup', methods=['POST'])
 def signup_post():
     # code to validate and add user to database goes here
-    userName = request.form.get('userName')
-    return userName
+    # user model: email, nickname, given_name, family_name, profile_picture
+
+    nickname = request.form.get('userName')
+    given_name = request.form.get('firstName')
+    family_name = request.form.get('lastName')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    # temporary host
+    profile_picture = "https://eht.scigap.org/media/images/32602803.original.png"
+
+    # Check if the user is already in the database
+    user = User.query.filter_by(email=email).first()
+    
+    # register user
+    if not user:
+        user = User(
+            email=email,
+            nickname=nickname,
+            given_name=given_name,
+            family_name=family_name,
+            password = password,
+            profile_picture=profile_picture,
+        )
+        db.session.add(user)
+        db.session.commit()
+        return email
+    else:
+        return "already registered!"
+    
+    
 
 @auth_blueprint.route('/login')
 def login():

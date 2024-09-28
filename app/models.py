@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     nickname = Column(String)
     given_name = Column(String)
     family_name = Column(String)
+    password = Column(String)
     email = Column(String, unique=True, nullable=False)
     profile_picture = Column(String)
 
