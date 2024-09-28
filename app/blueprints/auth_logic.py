@@ -34,6 +34,7 @@ def signup_post():
             family_name=family_name,
             password = password,
             profile_picture=profile_picture,
+            account_type = "local"
         )
         db.session.add(user)
         db.session.commit()

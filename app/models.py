@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     password = Column(String)
     email = Column(String, unique=True, nullable=False)
     profile_picture = Column(String)
+    # two values: "local", "cilogon"
+    account_type = Column(String)
 
     def __repr__(self):
         return f"<{self.id}>"
