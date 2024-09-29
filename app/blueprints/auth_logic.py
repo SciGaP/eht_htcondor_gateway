@@ -38,7 +38,7 @@ def signup_post():
         )
         db.session.add(user)
         db.session.commit()
-        return email
+        return render_template("EHTGatewayThankYouforRegistering.html", useremail = email)
     else:
         return "already registered!"
     

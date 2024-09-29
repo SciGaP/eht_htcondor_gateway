@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eht gateway - thank you for registering</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregisterthanks/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregisterthanks/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregisterthanks/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregisterthanks/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregisterthanks/css/EHTGatewayThankYouforRegistering.css') }}" />
+  </head>
+  <body>
+    <div class="eht-gateway-thank">
+      <div class="column">
+        <img src="{{ url_for('static', filename='ehtregisterthanks/public/images/img_ellipse_10.png') }}" alt="Image" class="image" />
+        <div class="columnview">
+          <div class="columnglobe_one">
+            <div class="rowglobe_one">
+              <img src="{{ url_for('static', filename='ehtregisterthanks/public/images/img_globe.svg') }}" alt="Globe" class="globe_one" />
+              <h1 class="eventhorizon ui heading size-headingxs" style="white-space: nowrap;">Event Horizon Telescope</h1>
+            </div>
+            <div class="flex-col-end-center columngo_back">
+              <div class="columnthankyouf">
+                <p class="thankyoufor ui text size-texts">Thank you for registering!</p>
+                <p class="amessagehas ui text size-textxs">
+                  A welcome message has been sent to <strong>{{ useremail }}</strong> to complete registration.
+                </p>
+              </div>
+              <a class="flex-row-center-center go_back_to_the" href="{{ url_for('website.home') }}">Go back to the home page</a>
+            </div>
+          </div>
+          <div>
+            <div class="view"></div>
+          </div>
+        </div>
+      </div>
+      <img src="{{ url_for('static', filename='ehtregisterthanks/public/images/img_ellipse_11.png') }}" alt="Image" class="image_one" />
+    </div>
+  </body>
+</html>
