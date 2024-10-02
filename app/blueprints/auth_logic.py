@@ -49,6 +49,21 @@ def signup_post():
 def login():
     return render_template('EHTGatewayLogin.html')
 
+@auth_blueprint.route('/login', methods=['POST'])
+def login_post():
+    username = request.form.get('userName')
+    password = request.form.get('password')
+
+    user = User.query.filter_by(email=username).first()
+    if user:
+        password = user.password
+        return str(password)
+    else:
+        return username + " is not found!"
+
+def login():
+    return render_template('EHTGatewayLogin.html')
+
 # @auth.route('/logout')
 # def logout():
 #     return 'Logout'

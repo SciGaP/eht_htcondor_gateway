@@ -45,24 +45,26 @@
       </div>
       <div class="columnprice">
         <p class="price ui text size-textxs">Log in with EHT Gateway</p>
+        <form id="loginform" style="width: 100%;" method="POST" action="{{ url_for('auth.login') }}">
         <div class="columnusername">
           <label class="username">
-            <input name="userName" placeholder="Username" type="text" />
+            <input name="userName" placeholder="Username or Email" type="text" />
           </label>
           <label class="password">
             <input name="password" placeholder="Password" type="password" />
           </label>
-          <div class="rowsign_in">
-            <button class="flex-row-center-center sign_in">Sign In</button>
+        </div>
+      </form>
+        <div class="rowsign_in" style="width: 100%;">
+            <button type="submit" form="loginform" class="flex-row-center-center sign_in">Sign In</button>
             <p class="forgotusernameo ui text size-textxs">Forgot username or password?</p>
           </div>
-        </div>
       </div>
       <div class="columnlineninet">
         <div class="lineninetytwo"></div>
         <div class="rownot">
           <p class="not_registered ui text size-textxs">Not Registered?</p>
-          <button class="flex-row-center-center create_account">Create Account</button>
+          <a href="{{ url_for('auth.signup') }}" class="flex-row-center-center create_account">Create Account</a>
         </div>
       </div>
       <div class="rowglobe_one">
