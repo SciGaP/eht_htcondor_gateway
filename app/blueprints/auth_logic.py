@@ -54,12 +54,20 @@ def login_post():
     username = request.form.get('userName')
     password = request.form.get('password')
 
-    user = User.query.filter_by(email=username).first()
-    if user:
-        password = user.password
-        return str(password)
+    if "@" in username:
+        user = User.query.filter_by(email=username).first()
     else:
-        return username + " is not found!"
+        user = User.query.filter_by(nickname=username).first()
+    
+    if not user:
+        flash(f'{username} is not found.')
+        return redirect(url_for('auth.login'))
+
+    if not (password == user.password):
+        flash('Please check your login details.')
+        return redirect(url_for('auth.login'))
+    
+    return "login!"
 
 def login():
     return render_template('EHTGatewayLogin.html')

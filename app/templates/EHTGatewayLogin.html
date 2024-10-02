@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/styles.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/components.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtlogin/css/EHTGatewayLogin.css') }}" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
+    </head>
   <body>
     <div class="eht-gateway-login">
       <div class="column">
@@ -45,6 +46,13 @@
       </div>
       <div class="columnprice">
         <p class="price ui text size-textxs">Log in with EHT Gateway</p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert error">
+            &nbsp;{{ messages[0] }}&nbsp;<br/>
+        </div>
+        {% endif %}
+        {% endwith %}
         <form id="loginform" style="width: 100%;" method="POST" action="{{ url_for('auth.login') }}">
         <div class="columnusername">
           <label class="username">
