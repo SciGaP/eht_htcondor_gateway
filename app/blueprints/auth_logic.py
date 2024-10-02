@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from app import db
 from app.models import User
 
@@ -25,7 +25,7 @@ def signup_post():
     # Check if the user is already in the database
     user = User.query.filter_by(email=email).first()
     
-    # register user
+    # register user 
     if not user:
         user = User(
             email=email,
@@ -40,7 +40,8 @@ def signup_post():
         db.session.commit()
         return render_template("EHTGatewayThankYouforRegistering.html", useremail = email)
     else:
-        return "already registered!"
+        flash('Email address already exists')
+        return redirect(url_for('auth.signup'))
     
     
 

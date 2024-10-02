@@ -1,3 +1,13 @@
 .username-box {
     cursor: pointer;
 }
+
+
+.alert.success {
+    background-color: green;
+  }
+  
+  .alert.error {
+    background-color: var(--deep_orange_900);
+    color: white;
+}

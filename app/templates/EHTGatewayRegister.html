@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/styles.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/components.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtregister/css/EHTGatewayRegister.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
   </head>
   <body>
     <div class="stackglobe-one">
@@ -35,6 +36,13 @@
                       <p class="price ui</p> text size-textxs">Create an EHT Gateway account</p>
                       <button class="flex-row-center-center already">Already Registered? Sign In</button>
                     </div>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="alert error"><br/>
+                        <h3>&nbsp;{{ messages[0] }}, go to <a href="{{ url_for('auth.login') }}">login page</a>.&nbsp;</h3><br/></div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
                     <form id="registerform" style="width: 100%;" method="POST" action="{{ url_for('auth.signup') }}">
                     <div class="columnusername">
                       <p class="ui text size-textxs">Username:</p>
