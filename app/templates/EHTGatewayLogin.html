@@ -53,7 +53,7 @@
         </div>
         {% endif %}
         {% endwith %}
-        <form id="loginform" style="width: 100%;" method="POST" action="{{ url_for('auth.login') }}">
+        <form id="loginform" style="width: 100%;" method="POST" action="{{ url_for('auth.login') }}" onsubmit="return validateForm()">
         <div class="columnusername">
           <label class="username">
             <input name="userName" placeholder="Username or Email" type="text" />
@@ -80,5 +80,15 @@
         <h2 class="eventhorizon ui heading size-headings">Event Horizon Telescope</h2>
       </div>
     </div>
+    <script>
+      function validateForm() {
+        var x = document.forms["loginform"]["userName"].value;
+        var y = document.forms["loginform"]["password"].value;
+        if ((x == "") || (y == "")) {
+          alert("Please fill in all the fields.");
+        return false;
+        }
+      } 
+    </script>
   </body>
 </html>
