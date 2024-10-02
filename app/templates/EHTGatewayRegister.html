@@ -34,7 +34,7 @@
                   <div class="columnprice">
                     <div class="rowprice">
                       <p class="price ui text size-textxs">Create an EHT Gateway account</p>
-                      <button class="flex-row-center-center already">Already Registered? Sign In</button>
+                      <a href="{{ url_for('auth.login') }}" class="flex-row-center-center already">Already Registered? Sign In</a>
                     </div>
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
