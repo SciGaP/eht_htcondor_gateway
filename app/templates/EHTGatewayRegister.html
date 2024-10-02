@@ -47,14 +47,14 @@
                     <div class="columnusername">
                       <p class="ui text size-textxs">Username:</p>
                       <label class="username">
-                        <input name="userName" placeholder="Username" type="text" />
+                        <input name="userName" placeholder="Username" type="text" required />
                       </label>
                     </div>
                     <div class="rowpassword">
                       <div class="columnpassword">
                         <p class="ui text size-textxs">Password:</p>
                         <label class="password">
-                          <input name="password" placeholder="Password" type="password" />
+                          <input name="password" placeholder="Password" type="password" required />
                           <div class="dhi-group">
                             <img src="{{ url_for('static', filename='ehtregister/public/images/img_inbox_indigo_a100.svg') }}" alt="Inbox" class="inbox" />
                           </div>
@@ -63,7 +63,7 @@
                       <div class="columnpassword">
                         <p class="ui text size-textxs">Password (again):</p>
                         <label class="username">
-                          <input name="passwordagain" placeholder="Password (again)" type="password" />
+                          <input name="passwordagain" placeholder="Password (again)" type="password" required />
                         </label>
                       </div>
                     </div>
@@ -71,13 +71,13 @@
                       <div class="columnemail">
                         <p class="ui text size-textxs">Email Address:</p>
                         <label class="username">
-                          <input name="email" placeholder="email@example.com" type="email" />
+                          <input name="email" placeholder="email@example.com" type="email" required />
                         </label>
                       </div>
                       <div class="columnpassword">
                         <p class="ui text size-textxs">Email Address (again):</p>
                         <label class="username">
-                          <input name="emailagain" placeholder="email@example.com (again)" type="email" />
+                          <input name="emailagain" placeholder="email@example.com (again)" type="email" required />
                         </label>
                       </div>
                     </div>
