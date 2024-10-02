@@ -64,7 +64,7 @@ def login_post():
         return redirect(url_for('auth.login'))
 
     if not (password == user.password):
-        flash('Please check your login details.')
+        flash('Password is not match.')
         return redirect(url_for('auth.login'))
     
     return "login!"
