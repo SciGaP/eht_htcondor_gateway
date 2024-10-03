@@ -157,7 +157,7 @@
                     </div>
                   </div>
                   <div class="listipolebatch">
-                    <div class="columnipolebatc">
+                    <div class="columnipolebatc-1">
                       <div class="rowipolebatch-1">
                         <h4 class="ui heading size-headinglg">iPOLE - Batch</h4>
                         <div class="tooltip">
@@ -171,14 +171,16 @@
                         <a href="https://github.com/AFD-Illinois/ipole" target="_blank"><button style="padding:5px;background-color:#D9D9D9; color: black; border-radius: 4px; cursor: pointer;">Learn More</button></a>
                         </div>
                       </div>
-                      <button class="flex-row-center-center begin_workflow">Begin Workflow</button>
+                      <a href="{{ url_for('website.ipolebatch') }}">
+                      <button class="flex-row-center-center begin_workflow" style="width:100%;">Begin Workflow</button></a>
                     </div>
                     <div class="columnipolebatc-1">
                       <div class="rowipolebatch-1">
                         <h5 class="ui heading size-headinglg">iPOLE - Explorer</h5>
                         <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_inbox.svg') }}" alt="Ipole Batch" class="ipole_batch_one" />
                       </div>
-                      <button class="flex-row-center-center begin_workflow">Begin Workflow</button>
+                      <a href="{{ url_for('website.ipoleexplorer') }}">
+                        <button class="flex-row-center-center begin_workflow" style="width:100%;">Begin Workflow</button></a>
                     </div>
                   </div>
                 </div>

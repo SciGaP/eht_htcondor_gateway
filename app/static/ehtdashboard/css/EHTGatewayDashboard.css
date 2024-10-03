@@ -44,6 +44,7 @@
     padding-left: var(--space-3xl);
     padding-right: var(--space-3xl);
   }
+  cursor: pointer;
 }
 
 .addnew {
