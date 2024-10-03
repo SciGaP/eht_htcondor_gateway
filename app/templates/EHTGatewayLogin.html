@@ -34,7 +34,7 @@
               <div class="row">
                 <div class="rowloginwithyou">
                   <p class="loginwithyourex ui text size-textxs">Log in with your existing organizational info</p>
-                  <div class="rowsigninwith">
+                  <div class="rowsigninwith"  onclick="location.href='{{ url_for('user.cilogin') }}';"">
                     <p class="signinwith ui size-textxs">Sign in with Institution Credentials</p>
                     <img src="{{ url_for('static', filename='ehtlogin/public/images/img_cilogon_2.png') }}" alt="Cilogontwo" class="cilogontwo_one" />
                   </div>

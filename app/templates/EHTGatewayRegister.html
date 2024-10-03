@@ -113,7 +113,7 @@
             <div class="row_one">
               <div class="rowregisterwith container-xs">
                 <p class="registerwithyou ui text size-textxs">Register with your existing organizational info</p>
-                <div class="rowregisterwith-1">
+                <div class="rowregisterwith-1" onclick="location.href='{{ url_for('user.cilogin') }}';">
                   <h2 class="registerwith ui heading size-headingxs">Register with Institution Credentials</h2>
                   <img src="{{ url_for('static', filename='ehtregister/public/images/img_cilogon_3.png') }}" alt="Cilogonthree" class="cilogonthree" />
                 </div>
@@ -123,6 +123,9 @@
   <script>
   function clearform() {
     document.getElementById("registerform").reset();
+  }
+  function opencilogon() {
+    alert("cilogon");
   }
   </script>
   </body>

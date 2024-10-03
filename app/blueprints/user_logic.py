@@ -27,18 +27,18 @@ def login():
     app.logger.info("An unauthorized user tried to access a protected page")
     return redirect(url_for("user.login"))
 
-@login_blueprint.route("/login")
-def login():
+@login_blueprint.route("/cilogin")
+def cilogin():
     app.logger.debug("Redirecting to the Auth0 login page")
     print(url_for("user.callback"))
-    return oauth.auth0.authorize_redirect(
+    return oauth.cilogon.authorize_redirect(
         redirect_uri=url_for("user.callback", _external=True)
     )
 
 
 @login_blueprint.route("/callback", methods=["GET", "POST"])
 def callback():
-    token = oauth.auth0.authorize_access_token()
+    token = oauth.cilogon.authorize_access_token()
     app.logger.debug(f"Successful callback from Auth0 with token: {token}")
 
     # Check if the user is already in the database

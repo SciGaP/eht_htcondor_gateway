@@ -30,6 +30,16 @@ oauth.register(
     server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
 )
 
+oauth.register(
+    "cilogon",
+    client_id=env.get("CILOGON_CLIENT_ID"),
+    client_secret=env.get("CILOGON_CLIENT_SECRET"),
+    client_kwargs={
+        "scope": "openid profile email",
+    },
+    server_metadata_url=f'https://{env.get("CILOGON_DOMAIN")}/.well-known/openid-configuration'
+)
+
 # Initialize Flask-Login
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
