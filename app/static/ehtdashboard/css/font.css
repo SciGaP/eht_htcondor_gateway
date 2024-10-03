@@ -1,0 +1,56 @@
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/OutfitRegular.ttf");
+  font-family: "Outfit";
+  font-weight: 400;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/OutfitBold.ttf");
+  font-family: "Outfit";
+  font-weight: 700;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/PoppinsItalic.ttf");
+  font-family: "Poppins";
+  font-weight: 400;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/OutfitMedium.ttf");
+  font-family: "Outfit";
+  font-weight: 500;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/OutfitSemiBold.ttf");
+  font-family: "Outfit";
+  font-weight: 600;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/PoppinsSemiBold.ttf");
+  font-family: "Poppins";
+  font-weight: 600;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/PoppinsRegular.ttf");
+  font-family: "Poppins";
+  font-weight: 400;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/PoppinsMedium.ttf");
+  font-family: "Poppins";
+  font-weight: 500;
+}

@@ -21,7 +21,8 @@ def about():
 #@login_required
 def dashboard():
     message = checkuser(current_user.nickname,simple=True)
-    return render_template("dashboard.html", user=current_user,message=message)
+    #return render_template("dashboard.html", user=current_user,message=message)
+    return render_template("EHTGatewayDashboard.html", user=current_user,message=message)
 
 @website_blueprint.route("/ipoleexplorer")
 #@login_required

@@ -1,0 +1,80 @@
+/*=========== TABLE OF CONTENTS ===========
+1. CSS Variables
+2. Utility CSS
+==========================================*/
+
+/*-------------------------------------
+  1. CSS Variables
+--------------------------------------*/
+:root {
+  /*------Color variables------*/
+  --black_900: #000000;
+  --black_900_19: #00000019;
+  --black_900_3f: #0000003f;
+  --black_900_7f: #0000007f;
+  --blue_800: #316bc1;
+  --blue_gray_100: #d2d2d2;
+  --blue_gray_100_01: #d9d9d9;
+  --blue_gray_100_02: #d8d2d2;
+  --blue_gray_400: #8a8a8a;
+  --blue_gray_400_01: #8b8b8b;
+  --blue_gray_700: #266663;
+  --blue_gray_900: #39323a;
+  --blue_gray_900_01: #333333;
+  --deep_orange_900: #a83d08;
+  --gray_100: #f4f2f2;
+  --gray_100_01: #f5f5f5;
+  --gray_200: #f2ebeb;
+  --gray_400: #adb1b1;
+  --gray_500: #a5a5a5;
+  --gray_500_01: #acacac;
+  --gray_700: #646464;
+  --gray_700_01: #5b5b5b;
+  --gray_900: #001c1a;
+  --red_600: #f12828;
+  --red_900: #901200;
+  --white_a700: #ffffff;
+
+  /*------Shadow variables------*/
+  --shadow-xs: 0 4px 4px 0 #0000003f;
+
+  /*------Border radius variables------*/
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 18px;
+  --radius-2xl: 26px;
+  --radius-3xl: 32px;
+  --radius-4xl: 34px;
+  --radius-5xl: 42px;
+
+  /*------Spacing variables------*/
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 10px;
+  --space-lg: 14px;
+  --space-xl: 16px;
+  --space-2xl: 18px;
+  --space-3xl: 20px;
+  --space-4xl: 22px;
+  --space-5xl: 28px;
+  --space-6xl: 34px;
+}
+
+/*-------------------------------------
+  2. Utility CSS
+--------------------------------------*/
+.flex-row-center-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-col-center-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

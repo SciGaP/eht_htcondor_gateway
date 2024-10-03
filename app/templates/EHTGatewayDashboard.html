@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eht gateway - dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/EHTGatewayDashboard.css') }}" />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var dropdown = document.getElementsByClassName("submenu");
+        var i;
+        for (i = 0; i < dropdown.length; i++) {
+          dropdown[i].addEventListener("click", function () {
+            var dropdownContent = this.nextElementSibling;
+            var collapseElement = this.querySelectorAll('[data-icon="collapse"]');
+            var expandElement = this.querySelectorAll('[data-icon="expand"]');
+            if (dropdownContent) {
+              const isActive = dropdownContent.style.display === "flex";
+              dropdownContent.style.display = isActive ? "none" : "flex";
+              if (collapseElement?.[0]) collapseElement[0].style.display = isActive ? "none" : "flex";
+              if (expandElement?.[0]) expandElement[0].style.display = isActive ? "flex" : "none";
+            }
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="row-four">
+      <div>
+        <header>
+          <div class="stackview">
+            <div class="rowsearch">
+              <div class="rowvector_one">
+                <div class="layer1">
+                  <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector.svg') }}" alt="Vector" class="vector_one" />
+                </div>
+                <h5 class="ehtdashboard ui heading size-headingmd" style="white-space: nowrap;">EHT Dashboard</h5>
+              </div>
+              <label class="search">
+                  <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_rewind.svg') }}" alt="Rewind" />
+                <input name="search" placeholder="Search Workspace..." type="text" />
+              </label>
+            </div>
+          </div>
+        </header>
+        <div class="rowlineninetysi">
+          <aside class="sidebar">
+            <div class="columnrecentact">
+              <div class="columnlineninet">
+                <div class="rowjohndoe">
+                  <img src="{{ url_for('static', filename='ehtdashboard/public/images/galaxy.png') }}" alt="Image" class="image" />
+                  <div class="columnjohndoe">
+                    <p class="ui heading size-text2xl">{{ user.nickname }}</p>
+                    <p class="ui text size-texts">{{ user.email }}</p>
+                  </div>
+                </div>
+                <div class="lineninetysix"></div>
+              </div>
+              <p class="recentactivity ui heading size-headingxs">RECENT ACTIVITY</p>
+              <div class="rowcloneofipole">
+                <ul class="column_one">
+                  <div class="column">
+                    <li>
+                      <a class="submenu">
+                          <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_black_900.svg') }}" alt="Vector" class="vector_three" />
+                            <p class="ui text size-textmd">Notifications</p>
+                            <p class="group405 red ui text size-textxs">3</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="submenu">
+                          <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_clock.svg') }}" alt="Clock" class="clock_one" />
+                            <p class="ui text size-textmd">My Recent Experiments</p>
+                            <p class="group405 ui text size-textxs">7</p>
+                      </a>
+                    </li>
+                  </div>
+                  <div class="columnlineninet-1">
+                    <div class="lineninetyseven"></div>
+                    <p class="myeht ui heading size-headingxs">MY EHT</p>
+                  </div>
+                  <div class="columncloneofip">
+                    <li>
+                      <a>
+                          <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_home.svg') }}" alt="Home" class="home_one" />
+                          <h6 class="dashboard ui heading size-headings">Dashboard</h6>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_contrast.svg') }}" alt="Contrast" class="contrast_one" />
+                        <span> Projects</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_thumbs_up.svg') }}" alt="Thumbsup" class="thumbsup_one" />
+                        <span> Experiments</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_gray_900.svg') }}" alt="Vector" class="vector_five" />
+                        <span> Team Members</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_search.svg') }}" alt="Search" class="search_one" />
+                        <span> Setting</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_upload.svg') }}" alt="Upload" class="upload_one" />
+                        <span> Logout</span>
+                      </a>
+                    </li>
+                  </div>
+                  <div class="row">
+                    <li>
+                      <a>
+                        <span> Open Jupyter Notebook</span>
+                      </a>
+                    </li>
+                  </div>
+                </ul>
+              </div>
+            </div>
+          </aside>
+          <div class="newscreenbody">
+            <h1 class="ui heading size-headinglg" style="padding-top: 1em;">Welcome Back, {{ user.given_name}}!</h1>
+            <p class="date ui text size-textmd">12 March 2024</p>
+            <div class="row_one">
+              <div class="rowipolebatch">
+                <div class="columnapplicati">
+                  <div class="rowapplications">
+                    <p class="applications ui text size-text3xl">Applications for Submission</p>
+                    <div class="rowaddnew">
+                      <h2 class="addnew ui heading size-textlg">Add New Applications</h2>
+                      <a href="#">
+                        <h3 class="addnew ui heading size-textlg">View All</h3>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="listipolebatch">
+                    <div class="columnipolebatc">
+                      <div class="rowipolebatch-1">
+                        <h4 class="ui heading size-headinglg">iPOLE - Batch</h4>
+                        <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_inbox.svg') }}" alt="Ipole Batch" class="ipole_batch_one" />
+                      </div>
+                      <button class="flex-row-center-center begin_workflow">Begin Workflow</button>
+                    </div>
+                    <div class="columnipolebatc-1">
+                      <div class="rowipolebatch-1">
+                        <h5 class="ui heading size-headinglg">iPOLE - Explorer</h5>
+                        <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_inbox.svg') }}" alt="Ipole Batch" class="ipole_batch_one" />
+                      </div>
+                      <button class="flex-row-center-center begin_workflow">Begin Workflow</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row_three">
+              <div class="row_two">
+                <div class="columnoutputana">
+                  <div class="rowoutputanalys">
+                    <p class="outputanalysis ui text size-text3xl">Output Analysis</p>
+                    <div class="rowviewall_one">
+                      <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_inbox.svg') }}" alt="Inbox" class="inbox_one" />
+                      <a href="#">
+                        <h6 class="addnew ui heading size-textlg">View All</h6>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="rowipole">
+                    <div class="gridipole">
+                      <div class="rowipole-1">
+                        <div class="columnipole">
+                          <p class="ipole ui text size-textxs">iPOLE</p>
+                          <div class="rowtimeseries">
+                            <div class="columntimeserie">
+                              <h5 class="ui heading size-headingmd">Time Series Analysis</h5>
+                              <p class="projecta ui text size-textmd">Project A</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rowipole-1">
+                        <div class="columnipole">
+                          <p class="ipole ui text size-textxs">Application Y</p>
+                          <div class="rowtimeseries">
+                            <div class="columntimeserie">
+                              <h5 class="ui heading size-headingmd">Event Horizon Imaging</h5>
+                              <p class="projecta ui text size-textmd">Project Y</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rowipole-1">
+                        <div class="columnipole">
+                          <p class="ipole ui text size-textxs">iPOLE - Explorer</p>
+                          <div class="rowtimeseries">
+                            <div class="columntimeserie">
+                              <h5 class="ui heading size-headingmd">Event Horizon Imaging</h5>
+                              <p class="projecta ui text size-textmd">Project X</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rowipole-1">
+                        <div class="columnipole">
+                          <p class="ipole ui text size-textxs">iPOLE</p>
+                          <div class="rowtimeseries">
+                            <div class="columntimeserie">
+                              <h5 class="ui heading size-headingmd">Time Series Analysis</h5>
+                              <p class="projecta ui text size-textmd">Project B</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rowipole-1">
+                        <div class="columnipole">
+                          <p class="ipole ui text size-textxs">iPOLE</p>
+                          <div class="rowtimeseries">
+                            <div class="columntimeserie">
+                              <h5 class="ui heading size-headingmd">Time Series Analysis</h5>
+                              <p class="projecta ui text size-textmd">Project A</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="rowipole-1">
+                        <div class="columnipole">
+                          <p class="ipole ui text size-textxs">iPOLE - Explorer</p>
+                          <div class="rowtimeseries">
+                            <div class="columntimeserie">
+                              <h5 class="ui heading size-headingmd">Time Series Analysis</h5>
+                              <p class="projecta ui text size-textmd">Project A</p>
+                            </div>
+                            <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="line"></div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
