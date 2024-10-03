@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     given_name = Column(String)
     family_name = Column(String)
     password = Column(String)
-    email = Column(String, unique=True, nullable=False)
+    email = Column(String, unique=False, nullable=False)
     profile_picture = Column(String)
     # two values: "local", "cilogon"
     account_type = Column(String)

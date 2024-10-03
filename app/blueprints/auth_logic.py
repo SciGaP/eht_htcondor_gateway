@@ -23,7 +23,7 @@ def signup_post():
     profile_picture = "https://eht.scigap.org/media/images/32602803.original.png"
 
     # Check if the user is already in the database
-    user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(email=email, account_type="local").first()
     
     # register user 
     if not user:
@@ -55,9 +55,9 @@ def login_post():
     password = request.form.get('password')
 
     if "@" in username:
-        user = User.query.filter_by(email=username).first()
+        user = User.query.filter_by(email=username, account_type = "local").first()
     else:
-        user = User.query.filter_by(nickname=username).first()
+        user = User.query.filter_by(nickname=username, account_type = "local").first()
     
     if not user:
         flash(f'{username} is not found.')

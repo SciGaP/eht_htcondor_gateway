@@ -42,15 +42,15 @@ def callback():
     app.logger.debug(f"Successful callback from Auth0 with token: {token}")
 
     # Check if the user is already in the database
-    user = User.query.filter_by(email=token.get("userinfo").get("email")).first()
+    user = User.query.filter_by(email=token.get("userinfo").get("email"),account_type="cilogon").first()
     
     # If the user is in the database, update their given and family name plus profile picture
     if user:
-        user.nickname = token.get("userinfo").get("nickname")
-        user.given_name = token.get("userinfo").get("given_name")
-        user.family_name = token.get("userinfo").get("family_name")
-        user.profile_picture = token.get("userinfo").get("picture")
-        db.session.commit()
+        # user.nickname = token.get("userinfo").get("nickname")
+        # user.given_name = token.get("userinfo").get("given_name")
+        # user.family_name = token.get("userinfo").get("family_name")
+        # user.profile_picture = token.get("userinfo").get("picture")
+        # db.session.commit()
         login_user(user)
 
         app.logger.info(f"{user} retrieved from database and logged in")
@@ -58,12 +58,16 @@ def callback():
     else:
         # Create a new user. Here we are inserting a new row in the
         # users table.
+        import uuid
         user = User(
+            id=str(uuid.uuid4()),
             email=token.get("userinfo").get("email"),
-            nickname=token.get("userinfo").get("nickname"),
+            nickname=token.get("userinfo").get("name"),
             given_name=token.get("userinfo").get("given_name"),
             family_name=token.get("userinfo").get("family_name"),
-            profile_picture=token.get("userinfo").get("picture"),
+            password = "",
+            profile_picture="https://eht.scigap.org/media/images/32602803.original.png",
+            account_type = "cilogon",
         )
         db.session.add(user)
         db.session.commit()
