@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/styles.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/components.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/EHTGatewayDashboard.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var dropdown = document.getElementsByClassName("submenu");
@@ -159,7 +160,16 @@
                     <div class="columnipolebatc">
                       <div class="rowipolebatch-1">
                         <h4 class="ui heading size-headinglg">iPOLE - Batch</h4>
+                        <div class="tooltip">
                         <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_inbox.svg') }}" alt="Ipole Batch" class="ipole_batch_one" />
+                        <span class="tooltiptext">
+                          <h2>iPole</h2><hr>
+                          <p>ipole is a specialized software designed for polarized covariant radiative transfer in C, primarily used for imaging black hole accretion systems like those being imaged by the Event Horizon Telescope. 
+                        </p><p>Detailed in Moscibrodzka and Gammie (2018), ipole models synchrotron emission and absorption, which are crucial for understanding the polarized light from these astronomical phenomena. The software supports various electron distributions including thermal, power-law, and kappa distributions, assuming an isotropic electron distribution function and operating under conditions where the frequency is significantly higher than the plasma and cyclotron frequencies.</span>
+                        </p>
+                        <br/>
+                        <a href="https://github.com/AFD-Illinois/ipole" target="_blank"><button style="padding:5px;background-color:#D9D9D9; color: black; border-radius: 4px; cursor: pointer;">Learn More</button></a>
+                        </div>
                       </div>
                       <button class="flex-row-center-center begin_workflow">Begin Workflow</button>
                     </div>
