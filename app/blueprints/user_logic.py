@@ -83,15 +83,18 @@ def callback():
 def logout():
     app.logger.info(f"{current_user} logged out")
     logout_user()
-    return redirect(
-        "https://"
-        + env.get("AUTH0_DOMAIN")
-        + "/v2/logout?"
-        + urlencode(
-            {
-                "returnTo": url_for("website.home", _external=True),
-                "client_id": env.get("AUTH0_CLIENT_ID"),
-            },
-            quote_via=quote_plus,
-        )
-    )
+
+    return redirect(url_for("website.home"))
+
+    # return redirect(
+    #     "https://"
+    #     + env.get("CILOGON_DOMAIN")
+    #     + "logout?"
+    #     + urlencode(
+    #         {
+    #             "returnTo": url_for("website.home", _external=True),
+    #             "client_id": env.get("AUTH0_CLIENT_ID"),
+    #         },
+    #         quote_via=quote_plus,
+    #     )
+    #)
