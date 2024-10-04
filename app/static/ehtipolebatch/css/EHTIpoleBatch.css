@@ -24,6 +24,9 @@
   height: 38px;
   border-radius: var(--radius-xs);
   border: 1px solid var(--gray_300_01);
+  background: url(../public/images/selector.png) no-repeat right #ffffff;
+  -webkit-appearance: none;
+  background-position-x: 99%;
 }
 
 .selecta {
