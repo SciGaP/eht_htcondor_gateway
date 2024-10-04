@@ -6,4 +6,7 @@ __pycache__/
 .env
 .zed
 migrations/
+instance/data.db
+
+
 
