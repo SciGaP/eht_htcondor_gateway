@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Submission web form1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+    <link rel="stylesheet" type="text/css" href="./css/font.css" />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./css/components.css" />
+    <link rel="stylesheet" type="text/css" href="./css/SubmissionWebFormOne.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/EHTIpoleBatch.css') }}" />
+  </head>
+  <body>
+    <div class="columnhome-one">
+      <header class="headerhome_one">
+        <a href="{{ url_for('website.dashboard') }}">
+          <img src="{{ url_for('static', filename='ehtipolebatch/public/images/img_home.svg') }}" alt="Home" class="home_one" />
+          <span class="dashboard ui heading size-headingxs">Dashboard</span>
+      </a>
+    </header>
+      <div class="column">
+        <div class="columndatacolle">
+          <div class="columnipolebatc">
+            <div class="rowipolebatch">
+              <h1 class="ipolebatch ui heading size-headings">iPole Batch</h1>
+            </div>
+            <h2 class="date ui heading size-textxs">12 March 2024</h2>
+          </div>
+          <div class="columntitle">
+            <h2 class="datacollection ui heading size-headings">Title</h2>
+            <p class="selecta ui heading size-texts">A short descriptive name for this experiment</p>
+            <label class="name">
+              <input name="experiment-name" id="experiment-name" placeholder="" type="text" />
+            </label>
+            <div class="lineeightyfive"></div>
+          </div>
+          <h2 class="datacollection ui heading size-headings">Data Collection</h2>
+          <div class="columnselectada">
+            <p class="selecta ui heading size-texts">Select a collection of data</p>
+            <select id="select-datacollection" class="input_one">
+              <option value="GRMHD_kharma-v3" selected>GRMHD_kharma-v3</option>
+            </select>
+        </div>
+
+          <h2 class="datacollection ui heading size-headings">Data Set</h2>
+          <div class="columnselectada">
+            <p class="selecta ui heading size-texts">Select a data set for the data collection</p>
+            <select id="select-dataset" class="input_one">
+              <option value="Ma+0.5_w4">Ma+0.5_w4</option>
+              <option value="Ma+0.5_w5" >Ma+0.5_w5</option>
+              <option value="Ma-0.5_w4" >Ma-0.5_w4</option>
+              <option value="Ma-0.5_w5" >Ma-0.5_w5</option>
+              <option value="Ma+0.94_w4" selected>Ma+0.94_w4</option>
+              <option value="Ma+0.94_w5" >Ma+0.94_w5</option>
+              <option value="Ma-0.94_w4" >Ma-0.94_w4</option>
+              <option value="Ma-0.94_w5" >Ma-0.94_w5</option>
+              <option value="Ma0_w4" >Ma0_w4</option>
+              <option value="Ma0_w5" >Ma0_w5</option>
+            </select>
+          </div>
+          <h2 class="datacollection ui heading size-headings">Set Parameters</h2>
+          <div class="columnselectada">
+            <p class="selecta ui heading size-texts">Select a pre-configured parameter file or update a new one</p>
+            <select id="select-parameters" class="input_one">
+              <option value="rho0_Ma+0.5" >rho0_Ma+0.5</option>
+              <option value="rho0_Ma-0.5" >rho0_Ma-0.5</option>
+              <option value="rho0_Ma+0.94" selected >rho0_Ma+0.94</option>
+              <option value="rho0_Ma-0.94" >rho0_Ma-0.94</option>
+              <option value="rho0_Ma0" >rho0_Ma0</option>
+            </select>
+            <button class="flex-row-center-center upload_a_new">Upload a New File *</button>
+          </div>
+          <div class="lineeightyfive"></div>
+          <div class="columnsettingsf" id="validation-result">
+            <h2 class="settingsforht ui heading size-headings">Validation Result</h2>
+            <textarea id="experiment-info" name="experiment-info" placeholder="Validation result" class="group103">
+              Data Collection: GRMHD_kharma-v3
+              Dataset: Ma+0.94_w4
+              Parameters: rho0_Ma+0.94
+              Total Jobs: 36000
+              Estimated Output Size: 316.8 GB
+            </textarea>
+            <div class="rowvalidate">
+              <button class="flex-row-center-center validate">Validate</button>
+              <button class="flex-row-center-center submit_job">Submit Job</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
