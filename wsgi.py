@@ -1,5 +1,6 @@
 """
 mod_wsgi-express start-server wsgi.py --modules-directory /lib64/apache2 --port 3000 --log-to-terminal
+mod_wsgi-express start-server wsgi.py --modules-directory /usr/lib/apache2/modules --port 3000 --log-to-terminal
 """
 
 import sys

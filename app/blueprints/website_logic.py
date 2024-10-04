@@ -5,6 +5,7 @@ from whoosh.qparser import QueryParser
 from whoosh.index import open_dir
 
 from .htcondor import checkuser, checkexperiment
+from .utilites import get_formatted_date
 
 website_blueprint = Blueprint("website", __name__)
 
@@ -22,7 +23,8 @@ def about():
 def dashboard():
     message = checkuser(current_user.nickname,simple=True)
     #return render_template("dashboard.html", user=current_user,message=message)
-    return render_template("EHTGatewayDashboard.html", user=current_user,message=message)
+    datestr = get_formatted_date()
+    return render_template("EHTGatewayDashboard.html", user=current_user, datestr=datestr, message=message)
 
 @website_blueprint.route("/ipoleexplorer")
 #@login_required
