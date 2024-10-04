@@ -34,7 +34,9 @@ def ipoleexplorer():
 @website_blueprint.route("/ipolebatch")
 #@login_required
 def ipolebatch():
-    return render_template("ipolebatch.html", user=current_user)
+    #return render_template("ipolebatch.html", user=current_user)
+    datestr = get_formatted_date()
+    return render_template("EHTIpoleBatch.html", datestr= datestr, user=current_user)
 
 @website_blueprint.route("/experiments")
 #@login_required

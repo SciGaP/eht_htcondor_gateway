@@ -44,6 +44,8 @@
 .headerhome_one {
   padding-left: 14px;
   padding-right: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   background-color: var(--deep_orange_900);
   align-items: start;
@@ -51,7 +53,8 @@
 
 .home_one {
   height: 20px;
-  margin-top: 6px;
+  /* margin-top: 10px;
+  margin-bottom: 10px; */
   width: 20px;
 }
 
