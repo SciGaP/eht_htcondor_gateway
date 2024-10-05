@@ -63,7 +63,7 @@
                 <div class="rowjohndoe">
                   <img src="{{ url_for('static', filename='ehtdashboard/public/images/galaxy.png') }}" alt="Image" class="image" />
                   <div class="columnjohndoe">
-                    <p class="ui heading size-text2xl">{{ user.nickname }}</p>
+                    <p class="ui heading size-text2xl">{{ user.given_name }}, {{ user.family_name }}</p>
                     <p class="ui text size-texts">{{ user.email }}</p>
                   </div>
                 </div>
