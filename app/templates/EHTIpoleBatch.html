@@ -11,11 +11,7 @@
       src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
       style="width: 0px; height: 0px; display: none"
     />
-    <link rel="stylesheet" type="text/css" href="./css/index.css" />
-    <link rel="stylesheet" type="text/css" href="./css/font.css" />
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="./css/components.css" />
-    <link rel="stylesheet" type="text/css" href="./css/SubmissionWebFormOne.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/font.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/styles.css') }}" />
@@ -39,7 +35,7 @@
             <h2 class="date ui heading size-textxs">{{ datestr }}</h2>
           </div>
           <div class="columntitle">
-            <h2 class="datacollection ui heading size-headings">Title</h2>
+            <h2 class="datacollection ui heading size-headings">Experiment Name</h2>
             <p class="selecta ui heading size-texts">A short descriptive name for this experiment</p>
             <label class="name">
               <input name="experiment-name" id="experiment-name" placeholder="" type="text" />
@@ -94,12 +90,67 @@
             </textarea>
           </div>
             <div class="rowvalidate">
-              <button class="flex-row-center-center validate_enable">Validate</button>
-              <button class="flex-row-center-center submit_job_disabled" disabled>Submit Job</button>
+              <button class="flex-row-center-center validate_enable" id="bn-validate">Validate</button>
+              <button class="flex-row-center-center submit_job_disabled" disabled id="bn-submit">Submit Job</button>
             </div>
 
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function () {
+
+        // select defult parameter files
+        $("#select-dataset").change(function () {
+          // the default one is the name without _w*
+          let para = "rho0_" + this.value.split("_")[0];
+          console.log(para);
+          $("#select-parameters").val(para);
+        });
+
+        // validate
+        $("#bn-validate").click(function () {
+          var baseurl = "/htcondor/validate/batch";
+          let experimentname = $('#experiment-name').val();
+          if (experimentname == "") {experimentname = $('#experiment-name').attr('placeholder');}
+          let datacollection = $('#select-datacollection').val();
+          let dataset = $('#select-dataset').val();
+          let parameters = $('#select-parameters').val();
+          //let username = document.getElementById("usernickname").innerText;
+          let username = "{{ user.nickname }}";
+          console.log(username);
+          $.ajax({
+            url: baseurl,
+            type: "get", //send it through get method
+            data: {
+              "userName": username,
+              "experimentName": experimentname,
+              "dataCollection": datacollection,
+              "dataset": dataset,
+              "parameterFile": parameters,
+            },
+          }).done(function (results) {
+            let validateinfo = document.getElementById("validation-result");
+            if (validateinfo.style.display == "none") {
+             validateinfo.style.display = "block";}
+            var infolist = "";
+            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Parameters":"parameterFile","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
+            for (key in displayfield) {
+              infolist += key + ": " + results[displayfield[key]] + "\n"
+            }
+            document.getElementById("experiment-info").innerHTML = infolist;
+            //enable submit button
+            $('#bn-submit').removeAttr("disabled");
+            $('#bn-submit').click(function(){
+              sumbit_experiment(results['userName'],results['experimentId']);
+            });
+            // disable validate button
+            $('#bn-validate').prop('disabled', true);
+        });
+      });
+
+      });
+
+    </script>
   </body>
 </html>

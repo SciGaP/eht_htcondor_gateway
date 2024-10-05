@@ -62,9 +62,9 @@ def callback():
         user = User(
             id=str(uuid.uuid4()),
             email=token.get("userinfo").get("email"),
-            nickname=token.get("userinfo").get("name"),
             given_name=token.get("userinfo").get("given_name"),
             family_name=token.get("userinfo").get("family_name"),
+            nickname=token.get("userinfo").get("given_name") + token.get("userinfo").get("family_name"), # otherwise, it has space and comma
             password = "",
             profile_picture="https://eht.scigap.org/media/images/32602803.original.png",
             account_type = "cilogon",
