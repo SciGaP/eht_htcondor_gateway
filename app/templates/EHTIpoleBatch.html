@@ -83,7 +83,7 @@
             <button class="flex-row-center-center upload_a_new">Upload a New File *</button>
           </div>
           <div class="lineeightyfive"></div>
-          <div class="columnsettingsf" id="validation-result">
+          <div class="columnsettingsf" id="validation-result" style="display: none">
             <h2 class="settingsforht ui heading size-headings">Validation Result</h2>
             <textarea id="experiment-info" name="experiment-info" placeholder="Validation result" class="group103">
               Data Collection: GRMHD_kharma-v3
@@ -92,11 +92,12 @@
               Total Jobs: 36000
               Estimated Output Size: 316.8 GB
             </textarea>
-            <div class="rowvalidate">
-              <button class="flex-row-center-center validate">Validate</button>
-              <button class="flex-row-center-center submit_job">Submit Job</button>
-            </div>
           </div>
+            <div class="rowvalidate">
+              <button class="flex-row-center-center validate_enable">Validate</button>
+              <button class="flex-row-center-center submit_job_disabled" disabled>Submit Job</button>
+            </div>
+
         </div>
       </div>
     </div>
