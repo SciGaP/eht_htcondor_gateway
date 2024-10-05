@@ -112,11 +112,14 @@
         $("#bn-validate").click(function () {
           var baseurl = "/htcondor/validate/batch";
           let experimentname = $('#experiment-name').val();
-          if (experimentname == "") {experimentname = $('#experiment-name').attr('placeholder');}
+          if (experimentname == "") {
+            //experimentname = $('#experiment-name').attr('placeholder');
+            alert("Please fill in the experiment name.");
+            return;  
+          }
           let datacollection = $('#select-datacollection').val();
           let dataset = $('#select-dataset').val();
           let parameters = $('#select-parameters').val();
-          //let username = document.getElementById("usernickname").innerText;
           let username = "{{ user.nickname }}";
           console.log(username);
           $.ajax({
