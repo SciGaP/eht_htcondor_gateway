@@ -102,6 +102,7 @@
             </textarea>
             <p><span style="color:green;">&#x1F6C8;</span> It may take up several minutes to complete the submission.</p>
           </div>
+          <div id="wait_animation" style="display:none;justify-content: center;width:90%;"> <span class="loader"></span></div>
             <div class="rowvalidate">
               <button class="flex-row-center-center validate_enable" id="bn-validate">Validate</button>
               <button class="flex-row-center-center submit_job" disabled id="bn-submit">Submit Job</button>
@@ -112,6 +113,14 @@
     </div>
     <script>
 
+    function toggle_wait_animation() {
+      let wait_animation = document.getElementById("wait_animation");
+      if (wait_animation.style.display == "none") {
+        wait_animation.style.display = "flex";
+      } else {
+        wait_animation.style.display = "none";
+      }
+    }
     //submit a job by id
     function sumbit_experiment(username,eid) {
       console.log(username,eid);
@@ -127,12 +136,14 @@
         beforeSend: function() {
         // disable your button here
         $('#bn-submit').prop("disabled", true);
+        toggle_wait_animation();
       },
     }).done (function (results) {
+        toggle_wait_animation();
         if (results['submit'] == "yes") {
-          alert("The job is submitted.");
+          alert("The job is submitted. Please check the progress through Experiments in Dashboard.");
         } else {
-          alert("job submission failed: " + results['submitInformation']);
+          alert("Job submission failed: " + results['submitInformation']);
         }
         let validateinfo = document.getElementById("validation-result");
             if (validateinfo.style.display == "block") {
