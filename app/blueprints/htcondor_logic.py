@@ -54,7 +54,14 @@ def submit_batch():
     """
 
     args = request.args
-    results = job_submit_batch(username = args['userName'], experimentid = args['experimentId'])
+
+    if "dryrun" in args:
+        # sleep 60 seconds
+        import time
+        time.sleep(20)
+        return {"submit":"yes","submitInformation":""}
+    
+    #results = job_submit_batch(username = args['userName'], experimentid = args['experimentId'])
 
     return jsonify(results)
 

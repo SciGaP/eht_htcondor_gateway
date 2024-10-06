@@ -109,6 +109,36 @@
       </div>
     </div>
     <script>
+
+    //submit a job by id
+    function sumbit_experiment(username,eid) {
+      console.log(username,eid);
+      var baseurl = "/htcondor/submit/batch";
+      $.ajax({
+        url: baseurl,
+        type: "get",
+        data: {
+          "userName": username,
+          "experimentId": eid,
+          "dryrun": 1,
+        },
+        beforeSend: function() {
+        // disable your button here
+        $('#bn-submit').prop("disabled", true);
+      },
+    }).done (function (results) {
+        if (results['submit'] == "yes") {
+          alert("The job is submitted.");
+        } else {
+          alert("job submission failed: " + results['submitInformation']);
+        }
+        let validateinfo = document.getElementById("validation-result");
+            if (validateinfo.style.display == "block") {
+             validateinfo.style.display = "none";}
+
+    });
+     }
+
       $(document).ready(function () {
 
         // select defult parameter files
