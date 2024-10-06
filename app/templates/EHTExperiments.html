@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Submission web form1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/EHTIpoleBatch.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
+  </head>
+  <body>
+    <div class="columnhome-one">
+      <header class="headerhome_one">
+        <a href="{{ url_for('website.dashboard') }}">
+          <img src="{{ url_for('static', filename='ehtipolebatch/public/images/img_home.svg') }}" alt="Home" class="home_one" />
+          <span class="dashboard ui heading size-headingxs">Dashboard</span>
+      </a>
+    </header>
+      <div class="column">
+        <div class="columndatacolle">
+          <div class="columnipolebatc">
+            <div class="rowipolebatch">
+              <h1 class="ipolebatch ui heading size-headings">Experiments</h1>
+            </div>
+            <h2 class="date ui heading size-textxs">{{ datestr }}</h2>
+          </div>
+          <div class="columntitle">
+            <h2 class="datacollection ui heading size-headings">Runing Experiments</h2>
+            {% if message['running'] == 0 %}
+            <div id="no_experiment"> 
+              <br/> 
+              <p class="selecta ui heading size-texts"><span style="color:green;"><strong>&#x1F6C8;</strong></span> No experiments found, plesse create experiments with the applications on Dashboard.</p>
+              </div>
+              {% endif %}
+            {% if message['running'] > 0 %}
+            <div id="running">
+              <span>Jobs in HTcondor</span>
+              <ul>
+                {% for item in message['runningExperiments'] %}
+                <li><a href="{{ url_for('website.experiment', experimentid = item['ID']) }}"><strong>ExperimentID:</strong> {{item["ID"]}} <strong>Submit time:</strong> {{item["SUBMITTED"]}} <strong>Done:</strong> {{item["DONE"]}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            
+            <div class="lineeightyfive"></div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <script>
+
+    function toggle_wait_animation() {
+      let wait_animation = document.getElementById("wait_animation");
+      if (wait_animation.style.display == "none") {
+        wait_animation.style.display = "flex";
+      } else {
+        wait_animation.style.display = "none";
+      }
+    }
+    //submit a job by id
+    function sumbit_experiment(username,eid) {
+      console.log(username,eid);
+      var baseurl = "/htcondor/submit/batch";
+      $.ajax({
+        url: baseurl,
+        type: "get",
+        data: {
+          "userName": username,
+          "experimentId": eid,
+          "dryrun": 1,
+        },
+        beforeSend: function() {
+        // disable your button here
+        $('#bn-submit').prop("disabled", true);
+        toggle_wait_animation();
+      },
+    }).done (function (results) {
+        toggle_wait_animation();
+        if (results['submit'] == "yes") {
+          alert("The job is submitted. Please check the progress through Experiments in Dashboard.");
+        } else {
+          alert("Job submission failed: " + results['submitInformation']);
+        }
+        let validateinfo = document.getElementById("validation-result");
+            if (validateinfo.style.display == "block") {
+             validateinfo.style.display = "none";}
+
+    });
+     }
+
+      $(document).ready(function () {
+
+        // select defult parameter files
+        $("#select-dataset").change(function () {
+          // the default one is the name without _w*
+          let para = "rho0_" + this.value.split("_")[0];
+          console.log(para);
+          $("#select-parameters").val(para);
+        });
+
+        // validate
+        $("#bn-validate").click(function () {
+          var baseurl = "/htcondor/validate/batch";
+          let experimentname = $('#experiment-name').val();
+          if (experimentname == "") {
+            //experimentname = $('#experiment-name').attr('placeholder');
+            alert("Please fill in the experiment name.");
+            return;  
+          }
+          let datacollection = $('#select-datacollection').val();
+          let dataset = $('#select-dataset').val();
+          let parameters = $('#select-parameters').val();
+          let username = "{{ user.nickname }}";
+          console.log(username);
+          $.ajax({
+            url: baseurl,
+            type: "get", //send it through get method
+            data: {
+              "userName": username,
+              "experimentName": experimentname,
+              "dataCollection": datacollection,
+              "dataset": dataset,
+              "parameterFile": parameters,
+            },
+          }).done(function (results) {
+            let validateinfo = document.getElementById("validation-result");
+            if (validateinfo.style.display == "none") {
+             validateinfo.style.display = "block";}
+            var infolist = "";
+            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Parameters":"parameterFile","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
+            for (key in displayfield) {
+              infolist += key + ": " + results[displayfield[key]] + "\n"
+            }
+            document.getElementById("experiment-info").innerHTML = infolist;
+            //enable submit button
+            $('#bn-submit').removeAttr("disabled");
+            $('#bn-submit').click(function(){
+              sumbit_experiment(results['userName'],results['experimentId']);
+            });
+            // disable validate button
+            // no need to disable
+            //$('#bn-validate').prop('disabled', true);
+        });
+      });
+
+      });
+
+    </script>
+  </body>
+</html>

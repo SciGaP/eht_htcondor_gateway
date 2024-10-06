@@ -42,7 +42,9 @@ def ipolebatch():
 #@login_required
 def experiments():
     message = checkuser(current_user.nickname)
-    return render_template("experiments.html", user=current_user,message = message)
+    #return render_template("experiments.html", user=current_user,message = message)
+    datestr = get_formatted_date()
+    return render_template("EHTExperiments.html", user=current_user,message = message, datestr = datestr)
 
 @website_blueprint.route("/experiment/<experimentid>")
 #@login_required
