@@ -61,7 +61,7 @@ def submit_batch():
         time.sleep(20)
         return {"submit":"yes","submitInformation":""}
     
-    #results = job_submit_batch(username = args['userName'], experimentid = args['experimentId'])
+    results = job_submit_batch(username = args['userName'], experimentid = args['experimentId'])
 
     return jsonify(results)
 
