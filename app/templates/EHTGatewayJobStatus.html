@@ -69,7 +69,6 @@
                   <h6 class="class-55twentynine ui heading size-headingxl">{{ '%0.2f' | format(message["outputs"]["num"]/message['job']['expectedOutput']*100.0) }}%</h6>
                 </div>
               </div>
-              Jobs on hold: {{message['status']['HOLD']}}
             </div>
           </div>
           <div class="stacksubmission container-xs">
@@ -77,29 +76,19 @@
               <div class="columnsubmissio">
                 <h4 class="ui heading size-headings">Submission Details</h4>
                 <div class="columnusername">
-                  <p class="ui text size-textxs">User Name: ‘straycoder’</p>
-                  <p class="datacollection ui text size-textxs">Data Collection: ‘GRMHD_Kharma-v3’</p>
-                  <p class="datacollection ui text size-textxs">Data Set: ‘Ma+0.94-w4’</p>
-                  <p class="parameterfile ui text size-textxs">Parameter File: ‘rho0_Ma+0.94</p>
+                  <p class="ui text size-textxs">Application: {{message['job']['application']}}</p>
+                  <p class="ui text size-textxs">Data Collection: {{message['job']['dataCollection']}}</p>
+                  <p class="ui text size-textxs">Data Set: {{message['job']['dataset']}}</p>
+                  <p class="ui text size-textxs">Parameter File: {{message['job']['parameterFile']}}</p>
                 </div>
               </div>
               <div class="columnapplicati">
-                <div class="rowapplication">
-                  <p class="ui text size-textxs">Application: Ipole Batch</p>
-                  <p class="placeholder ui text size-textxs">Placeholder</p>
-                </div>
                 <div class="rowplaceholder">
-                  <p class="ui text size-textxs">Placeholder</p>
-                  <p class="placeholder ui text size-textxs">Placeholder</p>
+                  <p class="ui text size-textxs">Submission time: {{message['status']['SUBMITTED']}}</p>
+                  <p class="ui text size-textxs">Report Time: {{ message['status']['reportTime'] }}</p>
                 </div>
-                <div class="rowplaceholder">
-                  <p class="ui text size-textxs">Placeholder</p>
-                  <p class="placeholder ui text size-textxs">Placeholder</p>
                 </div>
-                <div class="rowplaceholder-2">
-                  <p class="ui text size-textxs">Placeholder</p>
-                  <p class="placeholder ui text size-textxs">Placeholder</p>
-                </div>
+
               </div>
             </div>
             <div class="view_one"></div>

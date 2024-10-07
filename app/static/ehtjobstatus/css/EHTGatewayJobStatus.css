@@ -22,9 +22,9 @@
   gap: 20px;
 }
 
-.placeholder {
+/* .placeholder {
   margin-right: 56px;
-}
+} */
 
 /*-------------------------------------
   2. Page CSS
@@ -309,9 +309,11 @@
 .rowsubmission {
   margin-left: 6px;
   margin-right: 6px;
+  padding:10px;
   flex: 1;
   display: flex;
   align-items: center;
+  background-color: var(--gray_100);
   @media only screen and (max-width: 1050px) {
     flex-direction: column;
     margin-left: 0px;
