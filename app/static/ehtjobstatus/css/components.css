@@ -1,0 +1,131 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Text CSS
+2. Heading CSS
+3. Container CSS
+==========================================*/
+
+/*-------------------------------------
+  1. Text CSS
+--------------------------------------*/
+.ui.text.size-textxs {
+  font-size: 25px;
+  font-weight: 400;
+  font-style: normal;
+  @media only screen and (max-width: 1050px) {
+    font-size: 23px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    font-size: 21px;
+  }
+}
+
+.ui.text.size-texts {
+  font-size: 30px;
+  font-weight: 400;
+  font-style: normal;
+  @media only screen and (max-width: 1050px) {
+    font-size: 28px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    font-size: 26px;
+  }
+}
+
+.ui.text.size-textmd {
+  font-size: 35px;
+  font-weight: 400;
+  font-style: normal;
+  @media only screen and (max-width: 1050px) {
+    font-size: 33px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    font-size: 31px;
+  }
+}
+
+.ui.text {
+  color: var(--blue_gray_400);
+  font-family: Inter;
+}
+
+/*-------------------------------------
+  2. Heading CSS
+--------------------------------------*/
+.ui.heading.size-headingxs {
+  font-size: 23px;
+  font-weight: 600;
+  font-style: bold;
+  @media only screen and (max-width: 1050px) {
+    font-size: 21px;
+  }
+}
+
+.ui.heading.size-headings {
+  font-size: 25px;
+  font-weight: 700;
+  font-style: bold;
+  @media only screen and (max-width: 1050px) {
+    font-size: 23px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    font-size: 21px;
+  }
+}
+
+.ui.heading.size-headingmd {
+  font-size: 35px;
+  font-weight: 700;
+  font-style: bold;
+  @media only screen and (max-width: 1050px) {
+    font-size: 33px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    font-size: 31px;
+  }
+}
+
+.ui.heading.size-headinglg {
+  font-size: 40px;
+  font-weight: 600;
+  font-style: bold;
+  @media only screen and (max-width: 1050px) {
+    font-size: 38px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    font-size: 36px;
+  }
+}
+
+.ui.heading.size-headingxl {
+  font-size: 60px;
+  font-weight: 700;
+  font-style: bold;
+  @media only screen and (max-width: 1050px) {
+    font-size: 52px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    font-size: 46px;
+  }
+}
+
+.ui.heading {
+  color: var(--black_900);
+  font-family: Inter;
+}
+
+/*-------------------------------------
+  3. Container CSS
+--------------------------------------*/
+.container-xs {
+  max-width: 1214px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

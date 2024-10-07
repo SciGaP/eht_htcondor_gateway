@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Eht gateway - job status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtjobstatus/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtjobstatus/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtjobstatus/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtjobstatus/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtjobstatus/css/EHTGatewayJobStatus.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
+
+  </head>
+  <body>
+    <div class="eht-gateway-job">
+      <div>
+        <div class="rowhome_one">
+          <a href="{{ url_for('website.dashboard') }}">
+            <img src="{{ url_for('static', filename='ehtjobstatus/public/images/img_home_white_a700.svg') }}" alt="Home" class="home_one" />
+            <span class="dashboard ui heading size-headingxs">Dashboard</span>
+        </a>
+        </div>
+      </div>
+      <div>
+        <div class="columnview_one">
+          <div class="row55twentynine container-xs">
+            <div class="columnjobstatus">
+              <div class="rowjobstatus">
+                <h2 class="jobstatus ui heading size-headingmd">Job Status</h2>
+                <p class="experimentx ui text size-texts">"{{message['job']['experimentName']}}" Submitted on {{message['status']['SUBMITTED']}}</p>
+              </div>
+              <div class="stackview">
+                <div class="rowview">
+                  <div class="view"></div>
+                  <div class="stackdone">
+                    <div class="columndone">
+                      <div class="rowdone">
+                        <h3 class="done ui heading size-headinglg">Done</h3>
+                        <h4 class="ui heading size-headinglg">Running</h4>
+                        <h5 class="total ui heading size-headinglg">Total</h5>
+                      </div>
+                      <div class="row_one">
+                        <p class="class-55twentynine ui text size-textmd">{{message['status']['DONE']}}</p>
+                        <div class="rowzipcode">
+                          <p class="zipcode-1 ui text size-textmd">{{message['status']['RUN']}}</p>
+                          <p class="class-55twentynine ui text size-textmd">{{message['status']['TOTAL']}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="rowline108_one">
+                      <div class="line108_one"></div>
+                      <div class="line109_one"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-col-center-center column55twentyn">
+                  <h6 class="class-55twentynine ui heading size-headingxl">{{ '%0.2f' | format(message["outputs"]["num"]/message['job']['expectedOutput']*100.0) }}%</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stacksubmission container-xs">
+            <div class="rowsubmission">
+              <div class="columnsubmissio">
+                <h4 class="ui heading size-headings">Submission Details</h4>
+                <div class="columnusername">
+                  <p class="ui text size-textxs">User Name: ‘straycoder’</p>
+                  <p class="datacollection ui text size-textxs">Data Collection: ‘GRMHD_Kharma-v3’</p>
+                  <p class="datacollection ui text size-textxs">Data Set: ‘Ma+0.94-w4’</p>
+                  <p class="parameterfile ui text size-textxs">Parameter File: ‘rho0_Ma+0.94</p>
+                </div>
+              </div>
+              <div class="columnapplicati">
+                <div class="rowapplication">
+                  <p class="ui text size-textxs">Application: Ipole Batch</p>
+                  <p class="placeholder ui text size-textxs">Placeholder</p>
+                </div>
+                <div class="rowplaceholder">
+                  <p class="ui text size-textxs">Placeholder</p>
+                  <p class="placeholder ui text size-textxs">Placeholder</p>
+                </div>
+                <div class="rowplaceholder">
+                  <p class="ui text size-textxs">Placeholder</p>
+                  <p class="placeholder ui text size-textxs">Placeholder</p>
+                </div>
+                <div class="rowplaceholder-2">
+                  <p class="ui text size-textxs">Placeholder</p>
+                  <p class="placeholder ui text size-textxs">Placeholder</p>
+                </div>
+              </div>
+            </div>
+            <div class="view_one"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,386 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.class-55twentynine {
+  color: var(--gray_900) !important;
+}
+
+.datacollection {
+  margin-top: 12px;
+}
+
+.rowplaceholder {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.placeholder {
+  margin-right: 56px;
+}
+
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.eht-gateway-job {
+  background-color: var(--gray_100);
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+}
+
+.rowhome_one {
+  padding-left: 18px;
+  padding-right: 18px;
+  gap: 14px;
+  background-color: var(--deep_orange_900);
+  display: flex;
+  align-items: start;
+}
+
+.home_one {
+  height: 24px;
+  margin-top: 6px;
+  width: 24px;
+}
+
+.dashboard {
+  color: var(--white_a700) !important;
+  font-family: Poppins !important;
+  align-self: center;
+}
+
+.columnview_one {
+  gap: var(--space-xs);
+  background-color: var(--white_a700);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 86px 56px;
+  @media only screen and (max-width: 1050px) {
+    gap: 66px;
+    padding: 20px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    gap: 44px;
+  }
+}
+
+.row55twentynine {
+  display: flex;
+  justify-content: center;
+}
+
+.columnjobstatus {
+  gap: var(--space-xs);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  @media only screen and (max-width: 1050px) {
+    gap: 66px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    gap: 44px;
+  }
+}
+
+.rowjobstatus {
+  margin-left: 14px;
+  margin-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.jobstatus {
+  color: var(--gray_900) !important;
+  font-family: Outfit !important;
+}
+
+.experimentx {
+  color: var(--black_900) !important;
+  align-self: end;
+}
+
+.stackview {
+  height: 478px;
+  position: relative;
+  align-content: center;
+  @media only screen and (max-width: 1050px) {
+    height: auto;
+  }
+}
+
+.rowview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+}
+
+.view {
+  height: 478px;
+  z-index: 1;
+  background-color: white;
+  width: 478px;
+  position: relative;
+
+  border-radius: var(--radius-md);
+  border:60px solid var(--deep_orange_900);
+}
+
+.stackdone {
+  height: 172px;
+  margin-left: -52px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  align-self: end;
+  position: relative;
+  background-color: var(--gray_200_cc);
+  flex: 1;
+  border-radius: var(--radius-xs);
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+    width: 100%;
+    flex: unset;
+    margin-left: 0px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    align-self: auto;
+  }
+}
+
+.columndone {
+  gap: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  top: 0px;
+  height: max-content;
+  margin: auto;
+}
+
+.rowdone {
+  margin-left: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 20px;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.done {
+  margin-top: 8px;
+}
+
+.total {
+  margin-right: 72px;
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+}
+
+.row_one {
+  margin-left: 52px;
+  margin-right: 78px;
+  display: flex;
+  justify-content: center;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.rowzipcode {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+  }
+}
+
+.zipcode-1 {
+  color: var(--gray_900) !important;
+  margin-left: 140px;
+}
+
+.rowline108_one {
+  padding-left: 220px;
+  padding-right: 220px;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  top: 0px;
+  height: max-content;
+  gap: 20px;
+  margin: auto;
+  @media only screen and (max-width: 1050px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.line108_one {
+  height: 124px;
+  background-color: var(--deep_orange_900);
+  width: 1px;
+}
+
+.line109_one {
+  height: 124px;
+  margin-right: 26px;
+  background-color: var(--deep_orange_900);
+  width: 1px;
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+}
+
+.column55twentyn {
+  z-index: 2;
+  background-color: var(--gray_200);
+  width: 280px;
+  height: 280px;
+  position: absolute;
+  left: 8%;
+  bottom: 0px;
+  top: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: var(--radius-md);
+}
+
+.stacksubmission {
+  height: 286px;
+  margin-bottom: 72px;
+  position: relative;
+  align-content: center;
+  @media only screen and (max-width: 1050px) {
+    height: auto;
+  }
+}
+
+.rowsubmission {
+  margin-left: 6px;
+  margin-right: 6px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.columnsubmissio {
+  gap: 18px;
+  display: flex;
+  width: 42%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+
+.columnusername {
+  margin-left: 12px;
+  margin-right: 36px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.parameterfile {
+  margin-top: 6px;
+}
+
+.columnapplicati {
+  padding-left: 36px;
+  padding-right: 36px;
+  align-self: end;
+  flex: 1;
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+  }
+
+  @media only screen and (max-width: 550px) {
+    align-self: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.rowapplication {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.rowplaceholder-2 {
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.view_one {
+  height: 286px;
+  background-color: var(--gray_200_7f);
+  flex: 1;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  top: 0px;
+  margin: auto;
+}

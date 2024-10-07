@@ -53,7 +53,8 @@ def experiment(experimentid):
 
     message = checkexperiment(experimentid)
 
-    return render_template("experiment.html", user=current_user, message = message)
+    #return render_template("experiment.html", user=current_user, message = message)
+    return render_template("EHTGatewayJobStatus.html", user=current_user, message = message)
 
 @website_blueprint.route('/search', methods=['GET'])
 def search():
