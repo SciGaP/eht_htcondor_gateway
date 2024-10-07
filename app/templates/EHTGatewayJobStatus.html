@@ -23,12 +23,12 @@
   <body>
     <div class="eht-gateway-job">
       <div>
-        <div class="rowhome_one">
+        <header class="headerhome_one">
           <a href="{{ url_for('website.dashboard') }}">
             <img src="{{ url_for('static', filename='ehtjobstatus/public/images/img_home_white_a700.svg') }}" alt="Home" class="home_one" />
             <span class="dashboard ui heading size-headingxs">Dashboard</span>
         </a>
-        </div>
+        </header>
       </div>
       <div>
         <div class="columnview_one">
@@ -71,7 +71,15 @@
               </div>
             </div>
           </div>
-          <div class="stacksubmission container-xs">
+          <div>
+            <div class="rowvalidate">
+              <button class="flex-row-center-center validate_enable" id="bn-validate">Retry Hold</button>
+              <button class="flex-row-center-center validate_enable" disabled id="bn-submit">Pause Job</button>
+              <button class="flex-row-center-center validate_enable" id="bn-validate">Kill Job</button>
+            </div>          
+              </div>
+      </div>
+    <div class="stacksubmission container-xs">
             <div class="rowsubmission">
               <div class="columnsubmissio">
                 <h4 class="ui heading size-headings">Submission Details</h4>
