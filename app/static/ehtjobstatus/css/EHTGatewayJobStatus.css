@@ -238,7 +238,12 @@
 
 .zipcode-1 {
   color: var(--gray_900) !important;
-  margin-left: 140px;
+  margin-left: 110px;
+}
+
+.zipcode-2 {
+  color: var(--gray_900) !important;
+  margin-left: 20px;
 }
 
 .rowline108_one {

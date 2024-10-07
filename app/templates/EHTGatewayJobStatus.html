@@ -45,19 +45,22 @@
                     <div class="columndone">
                       <div class="rowdone">
                         <h3 class="done ui heading size-headinglg">Done</h3>
-                        <h4 class="ui heading size-headinglg">Running</h4>
-                        <h5 class="total ui heading size-headinglg">Total</h5>
+                        <h3 class="ui heading size-headinglg">Run</h3>
+                        <h3 class="ui heading size-headinglg">Hold</h3>
+                        <h3 class="total ui heading size-headinglg">Total</h3>
                       </div>
                       <div class="row_one">
                         <p class="class-55twentynine ui text size-textmd">{{message['status']['DONE']}}</p>
                         <div class="rowzipcode">
                           <p class="zipcode-1 ui text size-textmd">{{message['status']['RUN']}}</p>
+                          <p class="zipcode-2 ui text size-textmd">{{message['status']['HOLD']}}</p>
                           <p class="class-55twentynine ui text size-textmd">{{message['status']['TOTAL']}}</p>
                         </div>
                       </div>
                     </div>
                     <div class="rowline108_one">
                       <div class="line108_one"></div>
+                      <div class="line109_one"></div>
                       <div class="line109_one"></div>
                     </div>
                   </div>
@@ -66,6 +69,7 @@
                   <h6 class="class-55twentynine ui heading size-headingxl">{{ '%0.2f' | format(message["outputs"]["num"]/message['job']['expectedOutput']*100.0) }}%</h6>
                 </div>
               </div>
+              Jobs on hold: {{message['status']['HOLD']}}
             </div>
           </div>
           <div class="stacksubmission container-xs">
