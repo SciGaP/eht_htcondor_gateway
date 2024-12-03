@@ -7,6 +7,6 @@ __pycache__/
 .zed
 migrations/
 instance/data.db
-
+index/_MAIN_0.toc
 
 
