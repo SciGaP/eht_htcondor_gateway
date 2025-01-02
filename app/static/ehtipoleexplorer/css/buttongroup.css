@@ -1,0 +1,30 @@
+ul.tab {
+    list-style-type:none;
+    margin: 0;
+    padding:0;
+    border-radius: 0px;
+}
+ul.tab li {
+    float: left;
+    padding: 0;
+}
+ul.tab li label {
+  background: white;  
+  color: #316bc1;
+  /* font-family: Inter, var(--default-font-family); */
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #316bc1;
+  display: inline-block;
+}
+ul.tab li input[type="radio"] {
+    opacity: 0;
+    width:1px;
+    height:1px;
+}
+ul.tab li input[type="radio"]:checked ~ label {
+    background: #901200;
+    color: white;
+}

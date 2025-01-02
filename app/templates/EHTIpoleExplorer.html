@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Submission web form1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipoleexplorer/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipoleexplorer/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipoleexplorer/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipoleexplorer/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipoleexplorer/css/buttongroup.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipoleexplorer/css/EHTIpoleExplorer.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />  </head>
+  <body>
+    <div class="columnhome-one">
+      <header class="headerhome_one">
+        <a href="{{ url_for('website.dashboard') }}">
+          <img src="{{ url_for('static', filename='ehtipoleexplorer/public/images/img_home.svg') }}" alt="Home" class="home_one" />
+          <span class="dashboard ui heading size-headingxs">Dashboard</span>
+      </a>
+    </header>
+      <div class="column">
+        <div class="columndatacolle">
+          <div class="columnipolebatc">
+            <div class="rowipolebatch">
+              <h1 class="ipolebatch ui heading size-headings">iPole Explorer</h1>
+            </div>
+            <h2 class="date ui heading size-textxs">12 March 2024</h2>
+          </div>
+          <div class="columntitle">
+            <h2 class="datacollection ui heading size-headings">Title</h2>
+            <p class="selecta ui heading size-texts">A short descriptive name for this experiment</p>
+            <label class="name">
+              <input name="experiment-name" id="experiment-name" placeholder="" type="text" />
+            </label>
+            <div class="lineeightyfive"></div>
+          </div>
+          <h2 class="datacollection ui heading size-headings">Data Collection</h2>
+          <div class="columnselectada">
+            <p class="selecta ui heading size-texts">Select a collection of data</p>
+            <select id="select-datacollection" class="input_one">
+              <option value="GRMHD_kharma-v3" selected>GRMHD_kharma-v3</option>
+            </select>
+        </div>
+
+          <h2 class="datacollection ui heading size-headings">Data Set</h2>
+          <div class="columnselectada">
+            <p class="selecta ui heading size-texts">Select a data set from the data collection</p>
+            <select id="select-dataset" class="input_one">
+              <option value="Ma+0.5_w4">Ma+0.5_w4</option>
+              <option value="Ma+0.5_w5" >Ma+0.5_w5</option>
+              <option value="Ma-0.5_w4" >Ma-0.5_w4</option>
+              <option value="Ma-0.5_w5" >Ma-0.5_w5</option>
+              <option value="Ma+0.94_w4" selected>Ma+0.94_w4</option>
+              <option value="Ma+0.94_w5" >Ma+0.94_w5</option>
+              <option value="Ma-0.94_w4" >Ma-0.94_w4</option>
+              <option value="Ma-0.94_w5" >Ma-0.94_w5</option>
+              <option value="Ma0_w4" >Ma0_w4</option>
+              <option value="Ma0_w5" >Ma0_w5</option>
+            </select>
+          </div>
+          <h2 class="datacollection ui heading size-headings">Search Images by Pattern<span><sup><img src="public/images/helpicon.png" style="height:15px;width:15px;" alt="Ipole Batch" /></sup></span></h2>
+            <div class="columnselectada">
+            <label class="smallname">
+              <input name="experiment-name" id="experiment-name" placeholder="" type="text" />
+              <button class="searchbutton">Search</button>
+            </label>
+            <textarea id="images-list" name="images-list" placeholder="" class="group104"></textarea>
+            <span id="images-description-message"><strong>&#9432;</strong> Search images by string pattern or directly paste list of images. <button id="loadsample_bn" class="searchbutton_sm" onclick="loadsample()">Load a sample image list</button></span>  
+          </div>
+            <div class="lineeightyfive"></div>
+          <div class="columnselectada">
+            <h2 class="datacollection ui heading size-headings">Rhigh-Ratio<span><sup><img src="public/images/helpicon.png" style="height:15px;width:15px;" alt="Ipole Batch" /></sup></span></h2>
+            <div class="button-group">
+              <ul class="tab">
+                <li>
+                  <input
+                    id="rr-radio-1-1"
+                    checked="checked"
+                    type="radio"
+                    name="radiogroup-rr"
+                    checked
+                  />
+                  <label for="rr-radio-1-1">Single Value</label>
+                </li>
+                <li>
+                  <input id="rr-radio-1-2" type="radio" name="radiogroup-rr" />
+                  <label for="rr-radio-1-2">Multiple Values</label>
+                </li>
+                <li>
+                  <input id="rr-radio-1-3" type="radio" name="radiogroup-rr" />
+                  <label for="rr-radio-1-3">Range Values</label>
+                </li>
+              </ul>
+            </div> 
+            <label class="smallname">
+              <input name="rr-para" id="rr-para" placeholder="" type="text" />
+            </label>
+            <span id="rr-description-message"><strong>&#9432;</strong> input a single value</span>
+            <h2 class="datacollection ui heading size-headings">Theta-Viewing Angle<span><sup><img src="public/images/helpicon.png" style="height:15px;width:15px;" alt="Ipole Batch" /></sup></span></h2>
+            <div class="button-group">
+              <ul class="tab">
+                <li>
+                  <input
+                    id="tva-radio-1-1"
+                    checked="checked"
+                    type="radio"
+                    name="radiogroup-tva"
+                    checked
+                  />
+                  <label for="tva-radio-1-1">Single Value</label>
+                </li>
+                <li>
+                  <input id="tva-radio-1-2" type="radio" name="radiogroup-tva" />
+                  <label for="tva-radio-1-2">Multiple Values</label>
+                </li>
+                <li>
+                  <input id="tva-radio-1-3" type="radio" name="radiogroup-tva" />
+                  <label for="tva-radio-1-3">Range Values</label>
+                </li>
+              </ul>
+            </div> 
+            <label class="smallname">
+              <input name="tva-para" id="tva-para" placeholder="" type="text" />
+            </label>
+            <span id="tva-description-message"><strong>&#9432;</strong> input a single value</span>
+            <h2 class="datacollection ui heading size-headings">Rho0-Density Normalization<span><sup><img src="public/images/helpicon.png" style="height:15px;width:15px;" alt="Ipole Batch" /></sup></span></h2>
+            <div class="button-group">
+              <ul class="tab">
+                <li>
+                  <input
+                    id="rho-radio-1-1"
+                    checked="checked"
+                    type="radio"
+                    name="radiogroup-rho"
+                    checked
+                  />
+                  <label for="rho-radio-1-1">Single Value</label>
+                </li>
+                <li>
+                  <input id="rho-radio-1-2" type="radio" name="radiogroup-rho" />
+                  <label for="rho-radio-1-2">Multiple Values</label>
+                </li>
+                <li>
+                  <input id="rho-radio-1-3" type="radio" name="radiogroup-rho" />
+                  <label for="rho-radio-1-3">Range Values</label>
+                </li>
+              </ul>
+            </div> 
+          <label class="smallname">
+              <input name="rho-para" id="rho-para" placeholder="" type="text" />
+            </label>
+            <span id="rho-description-message"><strong>&#9432;</strong> input a single value</span>
+          </div>
+          <div class="lineeightyfive"></div>
+          <div class="columnsettingsf" id="validation-result">
+            <h2 class="settingsforht ui heading size-headings">Validation Result</h2>
+            <textarea id="experiment-info" name="experiment-info" placeholder="Validation result" class="group103">
+              Data Collection: GRMHD_kharma-v3
+              Dataset: Ma+0.94_w4
+              Parameters: rho0_Ma+0.94
+              Total Jobs: 36000
+              Estimated Output Size: 316.8 GB
+            </textarea>
+            <div class="rowvalidate">
+              <button class="flex-row-center-center validate">Validate</button>
+              <button class="flex-row-center-center submit_job">Submit Job</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = function () {
+      $('input[name^="radiogroup-"]').change(function () {
+        // Handle the change event here
+        var tid = $(this).attr("id");
+        var paraname = $(this).attr("name").split("-")[1];
+        tid = tid.replace(paraname, "");
+        var vst;
+        let leading = "<strong>&#9432;</strong> ";
+        vst += leading;
+        switch (tid) {
+          case "-radio-1-2":
+            vst = "input multiple values seperated by comma, e.g. 10,20,30";
+            break;
+          case "-radio-1-3":
+            vst = "input a range in format: start, stop, step, e.g. 10,90,10";
+            break;
+          default:
+            vst = "input a single vaule";
+        }
+        var msgid = "#" + paraname + "-description-message";
+        document.querySelector(msgid).innerHTML = vst;
+      });}
+
+      function loadsample(){
+        //load a sample list
+        let imagelist = `torus.out0.04406.h5
+torus.out0.04262.h5
+torus.out0.04967.h5
+torus.out0.04741.h5
+torus.out0.04389.h5
+torus.out0.04707.h5
+torus.out0.04788.h5
+torus.out0.04292.h5
+torus.out0.04586.h5
+torus.out0.04843.h5
+torus.out0.04723.h5
+torus.out0.04667.h5
+torus.out0.04322.h5
+torus.out0.04901.h5
+torus.out0.04094.h5
+torus.out0.04645.h5
+torus.out0.04666.h5
+torus.out0.04971.h5`;
+       $('#images-list').val(imagelist);
+      }
+    
+    </script>
+  </body>
+</html>
