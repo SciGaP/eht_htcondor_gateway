@@ -84,3 +84,8 @@ def search():
         parsed_query = query_parser.parse(query)
         results = searcher.search(parsed_query)
         return render_template("components/search_results.html", results=results)
+
+@website_blueprint.route("/start_jupyter")
+def start_jupyter():
+    """start jupyter notebook"""
+    return "start jupyter notebook"
