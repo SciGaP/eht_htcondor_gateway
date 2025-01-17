@@ -339,6 +339,7 @@
   }
 }
 
+
 .validate {
   color: var(--white_a700);
   padding-left: 34px;
@@ -354,6 +355,44 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+
+.validate_enable {
+  color: var(--white_a700);
+  padding-left: 34px;
+  padding-right: 34px;
+  font-size: 19px;
+  font-weight: 500;
+  align-self: end;
+  background-color: var(--red_900);
+  text-align: center;
+  height: 58px;
+  min-width: 240px;
+  border-radius: var(--radius-sm);
+  @media only screen and (max-width: 550px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  cursor: pointer;
+}
+
+.submit_job:disabled,
+  submit_job[disabled] {
+  color: var(--white_a700);
+  padding-left: 34px;
+  padding-right: 34px;
+  font-size: 19px;
+  font-weight: 500;
+  background-color: var(--gray_500);
+  text-align: center;
+  height: 58px;
+  min-width: 246px;
+  border-radius: var(--radius-sm);
+  @media only screen and (max-width: 550px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  cursor: not-allowed;
 }
 
 .submit_job {
@@ -372,4 +411,6 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  cursor: pointer;
 }
+
