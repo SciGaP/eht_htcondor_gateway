@@ -218,7 +218,38 @@ torus.out0.04666.h5
 torus.out0.04971.h5`;
        $('#images-list').val(imagelist);
       }
-    
+
+      $(document).ready(function () {
+
+        // validate
+        $("#bn-validate").click(function () {
+          var baseurl = "/htcondor/validate/expolorer";
+          let experimentname = $('#experiment-name').val();
+          if (experimentname == "") {
+            //experimentname = $('#experiment-name').attr('placeholder');
+            alert("Please fill in the experiment name.");
+            return;  
+          }
+          let imagelist = $('#images-list').val();
+          if (imagelist == "") {
+            //experimentname = $('#experiment-name').attr('placeholder');
+            alert("Please fill in the image list.");
+            return;  
+          }          
+          let datacollection = $('#select-datacollection').val();
+          let dataset = $('#select-dataset').val();
+          let username = "{{ user.nickname }}";
+          let data = {"userName": username,
+            "experimentName": experimentname,
+            "dataCollection": datacollection,
+            "dataset":dataset,
+            "imageList": imagelist,
+          };
+          console.log(data);
+
+        });
+
+      })
     </script>
   </body>
 </html>
