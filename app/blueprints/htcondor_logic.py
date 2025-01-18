@@ -45,6 +45,39 @@ def validate_batch():
 
     return jsonify(validate_results)
 
+# validate the explorer job
+@htcondor_blueprint.route("/htcondor/validate/explorer")
+def validate_explorer():
+    """
+        validate batch job
+        parameters:
+            userName
+            experimentName
+            dataCollection
+            dataset
+            imageList
+            parameters
+        return:
+            experimentId
+            expectedOutput
+            outputSize
+    """
+    args = request.args
+    
+    # get input parameters
+    v = {}
+    v['userName'] = args['userName']
+    v['dataCollection'] = args["dataCollection"]
+    v['dataset'] = args["dataset"]
+    v['experimentName'] = args['experimentName']
+    v['application'] = "ipole-explorer"
+    v['imageList'] = args['imageList']
+    v['parameters'] = args['parameters']
+
+    validate_results = validate_explorer_staging(input=v)
+
+    return jsonify(validate_results)
+
 # submit batch job
 @htcondor_blueprint.route("/htcondor/submit/batch")
 def submit_batch():

@@ -226,7 +226,6 @@ torus.out0.04971.h5`;
 
         // validate
         $("#bn-validate").click(function () {
-          var baseurl = "/htcondor/validate/expolorer";
           let experimentname = $('#experiment-name').val();
           if (experimentname == "") {
             //experimentname = $('#experiment-name').attr('placeholder');
@@ -264,7 +263,8 @@ torus.out0.04971.h5`;
             "parameters": para_dict,
           };
           console.log(data);
-
+          // send data to validate
+          var baseurl = "/htcondor/validate/expolorer";
         });
 
       })

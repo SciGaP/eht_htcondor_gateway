@@ -151,6 +151,46 @@ def validate_batch_staging(input):
 
     return stage_json
 
+def validate_explorer_staging(input):
+    """  
+    input parameters
+        -- dict object:
+            userName
+            experimentName
+            dataCollection
+            dataset
+            imageList
+            parameters
+        -- return 
+            experimentId
+            jobFile
+            expectedOutput
+            outputSize
+            validate
+            BATCH
+    """
+    # A sample input
+    #     {
+    #     "userName": "JunWang",
+    #     "experimentName": "433",
+    #     "dataCollection": "GRMHD_kharma-v3",
+    #     "dataset": "Ma+0.94_w4",
+    #     "imageList": "torus.out0.04406.h5\ntorus.out0.04262.h5\ntorus.out0.04967.h5\ntorus.out0.04741.h5\ntorus.out0.04389.h
+    # 5\ntorus.out0.04707.h5\ntorus.out0.04788.h5\ntorus.out0.04292.h5\ntorus.out0.04586.h5\ntorus.out0.04843.h5\ntorus.out0.0
+    # 4723.h5\ntorus.out0.04667.h5\ntorus.out0.04322.h5\ntorus.out0.04901.h5\ntorus.out0.04094.h5\ntorus.out0.04645.h5\ntorus.
+    # out0.04666.h5\ntorus.out0.04971.h5",
+    #     "parameters": {
+    #         "rr_type": "single",
+    #         "rrvalue": "10",
+    #         "tva_type": "multiple",
+    #         "tvavalue": "10,20,30",
+    #         "rho_type": "range",
+    #         "rhovalue": "10,90,10"
+    #     }
+    # }
+
+    return
+
 def job_submit_batch(username, experimentid):
     """submit batch job"""
 
