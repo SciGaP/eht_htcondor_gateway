@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, send_from_directory, jsonify
 
-from .htcondor import checkuser, validate_batch_staging, job_submit_batch
+from .htcondor import checkuser, validate_batch_staging, job_submit_batch, validate_explorer_staging
 
 htcondor_blueprint = Blueprint("htcondor", __name__)
 
@@ -69,6 +69,8 @@ def validate_explorer():
     v['userName'] = args['userName']
     v['dataCollection'] = args["dataCollection"]
     v['dataset'] = args["dataset"]
+    # use default data set
+    v['dataset'] =  "Ma+0.94_w5"
     v['experimentName'] = args['experimentName']
     v['application'] = "ipole-explorer"
     v['imageList'] = args['imageList']

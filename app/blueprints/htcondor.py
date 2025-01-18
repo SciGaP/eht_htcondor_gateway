@@ -151,6 +151,13 @@ def validate_batch_staging(input):
 
     return stage_json
 
+def getmd5_images(datecollection,dataset,imagelist):
+    """ get md5 for image list
+        return dict{imagename: md5}
+    """
+
+    return
+
 def validate_explorer_staging(input):
     """  
     input parameters
@@ -189,6 +196,7 @@ def validate_explorer_staging(input):
     #     }
     # }
 
+    md5s = getmd5_images(input['dataCollection'],input['dataset'],input['imageList'])
     return
 
 def job_submit_batch(username, experimentid):
