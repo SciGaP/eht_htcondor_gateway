@@ -255,12 +255,13 @@ torus.out0.04971.h5`;
             para_dict[para+"_type"]=selectedValue;
             para_dict[para+"value"]=para_value;
           };  
-          console.log(para_dict);
+          //console.log(para_dict);
           let data = {"userName": username,
             "experimentName": experimentname,
             "dataCollection": datacollection,
             "dataset":dataset,
             "imageList": imagelist,
+            "parameters": para_dict,
           };
           console.log(data);
 
