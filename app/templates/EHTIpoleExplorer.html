@@ -81,16 +81,17 @@
                     checked="checked"
                     type="radio"
                     name="radiogroup-rr"
+                    value="single"
                     checked
                   />
                   <label for="rr-radio-1-1">Single Value</label>
                 </li>
                 <li>
-                  <input id="rr-radio-1-2" type="radio" name="radiogroup-rr" />
+                  <input id="rr-radio-1-2" type="radio" name="radiogroup-rr" value="multiple"/>
                   <label for="rr-radio-1-2">Multiple Values</label>
                 </li>
                 <li>
-                  <input id="rr-radio-1-3" type="radio" name="radiogroup-rr" />
+                  <input id="rr-radio-1-3" type="radio" name="radiogroup-rr" value="range"/>
                   <label for="rr-radio-1-3">Range Values</label>
                 </li>
               </ul>
@@ -108,16 +109,17 @@
                     checked="checked"
                     type="radio"
                     name="radiogroup-tva"
+                    value="single"
                     checked
                   />
                   <label for="tva-radio-1-1">Single Value</label>
                 </li>
                 <li>
-                  <input id="tva-radio-1-2" type="radio" name="radiogroup-tva" />
+                  <input id="tva-radio-1-2" type="radio" name="radiogroup-tva" value="multiple"/>
                   <label for="tva-radio-1-2">Multiple Values</label>
                 </li>
                 <li>
-                  <input id="tva-radio-1-3" type="radio" name="radiogroup-tva" />
+                  <input id="tva-radio-1-3" type="radio" name="radiogroup-tva" value="range"/>
                   <label for="tva-radio-1-3">Range Values</label>
                 </li>
               </ul>
@@ -135,16 +137,17 @@
                     checked="checked"
                     type="radio"
                     name="radiogroup-rho"
+                    value="single"
                     checked
                   />
                   <label for="rho-radio-1-1">Single Value</label>
                 </li>
                 <li>
-                  <input id="rho-radio-1-2" type="radio" name="radiogroup-rho" />
+                  <input id="rho-radio-1-2" type="radio" name="radiogroup-rho" value="multiple"/>
                   <label for="rho-radio-1-2">Multiple Values</label>
                 </li>
                 <li>
-                  <input id="rho-radio-1-3" type="radio" name="radiogroup-rho" />
+                  <input id="rho-radio-1-3" type="radio" name="radiogroup-rho" value="range"/>
                   <label for="rho-radio-1-3">Range Values</label>
                 </li>
               </ul>
@@ -239,10 +242,19 @@ torus.out0.04971.h5`;
           let datacollection = $('#select-datacollection').val();
           let dataset = $('#select-dataset').val();
           let username = "{{ user.nickname }}";
+          // radiogroup-rr rr-para
           // radiogroup-tva tva-para
           // radiogroup-rho rho-para
-          // radiogroup-rr rr-para
-          
+          para_list = ["rr","tva","rho"];
+          for (const para of para_list) {
+            let radiogroupname = 'input[name="radiogroup-'+para+'"]:checked';
+            let selectedValue = $(radiogroupname).val();
+            console.log(selectedValue);
+            let para_id = "#" + para + "-para";
+            let para_value = $(para_id).val();
+            console.log(para_value);
+          };  
+
           let data = {"userName": username,
             "experimentName": experimentname,
             "dataCollection": datacollection,
