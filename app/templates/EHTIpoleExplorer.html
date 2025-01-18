@@ -246,15 +246,16 @@ torus.out0.04971.h5`;
           // radiogroup-tva tva-para
           // radiogroup-rho rho-para
           para_list = ["rr","tva","rho"];
+          const para_dict = {};
           for (const para of para_list) {
             let radiogroupname = 'input[name="radiogroup-'+para+'"]:checked';
             let selectedValue = $(radiogroupname).val();
-            console.log(selectedValue);
             let para_id = "#" + para + "-para";
             let para_value = $(para_id).val();
-            console.log(para_value);
+            para_dict[para+"_type"]=selectedValue;
+            para_dict[para+"value"]=para_value;
           };  
-
+          console.log(para_dict);
           let data = {"userName": username,
             "experimentName": experimentname,
             "dataCollection": datacollection,
