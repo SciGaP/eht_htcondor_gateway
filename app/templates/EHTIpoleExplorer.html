@@ -225,10 +225,13 @@ torus.out0.04971.h5`;
        // set the default parameter
        // rr 140,150,160
        $("#rr-para").val('140,150,160');
+       $('input[name="radiogroup-rr"][value="multiple"]').prop('checked', true).change();
        // tva 10:100:10
        $("#tva-para").val("10:100:10");
+       $('input[name="radiogroup-tva"][value="range"]').prop('checked', true).change();
        // rho0 1.4705331615886175e+18
        $("#rho-para").val('1.4705331615886175e+18');
+       $('input[name="radiogroup-rho"][value="single"]').prop('checked', true).change();
       }
 
       $(document).ready(function () {
