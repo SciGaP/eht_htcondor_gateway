@@ -208,7 +208,8 @@ def validate_explorer_staging(input):
     #     }
     # }
 
-    md5s = getmd5_images(input["dataCollection"], input["dataset"], input["imageList"])
+    # md5s = getmd5_images(input["dataCollection"], input["dataset"], input["imageList"])
+    print(input)
     return
 
 
