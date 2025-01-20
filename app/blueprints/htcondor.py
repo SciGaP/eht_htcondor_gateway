@@ -231,7 +231,7 @@ def validate_explorer_staging(input):
 
     # dict to hold all parameters
     V = {}
-    V['ehtimage'] = list(md5s.keys())
+    V['ehtimages'] = list(md5s.keys())
 
     # pass parameters
     para_list =["rr","tva","rho"]
@@ -241,7 +241,13 @@ def validate_explorer_staging(input):
         value_list = parse_values_bytype(atype,avalue)
         #print(value_list)
         V[para] = value_list
-    print(V)
+
+    # generate list of all jobs
+    import itertools
+    listoflists = [V["ehtimages"],V["rr"],V["tva"],V["rho"]]
+    para_combines = list(itertools.product(*listoflists))
+    #print(para_combines)
+    #print(len(para_combines))
     return
 
 
