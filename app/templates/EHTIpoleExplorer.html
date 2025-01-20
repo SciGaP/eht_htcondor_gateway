@@ -308,7 +308,7 @@ torus.out0.04971.h5`;
             if (validateinfo.style.display == "none") {
              validateinfo.style.display = "block";}
             var infolist = "";
-            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
+            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Number of Images":"imageNumber","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
             for (key in displayfield) {
               infolist += key + ": " + results[displayfield[key]] + "\n"
             }

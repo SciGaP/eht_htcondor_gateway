@@ -275,6 +275,7 @@ def validate_explorer_staging(input):
     v_out ["experimentId"] = batchID
     v_out["expectedOutput"] = len(para_combines)
     v_out["BATCH"] = batchFile
+    v_out["imageNumber"] = len(V['ehtimages'])
     outputsize = 8.8 * v_out["expectedOutput"]
     if outputsize < 1000.0:
         v_out['outputSize'] = str(outputsize) + " MB"
