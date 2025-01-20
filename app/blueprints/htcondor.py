@@ -227,7 +227,7 @@ def validate_explorer_staging(input):
     # }
 
     md5s = getmd5_images(input["dataCollection"], input["dataset"], input["imageList"])
-    print(md5s)
+    #print(md5s)
 
     # dict to hold all parameters
     V = {}
@@ -248,11 +248,27 @@ def validate_explorer_staging(input):
     para_combines = list(itertools.product(*listoflists))
     #print(para_combines)
     #print(len(para_combines))
-
+ 
     batchID = get_experimentid(username=input["userName"])
     batchFile = f"{batchID}_BATCH.ALL"
 
     workspace = get_workspace()
+    # generate batchfile
+    # osdf:///ospool/uc-shared/public/eht/GRMHD_kharma-v3/Ma+0.5_w4/torus.out0.04011.h5,7f283e457a6d15ca5ef3b5f03e62ba4b,04011,1,10,3.797623637989993e+17
+    url_prefix = f'osdf:///ospool/uc-shared/public/eht/{input["dataCollection"]}/{input["dataset"]}'
+    batchdata = []
+    for job in para_combines:
+        inputh5 = job[0]
+        inputh5_path = os.path.join(url_prefix,inputh5)
+        md5 = md5s[inputh5]
+        namepart = inputh5.split(".")[2]
+        rr,tva, rho = job[1:]
+        batchdata.append([inputh5_path,md5,namepart,rr,tva,rho])
+    
+    with open(os.path.join(workspace["staging"], batchFile),'w', newline='') as file:
+        import csv
+        writer = csv.writer(file, delimiter=",")
+        writer.writerows(batchdata)
 
     # generate stage json
     v_out = {}
