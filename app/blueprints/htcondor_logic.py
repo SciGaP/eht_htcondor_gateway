@@ -1,3 +1,4 @@
+import json
 from flask import Blueprint, render_template, request, send_from_directory, jsonify
 
 from .htcondor import checkuser, validate_batch_staging, job_submit_batch, validate_explorer_staging
@@ -74,7 +75,8 @@ def validate_explorer():
     v['experimentName'] = args['experimentName']
     v['application'] = "ipole-explorer"
     v['imageList'] = args['imageList']
-    v['parameters'] = args['parameters']
+    # convert to to dict object from a string
+    v['parameters'] = json.loads(args['parameters'])
 
     validate_results = validate_explorer_staging(input=v)
 

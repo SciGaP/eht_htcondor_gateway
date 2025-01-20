@@ -272,11 +272,26 @@ torus.out0.04971.h5`;
             "dataCollection": datacollection,
             "dataset":dataset,
             "imageList": imagelist,
-            "parameters": para_dict,
+            "parameters":  JSON.stringify(para_dict),
           };
           console.log(data);
           // send data to validate
-          var baseurl = "/htcondor/validate/expolorer";
+          var baseurl = "/htcondor/validate/explorer";
+          $.ajax({
+            url: baseurl,
+            type: "get",
+            data: data,
+          }).done(function(results){
+            let validateinfo = document.getElementById("validation-result");
+            if (validateinfo.style.display == "none") {
+             validateinfo.style.display = "block";}
+            var infolist = "";
+            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Parameters":"parameterFile","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
+            for (key in displayfield) {
+              infolist += key + ": " + results[displayfield[key]] + "\n"
+            }
+            document.getElementById("experiment-info").innerHTML = infolist;
+          });
         });
 
       })
