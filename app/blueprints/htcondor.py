@@ -1,4 +1,4 @@
-import os, sys, json
+import os, sys, json, re
 from dotenv import load_dotenv
 from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist
 
@@ -162,12 +162,30 @@ def validate_batch_staging(input):
     return stage_json
 
 
-def getmd5_images(datecollection, dataset, imagelist):
+def getmd5_images(datacollection, dataset, imagelist):
     """get md5 for image list
     return dict{imagename: md5}
     """
+    # split name by \n or ,
+    images = re.split(r'[,\n]', imagelist)
+    print(images)
 
-    return
+    # get md5
+    dataCollection_root = os.path.expanduser("~/eht_dataset")
+    md5file = os.path.join(dataCollection_root,datacollection,"md5",f"md5_{dataset}.tsv")
+    if not os.path.exists(md5file):
+        print("can't find md5 file!")
+        sys.exit()
+    # Using a dictionary to store a->b mapping
+    a_to_b_mapping = {}
+    with open(md5file, "r") as file:
+        for line in file:
+            a, b = line.split()  
+            a_to_b_mapping[a] = b
+
+    # Find b values for the desired a values
+    results = {a: a_to_b_mapping.get(a, None) for a in images}
+    return results
 
 
 def validate_explorer_staging(input):
@@ -208,8 +226,9 @@ def validate_explorer_staging(input):
     #     }
     # }
 
-    # md5s = getmd5_images(input["dataCollection"], input["dataset"], input["imageList"])
-    print(input)
+    md5s = getmd5_images(input["dataCollection"], input["dataset"], input["imageList"])
+    print(md5s)
+    
     return
 
 
