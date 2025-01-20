@@ -1,6 +1,7 @@
 import os, sys, json, re
 from dotenv import load_dotenv
 from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist
+from .utilites import parse_values_bytype
 
 load_dotenv()
 
@@ -168,7 +169,6 @@ def getmd5_images(datacollection, dataset, imagelist):
     """
     # split name by \n or ,
     images = re.split(r'[,\n]', imagelist)
-    print(images)
 
     # get md5
     dataCollection_root = os.path.expanduser("~/eht_dataset")
@@ -228,7 +228,20 @@ def validate_explorer_staging(input):
 
     md5s = getmd5_images(input["dataCollection"], input["dataset"], input["imageList"])
     print(md5s)
-    
+
+    # dict to hold all parameters
+    V = {}
+    V['ehtimage'] = list(md5s.keys())
+
+    # pass parameters
+    para_list =["rr","tva","rho"]
+    for para in para_list:
+        atype = input['parameters'][f'{para}_type']
+        avalue = input['parameters'][f'{para}_value']
+        value_list = parse_values_bytype(atype,avalue)
+        #print(value_list)
+        V[para] = value_list
+    print(V)
     return
 
 
