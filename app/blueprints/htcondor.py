@@ -248,7 +248,34 @@ def validate_explorer_staging(input):
     para_combines = list(itertools.product(*listoflists))
     #print(para_combines)
     #print(len(para_combines))
-    return
+
+    batchID = get_experimentid(username=input["userName"])
+    batchFile = f"{batchID}_BATCH.ALL"
+
+    workspace = get_workspace()
+
+    # generate stage json
+    v_out = {}
+    v_out ["experimentId"] = batchID
+    v_out["expectedOutput"] = len(para_combines)
+    v_out["BATCH"] = batchFile
+    outputsize = 8.8 * v_out["expectedOutput"]
+    if outputsize < 1000.0:
+        v_out['outputSize'] = str(outputsize) + " MB"
+    else:
+        v_out['outputSize'] = str(outputsize / 1000) + " GB"
+
+    # yes or no
+    # if no, need add validateInformation
+    v_out["validate"] = "yes"
+    v_out["validateInformation"] = ""
+    
+    stage_json = {**input, **v_out}
+    stage_file = os.path.join(workspace["staging"], f'{v_out["experimentId"]}.json')
+    with open(stage_file, "w") as f:
+        json.dump(stage_json, f)
+
+    return stage_json
 
 
 def job_submit_batch(username, experimentid):
