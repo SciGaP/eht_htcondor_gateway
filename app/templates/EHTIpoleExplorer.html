@@ -291,7 +291,7 @@ torus.out0.04971.h5`;
             "imageList": imagelist,
             "parameters":  JSON.stringify(para_dict),
           };
-          console.log(data);
+          //console.log(data);
           // send data to validate
           var baseurl = "/htcondor/validate/explorer";
           $.ajax({
@@ -299,11 +299,16 @@ torus.out0.04971.h5`;
             type: "get",
             data: data,
           }).done(function(results){
+            console.log(results);
+            if (results['validate'] != "yes") {
+              alert("Validation failed: " + results['validateInformation']);
+              return;
+            }
             let validateinfo = document.getElementById("validation-result");
             if (validateinfo.style.display == "none") {
              validateinfo.style.display = "block";}
             var infolist = "";
-            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Parameters":"parameterFile","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
+            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
             for (key in displayfield) {
               infolist += key + ": " + results[displayfield[key]] + "\n"
             }
