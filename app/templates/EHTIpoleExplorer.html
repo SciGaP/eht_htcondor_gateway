@@ -160,6 +160,17 @@
           <div class="lineeightyfive"></div>
           <div class="columnsettingsf" id="validation-result" style="display: none">
             <h2 class="settingsforht ui heading size-headings">Validation Result</h2>
+            <p class="selecta ui heading size-texts" id="readytosubmit">        <span>
+              <svg fill="green" width="16" height="16" viewBox="0 0 16 16">
+                <path
+                  d="M7 11.414 11.914 6.5 10.5 5.086 7 8.586l-1.5-1.5L4.086 8.5 7 11.414Z"
+                ></path>
+                <path
+                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM2 8a6 6 0 1 1 12 0A6 6 0 0 1 2 8Z"
+                ></path>
+              </svg>
+            </span>
+            <span id="essay-message" style="color:var(--red_900);">Your Experiment is ready to submit!</span></p>
             <textarea id="experiment-info" name="experiment-info" placeholder="Validation result" class="group103">
               Data Collection: GRMHD_kharma-v3
               Dataset: Ma+0.94_w4
@@ -167,6 +178,7 @@
               Total Jobs: 36000
               Estimated Output Size: 316.8 GB
             </textarea>
+            <p><span style="color:green;">&#x1F6C8;</span> It may take up several minutes to complete the submission.</p>
           </div>
           <div class="rowvalidate">
               <button class="flex-row-center-center validate_enable" id="bn-validate">Validate</button>
@@ -234,6 +246,11 @@ torus.out0.04971.h5`;
        $('input[name="radiogroup-rho"][value="single"]').prop('checked', true).change();
       }
 
+      // submit a job by id
+      function sumbit_experiment(username,eid) {
+        console.log(username,eid);
+      }
+
       $(document).ready(function () {
 
         // validate
@@ -291,6 +308,11 @@ torus.out0.04971.h5`;
               infolist += key + ": " + results[displayfield[key]] + "\n"
             }
             document.getElementById("experiment-info").innerHTML = infolist;
+            // enable submit button
+            $('#bn-submit').removeAttr("disabled");
+            $('#bn-submit').click(function(){
+              sumbit_experiment(results['userName'],results['experimentId']);
+            });            
           });
         });
 
