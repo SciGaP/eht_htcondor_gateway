@@ -1,7 +1,7 @@
 import json
 from flask import Blueprint, render_template, request, send_from_directory, jsonify
 
-from .htcondor import checkuser, validate_batch_staging, job_submit_batch, validate_explorer_staging
+from .htcondor import checkuser, validate_batch_staging, job_submit_batch, validate_explorer_staging, job_submit_explorer
 
 htcondor_blueprint = Blueprint("htcondor", __name__)
 
@@ -93,7 +93,7 @@ def submit_batch():
     args = request.args
 
     if "dryrun" in args:
-        # sleep 60 seconds
+        # sleep 20 seconds
         import time
         time.sleep(20)
         return {"submit":"yes","submitInformation":""}
@@ -102,3 +102,22 @@ def submit_batch():
 
     return jsonify(results)
 
+# submit explorer job
+@htcondor_blueprint.route("/htcondor/submit/explorer")
+def submit_explorer():
+    """
+        parameters:
+            userName, experimentId
+    """
+
+    args = request.args
+
+    if "dryrun" in args:
+        # sleep 10 seconds
+        import time
+        time.sleep(10)
+        return {"submit":"yes","submitInformation":""}
+    
+    results = job_submit_explorer(username = args['userName'], experimentid = args['experimentId'])
+
+    return jsonify(results)

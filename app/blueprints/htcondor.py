@@ -320,6 +320,10 @@ def job_submit_batch(username, experimentid):
 
     return {"submit": "yes", "submitInformation": ""}
 
+def job_submit_explorer(username, experimentid):
+    """submit explorer job"""
+
+    return {"submit": "yes", "submitInformation": ""}
 
 def checkexperiment(experimentid):
     """check status of the experiments"""
