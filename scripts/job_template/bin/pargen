@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#
+# Copyright 2021 Chi-kwan Chan
+# Copyright 2021 Steward Observatory
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You
+# may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+
+d=$(basename "${PWD}" | cut -d_ -f1,2)
+r=/home/ehtbot/GRMHD_kharma-v3
+
+k="${d:0:-3}"
+w="${d:  -1}"
+
+awk '{if($3=='${w}') {print $1","$2","$4}}' "${r}/rho0/rho0_${k}.tsv" | while read Rh_i_rho0; do
+	for p in "${r}/${d}/"torus.out0.*.h5; do
+		f=$(basename $p)
+		s=${f:11:-3}
+		md5=$(awk '{if($1=="'${f}'") {print $2}}' "${r}/md5/md5_${k}_w${w}.tsv")
+		#echo osdf://${p},${md5},${s},${Rh_i_rho0}
+		echo osdf://${p},${md5},${s},${Rh_i_rho0}
+
+	done
+done

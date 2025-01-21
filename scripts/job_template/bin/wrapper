@@ -1,0 +1,142 @@
+#!/usr/bin/env bash
+#
+# Copyright 2021 Chi-kwan Chan
+# Copyright 2021 Steward Observatory
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You
+# may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+
+# This is a wrapper script for running `ipole` on the Open Science
+# Grid with HTCondor.  Note that `ipole` accept more options via a
+# paramter file, compare to command line arguments.  Hence, this
+# wrapper takes command line arguments, turn them into a `ipole`
+# parameter file "ipole.par" through a template, and then run
+# `ipole -par ipole.par` to fully configure `ipole`.
+
+if test $# -lt 2; then
+	cat <<EOF
+usage: $0 <input> <input_md5> <Tp/Te> <inclination> <M_unit>
+a wrapper to run \`ipole\` on the Open Science Grid with HTCondor
+EOF
+	exit 1
+fi
+
+set -e
+
+ipole="$(dirname "$0")/ipole"
+ipmd5="17aaff150f762ec6b2a242cf1bd22291"
+
+input="$1"
+inmd5="$2"
+Rhigh="$3"
+theta="$4"
+rho0="$5"
+
+mymd5=$(md5sum "${ipole}" | cut -d' ' -f1)
+if [ x"$mymd5" == x"$ipmd5" ]; then
+	>&2 echo "md5("${ipole}") == ${mymd5} == ${ipmd5}"
+else
+	>&2 echo "WARNING: md5("${ipole}") == ${mymd5} != ${ipmd5}"
+fi
+
+mymd5=$(md5sum "${input}" | cut -d' ' -f1)
+if [ x"$mymd5" == x"$inmd5" ]; then
+	>&2 echo "md5(${input}) == ${mymd5} == ${inmd5}"
+else
+	>&2 echo "WARNING: md5(${input}) == ${mymd5} != ${inmd5}"
+fi
+
+cat <<EOF | tee ipole.par
+# Automatically generated \`ipole\` parameter file
+
+# Common
+dump    ${input}
+outfile image.h5
+nx      400
+ny      400
+
+# Emission 1=Pandya, 4=Dexter, others are debug/custom
+emission_type 4
+
+# Sgr A* parameters
+MBH     4.14e6
+dsource 8.127e3
+freqcgs 230.e9
+M_unit  ${rho0}
+
+# e- Temperature, via the Rhigh model described
+trat_small 1
+trat_large ${Rhigh}
+
+# Adaptive res, enable by setting a minimum "base" image size
+#nx_min 40
+#ny_min 40
+refine_abs = 2e-2
+refine_rel = 1e-2
+refine_cut = 0
+
+# Camera
+rcam     1000
+
+# Values in degrees
+thetacam ${theta}
+phicam   0
+rotcam   0
+
+# FOV from Earth
+fovx_dsource 200
+fovy_dsource 200
+
+# Geodesic accuracy parameters
+#eps      0.01
+#maxnstep 50000
+
+# Options
+# Convention for EVPA defining stokes Q,U:
+# 0 is measured East of North, 1 is North of West
+qu_conv 0
+# Don't produce an output file
+quench_output 0
+# Add a .ppm image of the unpolarized flux
+add_ppm 0
+# Only calculate the unpolarized image
+only_unpolarized 0
+# 1 to emit only for th>PI/2, 2 for other hemisphere
+# 0 emits everywhere
+counterjet 0
+# Offset for each geodesic in pixels, used to prevent
+# overtraining ML models to pixel locations
+xoff 0
+yoff 0
+
+# Path trace -- save emissivities & local state
+# for every step along a geodesic, or several
+trace 0
+# Pixel to trace i,j (rightward from left, upward from bottom)
+#trace_i 40
+#trace_j 40
+# Or trace every N pixels in each direction
+trace_stride 1
+# Trace file name
+trace_outf trace.h5
+EOF
+
+mymd5=$(md5sum "ipole.par" | cut -d' ' -f1)
+>&2 echo "md5(ipole.par) == ${mymd5}"
+
+"${ipole}"        -par ipole.par
+"${ipole}" -check -par ipole.par
+
+mymd5=$(md5sum "image.h5" | cut -d' ' -f1)
+>&2 echo "md5(image.h5) == ${mymd5}"
+
+rm ipole.par

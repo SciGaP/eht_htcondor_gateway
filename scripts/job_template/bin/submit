@@ -1,0 +1,56 @@
+#!/usr/bin/env condor_submit
+#
+# Copyright 2021 Chi-kwan Chan
+# Copyright 2021 Steward Observatory
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You
+# may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+
+# This is a submission script for running `ipole` on the Open Science
+# Grid with HTCondor.  It takes care file transfer, resuming, and
+# renaming.  It uses the `wrapper` script in the same "bin/" directory
+# within the `iipole-osg` git repository.  It can be submitted
+# normally with condor_submit:
+#
+#     condor_submit submit
+#
+# or run as a command directly `bin/submit`.
+
+executable = wrapper
+arguments  = $Fnx(input) $(md5) $(Rhigh) $(inc) $(rho0)
+
+batch_name = 
+getenv = True
+environment = "LD_LIBRARY_PATH=/srv"
+transfer_executable    = False
+should_transfer_files = YES
+transfer_input_files   = bin/,$(input)
+transfer_output_remaps = "\
+	image.h5=out/img_s$(snapshot)_Rh$(Rhigh)_i$(inc).h5"
+
+output = log/img_s$(snapshot)_Rh$(Rhigh)_i$(inc).out
+error  = log/img_s$(snapshot)_Rh$(Rhigh)_i$(inc).err
+log    = log/img_s$(snapshot)_Rh$(Rhigh)_i$(inc).log
+
+universe       = vanilla
+request_memory = 4 GB
+request_disk   = 1 GB
+request_cpus   = 4
+
+Requirements = HAS_SINGULARITY
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/osgvo-el7:latest"
+
+on_exit_hold     = (ExitBySignal == True) || (ExitCode > 1)
+periodic_hold    = ((CurrentTime - EnteredCurrentStatus) > 28800) && (JobStatus == 2)
+periodic_release = ((CurrentTime - EnteredCurrentStatus) > 60)    && (NumJobStarts < 5)
+
+queue 1 input,md5,snapshot,Rhigh,inc,rho0 from bin/parget |

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+# Copyright 2021 Chi-kwan Chan
+# Copyright 2021 Steward Observatory
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You
+# may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+
+# Find runs with corrupted input files
+grep 'WARNING: md5' log/*.err | sed 's|log/\(.*\)\.err:.*|\1|g' > BADINPUT
+if [ ! -s BADINPUT ]; then
+    echo 'No corrupted input files were seen.  Lucky!'
+    rm BADINPUT
+    exit 0
+fi
+
+# Rename outputs with corrupted input
+cat BADINPUT | while read l; do 
+    mv log/${l}.log log/${l}_BADINPUT.log
+    mv log/${l}.out log/${l}_BADINPUT.out
+    mv log/${l}.err log/${l}_BADINPUT.err
+    mv out/${l}.h5  out/${l}_BADINPUT.h5
+done
+
+# Prepare rerun if needed
+id=$(ls par/ | tail -n1)
+id=$(expr ${id: -2} + 1)
+
+sed 's|img_s\([0-9]*\)_Rh\([0-9]*\)_i\([0-9]*\).*|,\1,\2,\3,|g' BADINPUT |\
+while read l; do
+    grep $l par/BATCH.ALL
+done | tee par/batch.p${id}
