@@ -168,13 +168,16 @@ def getmd5_images(datacollection, dataset, imagelist):
     return dict{imagename: md5}
     """
     # split name by \n or ,
+    import urllib.parse
+    imagelist = urllib.parse.unquote(imagelist)
     images = re.split(r'[,\n]', imagelist)
-
+    #print(images, file=sys.stdout)
     # get md5
     dataCollection_root = os.path.expanduser("~/eht_dataset")
     md5file = os.path.join(dataCollection_root,datacollection,"md5",f"md5_{dataset}.tsv")
+    #print(md5file,file=sys.stdout)
     if not os.path.exists(md5file):
-        print("can't find md5 file!")
+        print("can't find md5 file!", md5file, file=sys.stdout)
         sys.exit()
     # Using a dictionary to store a->b mapping
     a_to_b_mapping = {}
@@ -227,7 +230,7 @@ def validate_explorer_staging(input):
     # }
 
     md5s = getmd5_images(input["dataCollection"], input["dataset"], input["imageList"])
-    #print(md5s)
+    #print(md5s,file=sys.stdout)
 
     # dict to hold all parameters
     V = {}

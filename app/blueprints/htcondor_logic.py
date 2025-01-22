@@ -71,7 +71,7 @@ def validate_explorer():
     v['dataCollection'] = args["dataCollection"]
     v['dataset'] = args["dataset"]
     # use default data set
-    v['dataset'] =  "Ma+0.94_w5"
+    v['dataset'] =  "Ma+0.94_w4"
     v['experimentName'] = args['experimentName']
     v['application'] = "ipole-explorer"
     v['imageList'] = args['imageList']

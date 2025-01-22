@@ -276,9 +276,11 @@ torus.out0.04971.h5`;
     }).done (function (results) {
         toggle_wait_animation();
         if (results['submit'] == "yes") {
-          alert("The job is submitted. Please check the progress through Experiments in Dashboard.");
+          Swal.fire({icon: "success", text:"The job is submitted. Please check the progress through Experiments in Dashboard."});
+          //alert("The job is submitted. Please check the progress through Experiments in Dashboard.");
         } else {
-          alert("Job submission failed: " + results['submitInformation']);
+          Swal.fire({icon: "error", text:"Job submission failed: " + results['submitInformation']});
+          //alert("Job submission failed: " + results['submitInformation']);
         }
         let validateinfo = document.getElementById("validation-result");
             if (validateinfo.style.display == "block") {

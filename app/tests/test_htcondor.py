@@ -54,8 +54,9 @@ def upload_submitsh():
     htcondor_utilities.put_file(submitsh, remote_path)
 
 def main():
-    test_explorer_submit()
-    upload_submitsh()
+    test_validate_explorer_staging()
+    #test_explorer_submit()
+    #upload_submitsh()
     return
 
 
