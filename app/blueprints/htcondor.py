@@ -1,6 +1,6 @@
 import os, sys, json, re
 from dotenv import load_dotenv
-from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist
+from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist, put_file
 from .utilites import parse_values_bytype
 
 load_dotenv()
@@ -322,6 +322,35 @@ def job_submit_batch(username, experimentid):
 
 def job_submit_explorer(username, experimentid):
     """submit explorer job"""
+
+    workspace = get_workspace()
+    userfolder = os.path.join(workspace["users"], username)
+
+    job_json = os.path.join(workspace["staging"], f"{experimentid}.json")
+    if not os.path.exists(job_json):
+        return {"submit": "no", "submitInformation": f"{job_json} is not found!"}
+
+    # test send file to the server
+    batch_file = os.path.join(workspace["staging"],f'{experimentid}_BATCH.ALL')
+    if os.path.exists(batch_file):
+        print("copy batch file.")
+        remote_path = "eht_workdirs/staging"
+        put_file(batch_file, remote_path)
+    else:
+        return {"submit": "no", "submitInformation": f"{batch_file} is not found!"}
+
+    # copy job_json to user folder,
+    jobfolder = experimentid.split("-")[1]
+    jobfolder = os.path.join(userfolder, jobfolder)
+    if not os.path.exists(jobfolder):
+        os.makedirs(jobfolder, exist_ok=True)
+    os.system(f"cp {job_json} {jobfolder}")
+
+    # submit the job
+    joblog = run_jobscript(experimentid)
+    logfile = os.path.join(jobfolder, "submit.log")
+    with open(logfile, "w") as f:
+        f.write(joblog)
 
     return {"submit": "yes", "submitInformation": ""}
 
