@@ -33,6 +33,9 @@ new_var="\"$1\""
 # use double quote for variable
 sed -i "s/batch_name =/batch_name = $new_var/g" bin/submit
 
+hostname=$(hostname)
+echo "$hostname"
+
 # submit job
 if [[ "$hostanme" == "ospool-eht2000" ]]; then
 	echo "running the submit command ..."
