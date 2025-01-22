@@ -37,7 +37,7 @@ hostname=$(hostname)
 echo "$hostname"
 
 # submit job
-if [[ "$hostanme" == "ospool-eht2000" ]]; then
+if [[ "$hostname" == "ospool-eht2000" ]]; then
 	echo "running the submit command ..."
 	bin/batches
 else

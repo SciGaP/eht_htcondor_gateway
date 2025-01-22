@@ -49,7 +49,7 @@ def test_explorer_submit():
 def upload_submitsh():
     """upload submit.sh"""
 
-    submitsh = os.path.expanduser("~//Projects/eht_website/scripts/jobsumbit.sh")
+    submitsh = os.path.expanduser("~//Projects/eht_website/scripts/jobsubmit.sh")
     remote_path = "eht_workdirs"
     htcondor_utilities.put_file(submitsh, remote_path)
 
