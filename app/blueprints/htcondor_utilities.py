@@ -62,7 +62,15 @@ def get_file(remote_path, local_path):
     with Connection(**target_host, gateway=Connection(**gateway)) as conn:
         result = conn.get(remote_path, local_path)
         return result
-    
+
+def put_file(local_path, remote_path):
+    """upload file to the sever"""
+    gateway, target_host = get_connection()
+
+    with Connection(**target_host, gateway=Connection(**gateway)) as conn:
+        result = conn.put(local_path, remote_path)
+        return result
+
 
 def extract_numbers_from_line(line):
     """find all the numbers from line"""
