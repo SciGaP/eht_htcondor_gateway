@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# check job outputs for a given user
+# ./checkjob.sh JunWang
+# JunWang-e785b87b:540
+# JunWang-ad6d9a5f:540
+# JunWang-36dc279e:0
+# JunWang-198ee5f8:0
+
 # Check if the user provided an argument
 if [ -z "$1" ]; then
   echo "Usage: $0 <username>"

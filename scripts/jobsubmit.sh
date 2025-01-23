@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# submit job by a given experimentid
+# create the subfolder under jobs
+# copy job_template to jobs/experimentid
+# check if experiment_BATCH.ALL exists in staging folder
+# copy this BATCH.ALL to replace BATCH.ALL in the job template folder
+# submit the job if runs on eht node
+
 # Check if the user provided an argument
 if [ -z "$1" ]; then
   echo "Usage: $0 <experiment_id>"
