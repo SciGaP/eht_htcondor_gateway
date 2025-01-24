@@ -68,9 +68,9 @@
           </div>
           <div>
             <div class="rowvalidate">
-              <button class="flex-row-center-center validate_enable" id="bn-validate">Retry Hold</button>
-              <button class="flex-row-center-center validate_enable" disabled id="bn-submit">Pause Job</button>
-              <button class="flex-row-center-center validate_enable" id="bn-validate">Kill Job</button>
+              <button class="flex-row-center-center validate_enable" id="bn-release" title="Releases jobs from the held state to run again">Retry Hold</button>
+              <button class="flex-row-center-center validate_enable" id="bn-stop" title="Mark job as finished; the outputs will be sent to Gateway.">Stop Job</button>
+              <button class="flex-row-center-center validate_enable" id="bn-kill" title="Kill the job and delete the outputs">Kill Job</button>
             </div>          
               </div>
       </div>
