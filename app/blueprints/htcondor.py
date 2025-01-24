@@ -320,8 +320,8 @@ def job_submit_batch(username, experimentid):
     os.system(f"cp {job_json} {jobfolder}")
 
     # submit the job
-    #joblog = run_jobscript(experimentid)
-    joblog = "dry run"
+    joblog = run_jobscript(experimentid)
+    #joblog = "dry run"
     logfile = os.path.join(jobfolder, "submit.log")
     with open(logfile, "w") as f:
         f.write(joblog)
@@ -358,8 +358,8 @@ def job_submit_explorer(username, experimentid):
     os.system(f"cp {job_json} {jobfolder}")
 
     # submit the job
-    #joblog = run_jobscript(experimentid)
-    joblog = "dry run"
+    joblog = run_jobscript(experimentid)
+    #joblog = "dry run"
     logfile = os.path.join(jobfolder, "submit.log")
     with open(logfile, "w") as f:
         f.write(joblog)
