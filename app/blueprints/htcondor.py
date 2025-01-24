@@ -51,8 +51,8 @@ def userhistory(username):
         if os.path.isdir(os.path.join(userfolder, name))
     ]
     ex_num = len(experiments)
-    # need to add jobid back
-    experiments = [f"{username}_{x}" for x in experiments]
+    # need to add username_foldername to the right Id
+    experiments = [f"{username}-{x}" for x in experiments]
     return {"experiments": ex_num, "jobids": experiments}
 
 

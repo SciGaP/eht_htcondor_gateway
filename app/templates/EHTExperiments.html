@@ -50,10 +50,20 @@
               <p class="selecta ui heading size-texts"><span style="color:green;"><strong>&#x1F6C8;</strong></span> Click the experiment to check the status in HTCondor.</p>
             </div>
             {% endif %}
-            
+          </div>            
             <div class="lineeightyfive"></div>
-          </div>
-
+            <div class="columntitle">
+              {% if message['recents'] > 0 %}
+              <h2 class="datacollection ui heading size-headings">Past Experiments</h2>
+              <div id="running">
+                <ul>
+                  {% for item in message['recents_jobids'] %}
+                  <li><a href="{{ url_for('website.experiment', experimentid = item) }}"><strong>ExperimentID:</strong> {{item}} </a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+            </div>              
 
         </div>
       </div>
