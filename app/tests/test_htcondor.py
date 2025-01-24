@@ -31,32 +31,40 @@ def test_validate_explorer_staging():
 
     return result
 
+
 def test_explorer_submit():
     """test submit explorer job"""
     results = test_validate_explorer_staging()
-    experimentid = results['experimentId']
-    batch = results['BATCH']
+    experimentid = results["experimentId"]
+    batch = results["BATCH"]
     print(experimentid)
     print(batch)
 
     # test send file to the server
-    batch_file = os.path.expanduser(os.path.join("~/eht_workspace/staging",f'{experimentid}_BATCH.ALL'))
+    batch_file = os.path.expanduser(
+        os.path.join("~/eht_workspace/staging", f"{experimentid}_BATCH.ALL")
+    )
     if os.path.exists(batch_file):
         print("copy batch file.")
         remote_path = "eht_workdirs/staging"
         htcondor_utilities.put_file(batch_file, remote_path)
 
+
 def upload_submitsh():
     """upload submit.sh"""
-
-    submitsh = os.path.expanduser("~/Projects/eht_website/scripts/jobsubmit.sh")
+    scripts_folder = os.path.expanduser("~/Projects/eht_website/scripts/")
+    scripts = os.listdir(scripts_folder)
     remote_path = "eht_workdirs"
-    htcondor_utilities.put_file(submitsh, remote_path)
+    for item in scripts:
+        if ".sh" in item:
+            submitsh = os.path.join(scripts_folder, item)
+            htcondor_utilities.put_file(submitsh, remote_path)
+
 
 def main():
-    test_validate_explorer_staging()
-    #test_explorer_submit()
-    #upload_submitsh()
+    # test_validate_explorer_staging()
+    # test_explorer_submit()
+    upload_submitsh()
     return
 
 

@@ -17,7 +17,7 @@ def check_status():
     for user in workspace["usernames"]:
         # get list of submitted jobs from users
         userstatus = checkuser(user)
-        print(userstatus)
+        recentjobs = userstatus["recents_jobids"]
 
 
 def main():
