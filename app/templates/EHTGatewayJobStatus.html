@@ -40,18 +40,25 @@
                     <div class="columndone">
                       <div class="rowdone">
                         <h3 class="done ui heading size-headinglg">Done</h3>
-                        <h3 class="ui heading size-headinglg">Run</h3>
+                        <h3 class="ui heading size-headinglg"><pre>  Run</pre></h3>
                         <h3 class="ui heading size-headinglg">Hold</h3>
                         <h3 class="total ui heading size-headinglg">Total</h3>
                       </div>
-                      <div class="row_one">
+                      <div class="rowdone">
+                        <h3 class="done ui heading size-headingmd">{{message['status']['DONE']}}</h3>
+                        <h3 class="ui heading size-headingmd">{{message['status']['RUN']}}</h3>
+                        <h3 class="ui heading size-headingmd">{{message['status']['HOLD']}}</h3>
+                        <h3 class="total ui heading size-headingmd">{{message['status']['TOTAL']}}</h3>
+                        </div>
+
+                      <!-- <div class="row_one">
                         <p class="class-55twentynine ui text size-textmd">{{message['status']['DONE']}}</p>
                         <div class="rowzipcode">
                           <p class="zipcode-1 ui text size-textmd">{{message['status']['RUN']}}</p>
                           <p class="zipcode-2 ui text size-textmd">{{message['status']['HOLD']}}</p>
                           <p class="class-55twentynine ui text size-textmd">{{message['status']['TOTAL']}}</p>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="rowline108_one">
                       <div class="line108_one"></div>
