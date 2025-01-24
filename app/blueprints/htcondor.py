@@ -1,7 +1,8 @@
 import os, sys, json, re
+from datetime import datetime
 from dotenv import load_dotenv
 from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist, put_file
-from .utilites import parse_values_bytype
+from .utilites import parse_values_bytype, append_to_json
 
 load_dotenv()
 
@@ -308,6 +309,9 @@ def job_submit_batch(username, experimentid):
     if not os.path.exists(job_json):
         return {"submit": "no", "submitInformation": f"{job_json} is not found!"}
 
+    # extend the job json with submission info
+    newinfo ={"submit":"yes", "submitTime":datetime.now().isoformat(timespec='seconds')}
+    append_to_json(job_json, newinfo)
     # copy job_json to user folder,
     jobfolder = experimentid.split("-")[1]
     jobfolder = os.path.join(userfolder, jobfolder)
@@ -316,7 +320,8 @@ def job_submit_batch(username, experimentid):
     os.system(f"cp {job_json} {jobfolder}")
 
     # submit the job
-    joblog = run_jobscript(experimentid)
+    #joblog = run_jobscript(experimentid)
+    joblog = "dry run"
     logfile = os.path.join(jobfolder, "submit.log")
     with open(logfile, "w") as f:
         f.write(joblog)
@@ -342,6 +347,9 @@ def job_submit_explorer(username, experimentid):
     else:
         return {"submit": "no", "submitInformation": f"{batch_file} is not found!"}
 
+    # extend the job json with submission info
+    newinfo ={"submit":"yes", "submitTime":datetime.now().isoformat(timespec='seconds')}
+    append_to_json(job_json, newinfo)
     # copy job_json to user folder,
     jobfolder = experimentid.split("-")[1]
     jobfolder = os.path.join(userfolder, jobfolder)
@@ -350,7 +358,8 @@ def job_submit_explorer(username, experimentid):
     os.system(f"cp {job_json} {jobfolder}")
 
     # submit the job
-    joblog = run_jobscript(experimentid)
+    #joblog = run_jobscript(experimentid)
+    joblog = "dry run"
     logfile = os.path.join(jobfolder, "submit.log")
     with open(logfile, "w") as f:
         f.write(joblog)
