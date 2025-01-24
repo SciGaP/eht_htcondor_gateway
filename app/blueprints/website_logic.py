@@ -6,6 +6,7 @@ from whoosh.index import open_dir
 
 from .htcondor import checkuser, checkexperiment
 from .utilites import get_formatted_date
+import sys
 
 website_blueprint = Blueprint("website", __name__)
 
@@ -24,7 +25,8 @@ def about():
 @website_blueprint.route("/dashboard")
 # @login_required
 def dashboard():
-    message = checkuser(current_user.nickname, simple=True)
+    message = checkuser(current_user.nickname, simple=False)
+    print(message, file=sys.stdout)
     # return render_template("dashboard.html", user=current_user,message=message)
     datestr = get_formatted_date()
     return render_template(
@@ -84,6 +86,7 @@ def search():
         parsed_query = query_parser.parse(query)
         results = searcher.search(parsed_query)
         return render_template("components/search_results.html", results=results)
+
 
 @website_blueprint.route("/start_jupyter")
 def start_jupyter():

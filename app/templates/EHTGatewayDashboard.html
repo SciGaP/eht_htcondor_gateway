@@ -76,10 +76,10 @@
                       </a>
                     </li>
                     <li>
-                      <a class="submenu">
+                      <a class="submenu" href="{{ url_for('website.experiments') }}">
                           <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_clock.svg') }}" alt="Clock" class="clock_one" />
-                            <p class="ui text size-textmd">My Recent Experiments</p>
-                            <p class="group405 ui text size-textxs">7</p>
+                            <p class="ui text size-textmd">Running Experiments</p>
+                            <p class="group405 green ui text size-textxs">{{message['running']}}</p>
                       </a>
                     </li>
                   </div>

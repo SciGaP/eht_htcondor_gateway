@@ -433,6 +433,19 @@
   border-radius: var(--radius-md);
 }
 
+.group405.green {
+  color: var(--white_a700) !important;
+  margin-right: 16px;
+  background-color: var(--green_600);
+  width: 20px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: 20px;
+  border-radius: var(--radius-md);
+}
+
 .group405.red {
   color: var(--white_a700) !important;
   margin-right: 16px;
