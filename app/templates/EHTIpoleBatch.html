@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site created using create-react-app" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert2.all.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/font.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/styles.css') }}" />
@@ -136,9 +137,11 @@
     }).done (function (results) {
         toggle_wait_animation();
         if (results['submit'] == "yes") {
-          alert("The job is submitted. Please check the progress through Experiments in Dashboard.");
+          Swal.fire({icon: "success", text:"The job is submitted. Please check the progress through Experiments in Dashboard."});
+          //alert("The job is submitted. Please check the progress through Experiments in Dashboard.");
         } else {
-          alert("Job submission failed: " + results['submitInformation']);
+          Swal.fire({icon: "error", text:"Job submission failed: " + results['submitInformation']});
+          //alert("Job submission failed: " + results['submitInformation']);
         }
         let validateinfo = document.getElementById("validation-result");
             if (validateinfo.style.display == "block") {
@@ -163,7 +166,8 @@
           let experimentname = $('#experiment-name').val();
           if (experimentname == "") {
             //experimentname = $('#experiment-name').attr('placeholder');
-            alert("Please fill in the experiment name.");
+            Swal.fire({icon: "info", text:"Please fill in the experiment name."});
+            //alert("Please fill in the experiment name.");
             return;  
           }
           let datacollection = $('#select-datacollection').val();

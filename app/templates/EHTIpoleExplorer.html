@@ -31,7 +31,7 @@
             <h2 class="date ui heading size-textxs">12 March 2024</h2>
           </div>
           <div class="columntitle">
-            <h2 class="datacollection ui heading size-headings">Title</h2>
+            <h2 class="datacollection ui heading size-headings">Experiment Name</h2>
             <p class="selecta ui heading size-texts">A short descriptive name for this experiment</p>
             <label class="name">
               <input name="experiment-name" id="experiment-name" placeholder="" type="text" />
@@ -297,7 +297,7 @@ torus.out0.04971.h5`;
           let experimentname = $('#experiment-name').val();
           if (experimentname == "") {
             //experimentname = $('#experiment-name').attr('placeholder');
-            Swal.fire({icon: "info", text:"Please fill in the experiment title."});
+            Swal.fire({icon: "info", text:"Please fill in the experiment name."});
             //alert("Please fill in the experiment name.");
             return;  
           }
