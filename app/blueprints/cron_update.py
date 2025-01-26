@@ -9,6 +9,36 @@ from datetime import datetime
 import json
 from .htcondor import get_workspace, checkuser
 from .htcondor_utilities import run_ssh_cmd
+from .utilites import append_to_json
+
+
+def check_recentjob_status(userfolder, username, jobid, write=False, newinfo={}):
+    """check the recent job
+    if it has status
+    """
+    jobfile = os.path.join(userfolder, username, jobid.split("-")[1], f"{jobid}.json")
+    if not os.path.exists(jobfile):
+        print("jobfile is not found: ", jobfile)
+        return None
+
+    if write:
+        print("update ", jobid)
+        updateinfo = {
+            "status": newinfo["jobstatus"],
+            "output": newinfo["output"],
+            "updateTime": datetime.now().isoformat(timespec="seconds"),
+        }
+        append_to_json(jobfile, updateinfo)
+        return None
+
+    with open(jobfile, "r") as file:
+        data = json.load(file)
+
+    if "status" in data:
+        v = data
+        return v
+    else:
+        return None
 
 
 def check_all_status():
@@ -17,32 +47,58 @@ def check_all_status():
     if len(workspace["usernames"]) == 0:
         print("no user to check!")
         sys.exit()
-    # print(workspace["usernames"])
+    print("workspace", workspace)
     full_status = []
     for user in workspace["usernames"]:
         # get list of submitted jobs from users
         userstatus = checkuser(user)
         recentjobs = userstatus["recents_jobids"]
+        print("userstatus", userstatus)
         jobsoneht = check_jobs_eht(user)
         recentjobstatus = []
+        # the follow situation needed to be addressed
+        # job on the eht, may need to update the status
+        # job on the server, no need to update the status
+        # job on the server, if no "status", then it need update, otherwise just read out status
+        # step 1, check if there is "status", use the status
+        # step 2, if now status, try to update it from eht
+        # item is jobid
         for item in recentjobs:
-            if item in jobsoneht:
-                if int(jobsoneht[item]) > 0:
-                    recentjobstatus.append(
-                        {
-                            "jobid": item,
-                            "jobstatus": "finished",
-                            "output": jobsoneht[item],
-                        }
-                    )
-                else:
-                    recentjobstatus.append(
-                        {"jobid": item, "jobstatus": "canceled", "output": 0}
-                    )
-            else:
+            checked_status = check_recentjob_status(workspace["users"], user, item)
+            if checked_status is not None:
                 recentjobstatus.append(
-                    {"jobid": item, "jobstatus": "unknown", "output": 0}
+                    {
+                        "jobid": checked_status["experimentId"],
+                        "jobstatus": checked_status["status"],
+                        "output": checked_status["output"],
+                    }
                 )
+                continue  # skip the check
+            if item in jobsoneht:
+                newinfo = {}
+                if int(jobsoneht[item]) > 0:
+                    newinfo = {
+                        "jobid": item,
+                        "jobstatus": "finished",
+                        "output": jobsoneht[item],
+                    }
+                else:
+                    newinfo = {
+                        "jobid": item,
+                        "jobstatus": "canceled",
+                        "output": 0,
+                    }
+            else:
+                newinfo = {
+                    "jobid": item,
+                    "jobstatus": "unknown",
+                    "output": 0,
+                }
+            recentjobstatus.append(newinfo)
+            check_recentjob_status(
+                workspace["users"], user, item, write=True, newinfo=newinfo
+            )
+
         updated_status = {**userstatus, **{"recents_jobstatus": recentjobstatus}}
         print(updated_status)
         full_status.append(updated_status)
