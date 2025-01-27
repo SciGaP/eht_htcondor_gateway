@@ -1,24 +1,28 @@
+import json
+import os
 from datetime import datetime
+
 
 def get_formatted_date():
     # Get today's date
     today = datetime.today()
-    
+
     # Format date as '12 March 2024'
-    formatted_date = today.strftime('%d %B %Y')
-    
+    formatted_date = today.strftime("%d %B %Y")
+
     return formatted_date
+
 
 def parse_values_bytype(atype, astr):
     """parse three type of inputs
-        single value
-        a list of values: ","
-        a range: start:stop:step
+    single value
+    a list of values: ","
+    a range: start:stop:step
     """
 
     if ":" in astr:
         start, stop, step = map(int, astr.split(":"))
-        alist = list(range(start,stop,step))
+        alist = list(range(start, stop, step))
         if not stop in alist:
             alist.append(stop)
         alist = map(str, alist)
@@ -27,11 +31,9 @@ def parse_values_bytype(atype, astr):
         alist = astr.split(",")
     else:
         alist = [astr]
-    
+
     return alist
 
-import json
-import os
 
 def append_to_json(file_path, new_data):
     """
@@ -42,7 +44,7 @@ def append_to_json(file_path, new_data):
     """
     if os.path.exists(file_path):
         # Load existing data
-        with open(file_path, 'r') as file:
+        with open(file_path, "r") as file:
             try:
                 existing_data = json.load(file)
             except json.JSONDecodeError:
@@ -60,11 +62,13 @@ def append_to_json(file_path, new_data):
         raise ValueError("Existing JSON data must be a list or dictionary.")
 
     # Write updated data back to the file
-    with open(file_path, 'w') as file:
+    with open(file_path, "w") as file:
         json.dump(existing_data, file, indent=4)
+
 
 def main():
     print("Today:", get_formatted_date())
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
