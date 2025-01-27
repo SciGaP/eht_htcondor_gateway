@@ -19,6 +19,7 @@ def get_workspace():
     d_w = {}
     workspace = os.path.expanduser(os.getenv("workspace"))
     d_w["workspace"] = workspace
+    d_w['statussummary'] = os.path.join(workspace, "status_summary.json")
     d_w["staging"] = os.path.join(workspace, "staging")
     d_w["users"] = os.path.join(workspace, "users")
     if not os.path.exists(d_w["staging"]):
@@ -84,6 +85,15 @@ def checkuser(username, simple=False):
     userstatus["recents_jobids"] = [
         x for x in history["jobids"] if x not in userstatus["runningExperiments"]
     ]
+
+    # find more about recent jobs from status_summary 
+    if userstatus['recents'] > 0:
+        summaryfile = get_workspace()['statussummary']
+        with open(summaryfile, 'r') as file:
+            summary = json.load(file)
+        moreinfo = [x['recents_jobstatus'] for x in summary['status'] if x['username'] == username]
+        moreinfo = moreinfo[0]
+        userstatus.update({'recents_jobstatus':moreinfo})
 
     return userstatus
 

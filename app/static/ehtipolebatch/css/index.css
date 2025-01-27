@@ -21,10 +21,10 @@ img {
   height: auto;
 }
 
-a {
+/* a {
   text-decoration: none;
-  display: block;
-}
+  display: inline-block;
+} */
 
 [type="text"],
 input:where(:not([type])),

@@ -13,6 +13,33 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/components.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/EHTIpoleBatch.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
+    <style>
+        .joblabel {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold; /* Bold font */
+            width: 100px; /* Fixed width for all labels */
+        }
+        .jobcanceled {
+            background-color: grey;
+        }
+        .jobdone {
+            background-color: green;
+        }
+        .jobarchived {
+            background-color: #FF8C00;
+        }
+        li {
+          margin-top: 3px;
+          margin-bottom: 3px;
+        }
+ 
+  </style>
   </head>
   <body>
     <div class="columnhome-one">
@@ -55,10 +82,19 @@
             <div class="columntitle">
               {% if message['recents'] > 0 %}
               <h2 class="datacollection ui heading size-headings">Recent Experiments</h2>
-              <div id="running">
+              <div id="recents" style="width:80%">
                 <ul>
-                  {% for item in message['recents_jobids'] %}
-                  <li><a href="{{ url_for('website.experiment', experimentid = item) }}"><strong>ExperimentID:</strong> {{item}} </a></li>
+                  {% for item in message['recents_jobstatus'] %}
+                  <li>
+                    {% if item['jobstatus'] == "finished" %}
+                    <span class="joblabel jobdone">Done</span>
+                    {% elif item['jobstatus'] == "canceled" %}
+                    <span class="joblabel jobcanceled">Canceled</span>
+                    {% else %}
+                    <span class="joblabel jobarchived">Archived</span>
+                    {% endif %}
+                    <a href="{{ url_for('website.experiment', experimentid = item) }}"><strong>ExperimentID:</strong> {{item['jobid']}}</a>
+                  </li>
                   {% endfor %}
                 </ul>
               </div>
@@ -68,104 +104,6 @@
         </div>
       </div>
     </div>
-    <script>
 
-    function toggle_wait_animation() {
-      let wait_animation = document.getElementById("wait_animation");
-      if (wait_animation.style.display == "none") {
-        wait_animation.style.display = "flex";
-      } else {
-        wait_animation.style.display = "none";
-      }
-    }
-    //submit a job by id
-    function sumbit_experiment(username,eid) {
-      console.log(username,eid);
-      var baseurl = "/htcondor/submit/batch";
-      $.ajax({
-        url: baseurl,
-        type: "get",
-        data: {
-          "userName": username,
-          "experimentId": eid,
-          "dryrun": 1,
-        },
-        beforeSend: function() {
-        // disable your button here
-        $('#bn-submit').prop("disabled", true);
-        toggle_wait_animation();
-      },
-    }).done (function (results) {
-        toggle_wait_animation();
-        if (results['submit'] == "yes") {
-          alert("The job is submitted. Please check the progress through Experiments in Dashboard.");
-        } else {
-          alert("Job submission failed: " + results['submitInformation']);
-        }
-        let validateinfo = document.getElementById("validation-result");
-            if (validateinfo.style.display == "block") {
-             validateinfo.style.display = "none";}
-
-    });
-     }
-
-      $(document).ready(function () {
-
-        // select defult parameter files
-        $("#select-dataset").change(function () {
-          // the default one is the name without _w*
-          let para = "rho0_" + this.value.split("_")[0];
-          console.log(para);
-          $("#select-parameters").val(para);
-        });
-
-        // validate
-        $("#bn-validate").click(function () {
-          var baseurl = "/htcondor/validate/batch";
-          let experimentname = $('#experiment-name').val();
-          if (experimentname == "") {
-            //experimentname = $('#experiment-name').attr('placeholder');
-            alert("Please fill in the experiment name.");
-            return;  
-          }
-          let datacollection = $('#select-datacollection').val();
-          let dataset = $('#select-dataset').val();
-          let parameters = $('#select-parameters').val();
-          let username = "{{ user.nickname }}";
-          console.log(username);
-          $.ajax({
-            url: baseurl,
-            type: "get", //send it through get method
-            data: {
-              "userName": username,
-              "experimentName": experimentname,
-              "dataCollection": datacollection,
-              "dataset": dataset,
-              "parameterFile": parameters,
-            },
-          }).done(function (results) {
-            let validateinfo = document.getElementById("validation-result");
-            if (validateinfo.style.display == "none") {
-             validateinfo.style.display = "block";}
-            var infolist = "";
-            let displayfield={"Data Collection":"dataCollection","Dataset":"dataset","Parameters":"parameterFile","Total Jobs":"expectedOutput","Estimated Output Size":"outputSize"};
-            for (key in displayfield) {
-              infolist += key + ": " + results[displayfield[key]] + "\n"
-            }
-            document.getElementById("experiment-info").innerHTML = infolist;
-            //enable submit button
-            $('#bn-submit').removeAttr("disabled");
-            $('#bn-submit').click(function(){
-              sumbit_experiment(results['userName'],results['experimentId']);
-            });
-            // disable validate button
-            // no need to disable
-            //$('#bn-validate').prop('disabled', true);
-        });
-      });
-
-      });
-
-    </script>
   </body>
 </html>
