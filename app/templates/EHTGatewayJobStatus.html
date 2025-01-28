@@ -179,10 +179,27 @@
           confirmButtonText: "Yes!"
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire({
-              title: "Finished!",
-              text: "Job: " + eid + " has been released.",
-              icon: "success"
+            // call the release url
+            var baseurl = '/htcondor/release/' + eid;
+            console.log(baseurl);
+            $.ajax ({
+              url: baseurl,
+              type: "get",
+            }).done (function (results){
+              console.log(results);
+              if (results['run'] == 'yes') {
+                Swal.fire({
+                  title: "Finished!",
+                  text: "Job: " + eid + " has been released.",
+                  icon: "success"
+                });
+              } else {
+                Swal.fire({
+                  title: "Failed!",
+                  text: "Job release failed, it may caused by no job on hold currently on htcondor.",
+                  icon: "info"
+                });
+              }
             });
           }
         });

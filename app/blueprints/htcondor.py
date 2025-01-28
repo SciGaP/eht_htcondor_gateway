@@ -1,7 +1,7 @@
 import os, sys, json, re
 from datetime import datetime
 from dotenv import load_dotenv
-from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist, put_file
+from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist, put_file, run_ssh_cmd
 from .utilites import parse_values_bytype, append_to_json
 
 load_dotenv()
@@ -419,3 +419,14 @@ def checkexperiment(experimentid):
 
     newdata = {**{"job": data}, **{"status": jobstatus}, **{"outputs": outstatus}}
     return newdata
+
+def release_job(experimentid):
+    """run condor_release with experimentid"""
+    cmd = f"""condor_release -constraint 'JobBatchName == "{experimentid}"'"""
+    condor_release = run_ssh_cmd(cmd)
+    print("runcmdreturn:",condor_release, file=sys.stdout)
+    if hasattr(condor_release,"stdout"):
+        stdout = condor_release.stdout
+        return {"run":"yes","info": stdout}
+    else:
+        return {"run":"no", "info": f"failed: {cmd}"}

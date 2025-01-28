@@ -52,7 +52,10 @@ def run_ssh_cmd(cmd_str):
 
     # Connect to the target host via the gateway
     with Connection(**target_host, gateway=Connection(**gateway)) as conn:
-        result = conn.run(cmd_str, hide=True)
+        try:
+            result = conn.run(cmd_str, hide=True)
+        except Exception as e:
+            return e
         return result
 
 def get_file(remote_path, local_path):

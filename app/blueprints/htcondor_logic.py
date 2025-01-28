@@ -7,6 +7,7 @@ from .htcondor import (
     job_submit_batch,
     validate_explorer_staging,
     job_submit_explorer,
+    release_job,
 )
 
 htcondor_blueprint = Blueprint("htcondor", __name__)
@@ -145,8 +146,8 @@ def submit_explorer():
 @htcondor_blueprint.route("/htcondor/release/<experimentid>")
 def job_release(experimentid):
     """release the job"""
-
-    return
+    results = release_job(experimentid=experimentid)
+    return jsonify(results)
 
 
 # stop the job
