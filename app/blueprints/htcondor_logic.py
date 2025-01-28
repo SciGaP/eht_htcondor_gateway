@@ -8,6 +8,7 @@ from .htcondor import (
     validate_explorer_staging,
     job_submit_explorer,
     release_job,
+    kill_job,
 )
 
 htcondor_blueprint = Blueprint("htcondor", __name__)
@@ -170,5 +171,7 @@ def job_kill(experimentid):
     -- delete the output
     -- update job json ("cancelled")
     """
+    results = kill_job(experimentid=experimentid)
+    return jsonify(results)
 
     return

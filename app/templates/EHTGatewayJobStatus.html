@@ -160,11 +160,33 @@
           confirmButtonText: "Yes, kill it!"
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire({
-              title: "Killed!",
-              text: "Job: " + eid + " has been killed.",
-              icon: "success"
-            });
+            // call the release url
+            var baseurl = '/htcondor/kill/' + eid;
+            $.ajax ({
+              url: baseurl,
+              type: "get",
+              beforeSend: function () {
+                toggle_buttons();
+                toggle_wait_animation();
+              },
+            }).done (function (results){
+              console.log(results);
+              toggle_wait_animation();
+              toggle_buttons();
+              if (results['run'] == 'yes') {
+                  Swal.fire({
+                    title: "Killed!",
+                    text: "Job: " + eid + " has been killed.",
+                    icon: "success"
+                  });
+          } else {
+                Swal.fire({
+                  title: "Failed!",
+                  text: "Fail to remove the job from htcondor, please try again later.",
+                  icon: "info"
+                });
+              }
+            });            
           }
         });
       }

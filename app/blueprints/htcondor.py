@@ -1,7 +1,13 @@
 import os, sys, json, re
 from datetime import datetime
 from dotenv import load_dotenv
-from .htcondor_utilities import htcondor_status, run_jobscript, get_outputlist, put_file, run_ssh_cmd
+from .htcondor_utilities import (
+    htcondor_status,
+    run_jobscript,
+    get_outputlist,
+    put_file,
+    run_ssh_cmd,
+)
 from .utilites import parse_values_bytype, append_to_json
 
 load_dotenv()
@@ -19,7 +25,7 @@ def get_workspace():
     d_w = {}
     workspace = os.path.expanduser(os.getenv("workspace"))
     d_w["workspace"] = workspace
-    d_w['statussummary'] = os.path.join(workspace, "status_summary.json")
+    d_w["statussummary"] = os.path.join(workspace, "status_summary.json")
     d_w["staging"] = os.path.join(workspace, "staging")
     d_w["users"] = os.path.join(workspace, "users")
     if not os.path.exists(d_w["staging"]):
@@ -86,14 +92,18 @@ def checkuser(username, simple=False):
         x for x in history["jobids"] if x not in userstatus["runningExperiments"]
     ]
 
-    # find more about recent jobs from status_summary 
-    if userstatus['recents'] > 0:
-        summaryfile = get_workspace()['statussummary']
-        with open(summaryfile, 'r') as file:
+    # find more about recent jobs from status_summary
+    if userstatus["recents"] > 0:
+        summaryfile = get_workspace()["statussummary"]
+        with open(summaryfile, "r") as file:
             summary = json.load(file)
-        moreinfo = [x['recents_jobstatus'] for x in summary['status'] if x['username'] == username]
+        moreinfo = [
+            x["recents_jobstatus"]
+            for x in summary["status"]
+            if x["username"] == username
+        ]
         moreinfo = moreinfo[0]
-        userstatus.update({'recents_jobstatus':moreinfo})
+        userstatus.update({"recents_jobstatus": moreinfo})
 
     return userstatus
 
@@ -420,13 +430,26 @@ def checkexperiment(experimentid):
     newdata = {**{"job": data}, **{"status": jobstatus}, **{"outputs": outstatus}}
     return newdata
 
+
 def release_job(experimentid):
     """run condor_release with experimentid"""
     cmd = f"""condor_release -constraint 'JobBatchName == "{experimentid}"'"""
     condor_release = run_ssh_cmd(cmd)
-    print("runcmdreturn:",condor_release, file=sys.stdout)
-    if hasattr(condor_release,"stdout"):
+    print("runcmdreturn:", condor_release, file=sys.stdout)
+    if hasattr(condor_release, "stdout"):
         stdout = condor_release.stdout
-        return {"run":"yes","info": stdout}
+        return {"run": "yes", "info": stdout}
     else:
-        return {"run":"no", "info": f"failed: {cmd}"}
+        return {"run": "no", "info": f"failed: {cmd}"}
+
+
+def kill_job(experimentid):
+    """run condor_release with experimentid"""
+    cmd = f"""condor_rm -constraint 'JobBatchName == "{experimentid}"'"""
+    condor_release = run_ssh_cmd(cmd)
+    print("runcmdreturn:", condor_release, file=sys.stdout)
+    if hasattr(condor_release, "stdout"):
+        stdout = condor_release.stdout
+        return {"run": "yes", "info": stdout}
+    else:
+        return {"run": "no", "info": f"failed: {cmd}"}
