@@ -75,6 +75,8 @@
             </div>
           </div>
           <div>
+            <div id="wait_animation" style="display:none;justify-content: center;width:90%;"> <span class="loader"></span></div>
+
             <div class="rowvalidate">
               <button class="flex-row-center-center validate_enable" id="bn-release" onclick="releasejob()" title="Releases jobs from the held state to run again">Retry Hold</button>
               <button class="flex-row-center-center validate_enable" id="bn-stop" onclick="stopjob()" title="Mark job as finished; the outputs will be sent to Gateway.">Stop Job</button>
@@ -117,6 +119,31 @@
         // The last segment is "john"
         const username = segments[segments.length - 1];
         console.log(username); // Output: "john"  
+      }
+
+      // toggle wait animation
+      function toggle_wait_animation() {
+        let wait_animation = document.getElementById("wait_animation");
+        if (wait_animation.style.display == "none") {
+          wait_animation.style.display = "flex";
+        } else {
+          wait_animation.style.display = "none";
+        }
+      }
+
+      // toggle buttons
+      function toggle_buttons() {
+        const buttonIds = ['bn-release', 'bn-stop', 'bn-kill'];
+        // Loop through the array of IDs
+        for (let i = 0; i < buttonIds.length; i++) {
+            // Get the button by its ID
+            const button = document.getElementById(buttonIds[i]);
+
+            // Toggle the disabled state of the button
+            if (button) {
+                button.disabled = !button.disabled;
+            }
+        }        
       }
 
       // kill job by id
@@ -185,8 +212,14 @@
             $.ajax ({
               url: baseurl,
               type: "get",
+              beforeSend: function () {
+                toggle_buttons();
+                toggle_wait_animation();
+              },
             }).done (function (results){
               console.log(results);
+              toggle_wait_animation();
+              toggle_buttons();
               if (results['run'] == 'yes') {
                 Swal.fire({
                   title: "Finished!",
