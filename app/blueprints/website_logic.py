@@ -12,7 +12,7 @@ from flask_login import current_user, login_required
 from whoosh.qparser import QueryParser
 from whoosh.index import open_dir
 
-from .htcondor import checkuser, checkexperiment
+from .htcondor import checkuser, checkexperiment, load_jobjson
 from .utilites import get_formatted_date
 import sys
 
@@ -82,6 +82,18 @@ def experiment(experimentid):
     # return render_template("experiment.html", user=current_user, message = message)
     return render_template(
         "EHTGatewayJobStatus.html", user=current_user, message=message
+    )
+
+
+@website_blueprint.route("/experimenthistory/<experimentid>")
+# @login_required
+def experimenthistory(experimentid):
+    """display the experiment summary page"""
+
+    message = load_jobjson(experimentid)
+
+    return render_template(
+        "EHTGatewayJobSumarry.html", user=current_user, message=message
     )
 
 

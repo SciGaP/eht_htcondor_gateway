@@ -115,7 +115,7 @@
                     {% else %}
                     <span class="joblabel jobarchived">Archived</span>
                     {% endif %}
-                    <a href="{{ url_for('website.experiment', experimentid = item) }}"><strong>ExperimentID:</strong> {{item['jobid']}}</a>
+                    <a href="{{ url_for('website.experimenthistory', experimentid = item['jobid']) }}"><strong>ExperimentID:</strong> {{item['jobid']}}</a>
                   </li>
                   {% endfor %}
                 </ul>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Submission web form1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert2.all.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/EHTIpoleBatch.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
+  </head>
+  <body>
+    <div class="columnhome-one">
+      <header class="headerhome_one">
+        <a href="{{ url_for('website.dashboard') }}">
+          <img src="{{ url_for('static', filename='ehtipolebatch/public/images/img_home.svg') }}" alt="Home" class="home_one" />
+          <span class="dashboard ui heading size-headingxs">Dashboard</span>
+      </a>
+    </header>
+      <div class="column">
+        <div class="columndatacolle">
+          <div class="columnipolebatc">
+            <div class="rowipolebatch">
+              <h2 class="ipolebatch ui heading size-headingmd">Job Summary</h2><br/>
+            </div>
+          </div>
+          <div class="columnselectada">
+                <ui class="selecta ui heading size-texts">
+                  <li>Experiment ID: {{ message['job']['experimentId']}}</li>
+                  <li>Experiment Name: {{ message['job']['experimentName']}}</li>
+                  <li>Application: {{ message['job']['application']}}</li>
+                  <li>Data Collection: {{ message['job']['dataCollection']}}</li>
+                  <li>Dataset: {{ message['job']['dataset']}}</li>
+              </ui>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -482,3 +482,17 @@ def kill_job(experimentid):
         return {"run": "yes", "info": stdout}
     else:
         return {"run": "no", "info": f"failed: {cmd}"}
+
+
+def load_jobjson(experimentid):
+    """load jobjson by id"""
+
+    jobjson = get_jobjsonfile(experimentid)
+    try:
+        with open(jobjson, "r") as f:
+            data = json.load(f)
+    except FileNotFoundError as e:
+        errordata = {"error": f"job description file for {experimentid} is not found!"}
+        return errordata
+
+    return {"job": data}

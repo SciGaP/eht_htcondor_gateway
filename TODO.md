@@ -4,6 +4,7 @@
 
 ### Jobstatus
 - [ ] recent experiment page
+- [x] kill button
 - [ ] stop button
 - [ ] add experimentname to the list
 
