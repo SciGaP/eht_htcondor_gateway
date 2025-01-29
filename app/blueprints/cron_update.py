@@ -1,6 +1,9 @@
 """
 cron_update.py
     -- update job status for all users
+
+    crontab, update every minutes
+    */10 * * * * source /home/cicuser/Projects/eht_website/venv/bin/activate && cd /home/cicuser/Projects/eht_website/app && python -m blueprints.cron_update >> /home/cicuser/cron.log 2>&1
 """
 
 import sys
