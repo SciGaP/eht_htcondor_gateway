@@ -415,8 +415,13 @@ def checkexperiment(experimentid):
     # find the job json file
     workspace = get_workspace()
     jobjson = os.path.join(workspace["users"], username, eid, f"{experimentid}.json")
-    with open(jobjson, "r") as f:
-        data = json.load(f)
+
+    try:
+        with open(jobjson, "r") as f:
+            data = json.load(f)
+    except FileNotFoundError as e:
+        errordata = {"error": f"job description file for {experimentid} is not found!"}
+        return errordata
 
     jobstatus_list = htcondor_status()
     jobstatus = [x for x in jobstatus_list if x["ID"] == experimentid]

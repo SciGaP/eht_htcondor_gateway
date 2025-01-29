@@ -1,4 +1,12 @@
-from flask import Blueprint, render_template, request, send_from_directory
+from flask import (
+    Blueprint,
+    render_template,
+    request,
+    send_from_directory,
+    redirect,
+    url_for,
+    flash,
+)
 from flask_login import current_user, login_required
 
 from whoosh.qparser import QueryParser
@@ -66,6 +74,10 @@ def experiment(experimentid):
     """show the status of the experiment with id"""
 
     message = checkexperiment(experimentid)
+
+    if "error" in message:
+        flash(message["error"])
+        return redirect(url_for("website.experiments"))
 
     # return render_template("experiment.html", user=current_user, message = message)
     return render_template(

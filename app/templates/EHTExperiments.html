@@ -38,7 +38,18 @@
           margin-top: 3px;
           margin-bottom: 3px;
         }
- 
+        .alert {
+            padding: 5px;
+            margin: 5px 0;
+            border-radius: 2px;
+            color: white;
+        }
+        .alert-error {
+            background-color: rgb(205, 23, 23);
+        }
+        .alert-success {
+            background-color: green;
+        }
   </style>
   </head>
   <body>
@@ -74,7 +85,18 @@
                 {% endfor %}
               </ul>
               <br>
-              <p class="selecta ui heading size-texts"><span style="color:green;"><strong>&#x1F6C8;</strong></span> Click the experiment to check the status in HTCondor.</p>
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  <div class="alert alert-error">
+                      <ul>
+                          {% for message in messages %}
+                              <li>{{ message }}</li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+              {% endif %}
+              {% endwith %}
+                <p class="selecta ui heading size-texts"><span style="color:green;"><strong>&#x1F6C8;</strong></span> Click the experiment to check the status in HTCondor.</p>
             </div>
             {% endif %}
           </div>            
