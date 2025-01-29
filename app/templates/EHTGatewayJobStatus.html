@@ -182,7 +182,9 @@
                     confirmButtonText: "Ok"
                   }).then((result) => {
                     if (result.isConfirmed) {
-                      location.herf = '{{ url_for("website.experiments") }}';
+                      console.log("redirect experiment page when job killed!");
+                      location.href = "{{ url_for('website.dashboard') }}";
+                      //location.reload(true);
                     }
                   });
           } else {
