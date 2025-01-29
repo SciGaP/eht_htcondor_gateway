@@ -4,13 +4,13 @@
 
 ### Jobstatus
 - [ ] recent experiment page
-- [ ] kill button
 - [ ] stop button
-- [ ] copy data to gateway VM
 - [ ] add experimentname to the list
 
 ### cron_update
 - [ ] test for the user has no history
+- [ ] delete the job without any output
+- [ ] copy data to gateway VM
 
 ### Project page
 
