@@ -46,6 +46,16 @@ def get_userfolder(username):
     return userfolder
 
 
+def get_jobjsonfile(experimentid):
+    """get jobjsonfile by id"""
+
+    username, eid = experimentid.split("-")
+    workspace = get_workspace()
+    jobjson = os.path.join(workspace["users"], username, eid, f"{experimentid}.json")
+
+    return jobjson
+
+
 def userhistory(username):
     """check job history of a user"""
 
@@ -448,6 +458,13 @@ def release_job(experimentid):
         return {"run": "no", "info": f"failed: {cmd}"}
 
 
+def update_jobjson_status(experimentid, newinfo):
+    """update jobjson status"""
+    jobjson = get_jobjsonfile(experimentid=experimentid)
+    append_to_json(jobjson, new_data=newinfo)
+    return
+
+
 def kill_job(experimentid):
     """run condor_release with experimentid"""
     cmd = f"""condor_rm -constraint 'JobBatchName == "{experimentid}"'"""
@@ -455,6 +472,13 @@ def kill_job(experimentid):
     print("runcmdreturn:", condor_release, file=sys.stdout)
     if hasattr(condor_release, "stdout"):
         stdout = condor_release.stdout
+        # successful, update jobjson
+        newinfo = {
+            "status": "canceled",
+            "output": 0,
+            "updateTime": datetime.now().isoformat(timespec="seconds"),
+        }
+        update_jobjson_status(experimentid, newinfo)
         return {"run": "yes", "info": stdout}
     else:
         return {"run": "no", "info": f"failed: {cmd}"}
