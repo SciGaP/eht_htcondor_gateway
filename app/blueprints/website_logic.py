@@ -116,3 +116,9 @@ def search():
 def start_jupyter():
     """start jupyter notebook"""
     return "start jupyter notebook"
+
+
+@website_blueprint.route("/settings")
+# @login_required
+def settings():
+    return render_template("EHTGatewaySettings.html", user=current_user)
