@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Web site created using create-react-app" />
+    <script src="{{ url_for('static', filename='js/sweetalert2.all.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/index.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/font.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtdashboard/css/styles.css') }}" />
@@ -31,6 +32,11 @@
         }
       });
     </script>
+    <style>
+     .clickable-div {
+      cursor: pointer;
+     }
+    </style>
   </head>
   <body>
     <div class="row-four">
@@ -69,7 +75,7 @@
                 <ul class="column_one">
                   <div class="column">
                     <li>
-                      <a class="submenu">
+                      <a class="submenu" id="notifications" href="#" onclick='helpmessage("Notifications")'>
                           <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_black_900.svg') }}" alt="Vector" class="vector_three" />
                             <p class="ui text size-textmd">Notifications</p>
                             <p class="group405 red ui text size-textxs">3</p>
@@ -95,7 +101,7 @@
                       </a>
                     </li>
                     <li>
-                      <a>
+                      <a id="team-members" href="#" onclick='helpmessage("Projects")'>
                         <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_contrast.svg') }}" alt="Contrast" class="contrast_one" />
                         <span> Projects</span>
                       </a>
@@ -107,7 +113,7 @@
                       </a>
                     </li>
                     <li>
-                      <a>
+                      <a id="team-members" href="#" onclick='helpmessage("Team Members")'>
                         <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_gray_900.svg') }}" alt="Vector" class="vector_five" />
                         <span> Team Members</span>
                       </a>
@@ -125,13 +131,13 @@
                       </a>
                     </li>
                   </div>
-                  <div class="row">
+                  <!-- <div class="row">
                     <li>
                       <a target="_blank", href="{{ url_for('website.start_jupyter') }}">
                           <span> Open Jupyter Notebook</span>
                       </a>
                     </li>
-                  </div>
+                  </div> -->
                 </ul>
               </div>
             </div>
@@ -195,12 +201,12 @@
                   </div>
                   <div class="rowipole">
                     <div class="gridipole">
-                      <div class="rowipole-1">
+                      <div class="rowipole-1 clickable-div" onclick='opennewpage("jupyter")'>
                         <div class="columnipole">
-                          <p class="ipole ui text size-textxs">iPOLE</p>
+                          <p class="ipole ui text size-textxs">General</p>
                           <div class="rowtimeseries">
                             <div class="columntimeserie">
-                              <h5 class="ui heading size-headingmd">Time Series Analysis</h5>
+                              <h5 class="ui heading size-headingmd">Launch Jupyter Lab</h5>
                               <p class="projecta ui text size-textmd">Project A</p>
                             </div>
                             <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
@@ -212,7 +218,7 @@
                           <p class="ipole ui text size-textxs">Application Y</p>
                           <div class="rowtimeseries">
                             <div class="columntimeserie">
-                              <h5 class="ui heading size-headingmd">Event Horizon Imaging</h5>
+                              <h5 class="ui heading size-headingmd">Plotting Tool</h5>
                               <p class="projecta ui text size-textmd">Project Y</p>
                             </div>
                             <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
@@ -224,7 +230,7 @@
                           <p class="ipole ui text size-textxs">iPOLE - Explorer</p>
                           <div class="rowtimeseries">
                             <div class="columntimeserie">
-                              <h5 class="ui heading size-headingmd">Event Horizon Imaging</h5>
+                              <h5 class="ui heading size-headingmd">Movie Tool</h5>
                               <p class="projecta ui text size-textmd">Project X</p>
                             </div>
                             <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
@@ -236,14 +242,14 @@
                           <p class="ipole ui text size-textxs">iPOLE</p>
                           <div class="rowtimeseries">
                             <div class="columntimeserie">
-                              <h5 class="ui heading size-headingmd">Time Series Analysis</h5>
+                              <h5 class="ui heading size-headingmd">Data Transfer Tool</h5>
                               <p class="projecta ui text size-textmd">Project B</p>
                             </div>
                             <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
                           </div>
                         </div>
                       </div>
-                      <div class="rowipole-1">
+                      <!-- <div class="rowipole-1">
                         <div class="columnipole">
                           <p class="ipole ui text size-textxs">iPOLE</p>
                           <div class="rowtimeseries">
@@ -254,8 +260,8 @@
                             <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
                           </div>
                         </div>
-                      </div>
-                      <div class="rowipole-1">
+                      </div> -->
+                      <!-- <div class="rowipole-1">
                         <div class="columnipole">
                           <p class="ipole ui text size-textxs">iPOLE - Explorer</p>
                           <div class="rowtimeseries">
@@ -266,7 +272,7 @@
                             <img src="{{ url_for('static', filename='ehtdashboard/public/images/img_vector_blue_gray_900_01.svg') }}" alt="Image" class="image-1" />
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <!-- <div class="line"></div> -->
                   </div>
@@ -277,5 +283,27 @@
         </div>
       </div>
     </div>
+    <script>
+      function helpmessage(topic) {
+        const helpinfo ={ 
+          "Team Members": "Create teams, and team members will be able to share experiments automatically.",
+          "Projects": "Create projects to fine-tune control over the data shared with other users.",
+          "Notifications": "Messages about job updates and group activities.",
+        };
+        console.log(helpinfo[topic])
+        Swal.fire({
+          title: " 🚧 " + topic,
+          text: helpinfo[topic],
+          icon: "info"
+        });
+      }
+
+      function opennewpage(page) {
+        const pageinfo = {
+          "jupyter": '{{url_for("website.experiments")}}',
+        };
+        window.open(pageinfo[page], '_blank');
+      }
+    </script>
   </body>
 </html>
