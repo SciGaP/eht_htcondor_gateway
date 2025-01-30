@@ -14,6 +14,40 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/components.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/EHTIpoleBatch.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
+    <style>
+      .joblabel {
+          display: inline-block;
+          padding: 5px 10px;
+          border-radius: 4px;
+          color: white;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold; /* Bold font */
+          width: 100px; /* Fixed width for all labels */
+      }
+      .jobcanceled {
+          background-color: grey;
+      }
+      .jobdone {
+          background-color: green;
+      }
+      .jobarchived {
+          background-color: #FF8C00;
+      }
+      .buttonlabel {
+          display: inline-block;
+          padding: 5px 10px;
+          border-radius: 4px;
+          color: white;
+          font-family: Arial, sans-serif;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold; /* Bold font */
+          width: 150px; /* Fixed width for all labels */
+          background-color: #901200;
+      }
+      </style>
   </head>
   <body>
     <div class="columnhome-one">
@@ -27,9 +61,20 @@
         <div class="columndatacolle">
           <div class="columnipolebatc">
             <div class="rowipolebatch">
-              <h2 class="ipolebatch ui heading size-headingmd">Job Summary</h2><br/>
+              <h2 class="ipolebatch ui heading size-headingmd">Job Summary</h2>
+              <div>
+              {% if message['job']['status'] == "finished" %}
+              <span class="joblabel jobdone">Done</span>
+              {% elif message['job']['status'] == "canceled" %}
+              <span class="joblabel jobcanceled">Canceled</span>
+              {% else %}
+              <span class="joblabel jobarchived">Archived</span>
+              {% endif %}
+              </div>
             </div>
           </div>
+          <div class="lineeightyfive"></div>
+          <br>
           <div class="columnselectada">
                 <ui class="selecta ui heading size-texts">
                   <li>Experiment ID: {{ message['job']['experimentId']}}</li>
@@ -37,9 +82,28 @@
                   <li>Application: {{ message['job']['application']}}</li>
                   <li>Data Collection: {{ message['job']['dataCollection']}}</li>
                   <li>Dataset: {{ message['job']['dataset']}}</li>
+                  {% if message['job']['application'] == "ipole-batch" %}
+                  <li>Parameter File: {{message['job']['parameterFile']}}</li>
+                  {% endif %}
+                  {% if message['job']['application'] == "ipole-explorer" %}
+                  <li>Number of input images: {{message['job']['imageNumber']}}</li>
+                  <li>Parameters:
+                    <ul>
+                      <li>Rhigh-Ratio: {{message['job']['parameters']['rr_type']}} => {{message['job']['parameters']['rr_value']}}</li>
+                      <li>Theta-Viewing Angle: {{message['job']['parameters']['tva_type']}} => {{message['job']['parameters']['tva_value']}}</li>
+                      <li>Rho0-Density Normalization: {{message['job']['parameters']['rho_type']}} => {{message['job']['parameters']['rho_value']}}</li>
+                    </ul> 
+                  </li>
+                  {% endif %}
+
+                  <li>Expected jobs: {{message['job']['expectedOutput']}}</li>
+                  <li>Outputs: {{message['job']['output']}}</li>
+                  <li>Update time: {{message['job']['updateTime']}}</li>
               </ui>
         </div>
-      </div>
+        <!-- <br>
+        <a class="buttonlabel" href="{{ url_for('website.experiments')}}">return Experiments</a>
+      </div> -->
     </div>
 
   </body>
