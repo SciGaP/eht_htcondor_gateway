@@ -87,6 +87,14 @@
                   {% endif %}
                   {% if message['job']['application'] == "ipole-explorer" %}
                   <li>Number of input images: {{message['job']['imageNumber']}}</li>
+                  <li> Image List: <br>
+                    <ul style="list-style-type: none;">
+                      <li>
+                        <textarea id="images-list" name="images-list" class="group103" readonly>{{message['job']['imageList']}}</textarea>
+                      </li>
+                    </ul><br>
+                </li>
+
                   <li>Parameters:
                     <ul>
                       <li>Rhigh-Ratio: {{message['job']['parameters']['rr_type']}} => {{message['job']['parameters']['rr_value']}}</li>
