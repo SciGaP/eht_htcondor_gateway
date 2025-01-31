@@ -87,8 +87,6 @@ def checkuser(username, simple=False):
 
     # check if there is jobs in htcondor
     joblist = htcondor_status()
-    userstatus["running"] = 0
-    userstatus["runningExperiments"] = []
     if (joblist is None) or (len(joblist) == 0):
         userstatus["running"] = 0
         userstatus["runningExperiments"] = []
@@ -97,11 +95,16 @@ def checkuser(username, simple=False):
         if len(jobincondor) > 0:
             userstatus["running"] = len(jobincondor)
             userstatus["runningExperiments"] = jobincondor
+        else:
+            userstatus["running"] = 0
+            userstatus["runningExperiments"] = []
+
     # other wise return the full records
     userstatus["inqueue"] = ""
     userstatus["recents"] = userstatus["experiments"] - userstatus["running"]
+    runningids = [x["ID"] for x in userstatus["runningExperiments"]]
     userstatus["recents_jobids"] = [
-        x for x in history["jobids"] if x not in userstatus["runningExperiments"]
+        x for x in history["jobids"] if x not in runningids
     ]
 
     # find more about recent jobs from status_summary
@@ -513,3 +516,14 @@ def load_jobjson(experimentid):
             data.update({"outputfiles": outputfiles})
 
     return {"job": data}
+
+def test():
+    """test function"""
+    results=checkuser(username="JunWang")
+    print(results)
+    results=checkuser(username="RobertQuick")
+    print(results)
+
+
+if __name__ == "__main__":
+    test()
