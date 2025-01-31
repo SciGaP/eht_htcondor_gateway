@@ -122,8 +122,18 @@ def jupyterlite(path="index.html"):
 # @login_required
 def plottingtool():
     # return render_template("experiments.html", user=current_user,message = message)
+    images = {
+        "bestbet_imgs4":"static/image/plot_images/bestbet_imgs4.png",
+        "bestbet_corr":"static/image/plot_images/bestbet_corr.png",
+        "bestbet_forward":"static/image/plot_images/bestbet_forward.png",
+        "bestbet_liklyhood":"static/image/plot_images/bestbet_liklyhood",
+        "bestbet_sedgrid":"static/image/plot_images/bestbet_sedgrid.png",
+        "bestbet_snapshot":"static/image/plot_images/bestbet_snapshot.png",
+        "bestbet_stat":"static/image/plot_images/bestbet_stat.png",
+        "bestbet_va_sed":"static/image/plot_images/bestbet_va_sed.png",
+    }
     return render_template(
-        "EHTPlotting.html", user=current_user)
+        "EHTPlotting.html", user=current_user, images=images)
 
 
 @website_blueprint.route("/settings")

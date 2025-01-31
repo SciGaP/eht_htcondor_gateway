@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Submission web form1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert2.all.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/font.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/components.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='ehtipolebatch/css/EHTIpoleBatch.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/main.css') }}" />
+  </head>
+  <body>
+    <div class="columnhome-one">
+      <header class="headerhome_one">
+        <a href="{{ url_for('website.dashboard') }}">
+          <img src="{{ url_for('static', filename='ehtipolebatch/public/images/img_home.svg') }}" alt="Home" class="home_one" />
+          <span class="dashboard ui heading size-headingxs">Dashboard</span>
+      </a>
+    </header>
+      <div class="column">
+        <div class="columndatacolle">
+          <div class="columnipolebatc">
+            <div class="rowipolebatch">
+              <h1 class="ipolebatch ui heading size-headings">Plotting Tools</h1>
+            </div>
+            <p class="selecta ui heading size-texts">This is a mockup page, the plottings are genared by the preconfiged-processing tool.</p>
+            <p>Reference: <a href="https://github.com/eventhorizontelescope/2017_sgra_paper5" target="_blank"><strong>EHT Sgr A* Analysis and Visualization Toolkit</strong></a>
+            </p>
+          </div>
+          <h2 class="datacollection ui heading size-headings">Experiments</h2>          
+          <div class="columnselectada">
+            <p class="selecta ui heading size-texts">Select an experiment</p>
+            <select id="select-dataset" class="input_one">
+              <option value="{Ma+0.5_w4}" selected>{{user.nickname}}_035ddf64 ipole-explorer output: 540</option>
+              <option value="Ma-0.5_w4" >{{user.nickname}}_0e0744df ipole-batch output: 36000</option>
+              <option value="Ma-0.5_w4" >{{user.nickname}}_7ec0e7fa iple-explorer output: 1000</option>
+            </select>
+          </div>
+          <h2 class="datacollection ui heading size-headings">Select a Plotting</h2>
+          <div class="columnselectada">
+            <p class="selecta ui heading size-texts">Select a ploting function.</p>
+            <select id="select-plotting" class="input_one">
+              {% for key, value in images.items() %}
+              <option value="{{ value }}">{{ key.capitalize() }}</option>
+              {% endfor %}              
+              <!-- <option value="bestbet_imgs4" selected>Bestbet_Imgs4</option>
+              <option value="bestbet_snapshot" >Bestbet_Snapshot</option>
+              <option value="bestbet_sedgrid">Bestbet_Sedgrid</option>
+              <option value="bestbet_corr" >Bestbet_Corr</option>
+              <option value="bestbet_forward" >Bestbet_forward</option>
+              <option value="bestbet_liklyhood" >Bestbet_Liklyhood</option>
+              <option value="bestbet_stat" >Bestbet_Stat</option>
+              <option value="bestbet_va_sed">Bestbet_va_Sed</option> -->
+            </select>
+            <br>
+            <img id="plotimage" src="{{ images['bestbet_imgs4'] }}" alt="bestbet_imgs4"  />
+          </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("select-plotting").addEventListener("change", function() {
+          let selectedImage = this.value;
+          document.getElementById("plotimage").src = selectedImage;
+      });
+  </script>
+  </body>
+</html>
