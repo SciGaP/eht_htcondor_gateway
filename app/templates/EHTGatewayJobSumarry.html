@@ -112,6 +112,9 @@
         {% if 'outputfiles' in message['job'] %}
           <br>
           <h3>Output Files</h3>
+          <br>
+           <button class="buttonlabel" onclick="data_download()">Request Download</button>
+           <br>
           <div class="columnselectada">
             <textarea id="outputfiles" name="outputfiles" style="height:250px;width:80%;" readonly>{{message['job']['outputfiles']}}</textarea>
         </div>
@@ -120,6 +123,13 @@
         <a class="buttonlabel" href="{{ url_for('website.experiments')}}">return Experiments</a>
       </div> -->
     </div>
-
+<script>
+  function data_download() {
+    Swal.fire({
+      title: "Data Download Request",
+      text: "A download link will be generated and sent via email soon!",
+      icon: "success"
+});  }
+</script>
   </body>
 </html>
