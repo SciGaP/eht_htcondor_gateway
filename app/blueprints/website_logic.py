@@ -112,10 +112,11 @@ def search():
         return render_template("components/search_results.html", results=results)
 
 
-@website_blueprint.route("/start_jupyter")
-def start_jupyter():
-    """start jupyter notebook"""
-    return "start jupyter notebook"
+@website_blueprint.route("/jupyterlite/")
+@website_blueprint.route("/jupyterlite/<path:path>")
+# @login_required
+def jupyterlite(path="index.html"):
+    return send_from_directory("static/jupyter", path)
 
 
 @website_blueprint.route("/settings")

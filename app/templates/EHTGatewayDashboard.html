@@ -133,7 +133,7 @@
                   </div>
                   <!-- <div class="row">
                     <li>
-                      <a target="_blank", href="{{ url_for('website.start_jupyter') }}">
+                      <a target="_blank", href="{{ url_for('website.jupyterlite') }}">
                           <span> Open Jupyter Notebook</span>
                       </a>
                     </li>
@@ -300,7 +300,7 @@
 
       function opennewpage(page) {
         const pageinfo = {
-          "jupyter": '{{url_for("website.experiments")}}',
+          "jupyter": '{{url_for("website.jupyterlite")}}',
         };
         window.open(pageinfo[page], '_blank');
       }
