@@ -10,7 +10,7 @@ import sys
 import os
 from datetime import datetime
 import json
-from .htcondor import get_workspace, checkuser, get_jobjsonfile
+from .htcondor import get_workspace, checkuser, get_jobjsonfile, get_outputlist
 from .htcondor_utilities import run_ssh_cmd
 from .utilites import append_to_json
 
@@ -122,12 +122,21 @@ def check_finished_job(alljobs):
             #{'jobid': 'JunWang-035ddf64', 'jobstatus': 'finished', 'output': '534'}
             output = int(job['output'])
             if output > 0 and job['jobstatus'] == 'finished':
-                jobjson = get_jobjsonfile(job['jobid'])
-                print(jobjson)
+                experimentid = job['jobid']
+                jobjson = get_jobjsonfile(experimentid)
+                #print(jobjson)
                 outputlist_file = jobjson.replace(".json","_output.txt")
                 if os.path.exists(outputlist_file):
                     continue
-                    
+                # get output list
+                outputlist = get_outputlist(experimentid)
+                #print(outputlist)
+                print("update: ", outputlist_file)
+                with open(outputlist_file, "w") as file:
+                    for image in outputlist:
+                        file.write(image + "\n")
+    return
+
 def update_summary():
     """write a summary file"""
     workspace = get_workspace()["workspace"]
