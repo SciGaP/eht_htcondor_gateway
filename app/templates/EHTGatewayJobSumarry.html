@@ -109,6 +109,13 @@
                   <li>Update time: {{message['job']['updateTime']}}</li>
               </ui>
         </div>
+        {% if 'outputfiles' in message['job'] %}
+          <br>
+          <h3>Output Files</h3>
+          <div class="columnselectada">
+            <textarea id="outputfiles" name="outputfiles" style="height:250px;width:80%;" readonly>{{message['job']['outputfiles']}}</textarea>
+        </div>
+        {% endif %}
         <!-- <br>
         <a class="buttonlabel" href="{{ url_for('website.experiments')}}">return Experiments</a>
       </div> -->
