@@ -213,7 +213,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="rowipole-1 clickable-div">
+                      <div class="rowipole-1 clickable-div" onclick='opensamepage("plotting")'>
                         <div class="columnipole">
                           <p class="ipole ui text size-textxs">Application Y</p>
                           <div class="rowtimeseries">
@@ -303,8 +303,17 @@
       function opennewpage(page) {
         const pageinfo = {
           "jupyter": '{{url_for("website.jupyterlite")}}',
+          "plotting": '{{url_for("website.plottingtool")}}'
         };
         window.open(pageinfo[page], '_blank');
+      }
+
+      function opensamepage(page) {
+        const pageinfo = {
+          "jupyter": '{{url_for("website.jupyterlite")}}',
+          "plotting": '{{url_for("website.plottingtool")}}'
+        };
+        location.href= pageinfo[page];
       }
     </script>
   </body>

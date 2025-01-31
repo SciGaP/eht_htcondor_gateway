@@ -118,6 +118,13 @@ def search():
 def jupyterlite(path="index.html"):
     return send_from_directory("static/jupyter", path)
 
+@website_blueprint.route("/plottingtool")
+# @login_required
+def plottingtool():
+    # return render_template("experiments.html", user=current_user,message = message)
+    return render_template(
+        "EHTPlotting.html", user=current_user)
+
 
 @website_blueprint.route("/settings")
 # @login_required
