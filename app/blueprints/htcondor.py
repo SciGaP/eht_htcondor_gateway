@@ -89,7 +89,7 @@ def checkuser(username, simple=False):
     joblist = htcondor_status()
     if (joblist is None) or (len(joblist) == 0):
         userstatus["running"] = 0
-        userstatus["runningExperiments"] = ""
+        userstatus["runningExperiments"] = []
     else:
         jobincondor = [x for x in joblist if username in x["ID"]]
         if len(jobincondor) > 0:
