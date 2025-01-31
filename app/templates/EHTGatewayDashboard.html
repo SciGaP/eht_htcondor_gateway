@@ -213,7 +213,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="rowipole-1">
+                      <div class="rowipole-1 clickable-div">
                         <div class="columnipole">
                           <p class="ipole ui text size-textxs">Application Y</p>
                           <div class="rowtimeseries">
@@ -225,7 +225,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="rowipole-1">
+                      <div class="rowipole-1 clickable-div" onclick='helpmessage("Movie Tool")'>
                         <div class="columnipole">
                           <p class="ipole ui text size-textxs">iPOLE - Explorer</p>
                           <div class="rowtimeseries">
@@ -237,7 +237,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="rowipole-1">
+                      <div class="rowipole-1 clickable-div" onclick='helpmessage("Data Transfer Tool")'>
                         <div class="columnipole">
                           <p class="ipole ui text size-textxs">iPOLE</p>
                           <div class="rowtimeseries">
@@ -289,6 +289,8 @@
           "Team Members": "Create teams, and team members will be able to share experiments automatically.",
           "Projects": "Create projects to fine-tune control over the data shared with other users.",
           "Notifications": "Messages about job updates and group activities.",
+          "Data Transfer Tool":"Transfer large amount data among eht node, gateway and cloud stroage.",
+          "Movie Tool": "Create movies with the images generated from Plotting Tool."
         };
         console.log(helpinfo[topic])
         Swal.fire({
