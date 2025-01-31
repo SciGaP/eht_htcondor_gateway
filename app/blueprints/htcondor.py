@@ -87,6 +87,8 @@ def checkuser(username, simple=False):
 
     # check if there is jobs in htcondor
     joblist = htcondor_status()
+    userstatus["running"] = 0
+    userstatus["runningExperiments"] = []
     if (joblist is None) or (len(joblist) == 0):
         userstatus["running"] = 0
         userstatus["runningExperiments"] = []
@@ -105,8 +107,11 @@ def checkuser(username, simple=False):
     # find more about recent jobs from status_summary
     if userstatus["recents"] > 0:
         summaryfile = get_workspace()["statussummary"]
-        with open(summaryfile, "r") as file:
-            summary = json.load(file)
+        try:
+            with open(summaryfile, "r") as file:
+                summary = json.load(file)
+        except FileNotFoundError:
+            return userstatus
         moreinfo = [
             x["recents_jobstatus"]
             for x in summary["status"]
