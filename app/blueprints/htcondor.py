@@ -494,11 +494,11 @@ def load_jobjson(experimentid):
     except FileNotFoundError as e:
         errordata = {"error": f"job description file for {experimentid} is not found!"}
         return errordata
-    status = data['status']
-    output = int(data['output'])
-    if status == 'finished' and output > 0:
+    status = data["status"]
+    output = int(data["output"])
+    if status == "finished" and output > 0:
         # load output list
-        outputlist_file = jobjson.replace(".json","_output.txt")
+        outputlist_file = jobjson.replace(".json", "_output.txt")
         if os.path.exists(outputlist_file):
             with open(outputlist_file, "r") as file:
                 my_list = file.readlines()  # Reads lines into a list
