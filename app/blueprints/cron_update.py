@@ -10,7 +10,7 @@ import sys
 import os
 from datetime import datetime
 import json
-from .htcondor import get_workspace, checkuser
+from .htcondor import get_workspace, checkuser, get_jobjsonfile
 from .htcondor_utilities import run_ssh_cmd
 from .utilites import append_to_json
 
@@ -50,13 +50,13 @@ def check_all_status():
     if len(workspace["usernames"]) == 0:
         print("no user to check!")
         sys.exit()
-    print("workspace", workspace)
+    #print("workspace", workspace)
     full_status = []
     for user in workspace["usernames"]:
         # get list of submitted jobs from users
         userstatus = checkuser(user)
         recentjobs = userstatus["recents_jobids"]
-        print("userstatus", userstatus)
+        #print("userstatus", userstatus)
         jobsoneht = check_jobs_eht(user)
         recentjobstatus = []
         # the follow situation needed to be addressed
@@ -103,17 +103,38 @@ def check_all_status():
             )
 
         updated_status = {**userstatus, **{"recents_jobstatus": recentjobstatus}}
-        print(updated_status)
+        #print(updated_status)
         full_status.append(updated_status)
     return full_status
 
-
+def check_finished_job(alljobs):
+    """check finished jobs
+        -- copy output 
+        -- generate output list
+    """
+    for entry in alljobs:
+        username = entry['username']
+        recents = entry['recents']
+        if recents == 0:
+            print(f"no recent job for {username}")
+            continue
+        for job in entry['recents_jobstatus']:
+            #{'jobid': 'JunWang-035ddf64', 'jobstatus': 'finished', 'output': '534'}
+            output = int(job['output'])
+            if output > 0 and job['jobstatus'] == 'finished':
+                jobjson = get_jobjsonfile(job['jobid'])
+                print(jobjson)
+                outputlist_file = jobjson.replace(".json","_output.txt")
+                if os.path.exists(outputlist_file):
+                    continue
+                    
 def update_summary():
     """write a summary file"""
     workspace = get_workspace()["workspace"]
-    print(workspace)
+    #print(workspace)
     full_status = check_all_status()
     print(full_status)
+    check_finished_job(full_status)
     summaryfile = os.path.join(workspace, "status_summary.json")
     newinfo = {
         "status": full_status,
