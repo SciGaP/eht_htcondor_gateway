@@ -46,7 +46,8 @@ def dashboard():
 # @login_required
 def ipoleexplorer():
     # return render_template("ipoleexplorer.html", user=current_user)
-    return render_template("EHTIpoleExplorer.html", user=current_user)
+    datestr = get_formatted_date()
+    return render_template("EHTIpoleExplorer.html", user=current_user, datestr=datestr)
 
 
 @website_blueprint.route("/ipolebatch")
