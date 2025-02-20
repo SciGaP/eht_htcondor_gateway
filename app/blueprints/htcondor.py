@@ -103,9 +103,7 @@ def checkuser(username, simple=False):
     userstatus["inqueue"] = ""
     userstatus["recents"] = userstatus["experiments"] - userstatus["running"]
     runningids = [x["ID"] for x in userstatus["runningExperiments"]]
-    userstatus["recents_jobids"] = [
-        x for x in history["jobids"] if x not in runningids
-    ]
+    userstatus["recents_jobids"] = [x for x in history["jobids"] if x not in runningids]
 
     # find more about recent jobs from status_summary
     if userstatus["recents"] > 0:
@@ -120,7 +118,10 @@ def checkuser(username, simple=False):
             for x in summary["status"]
             if x["username"] == username
         ]
-        moreinfo = moreinfo[0]
+        try:
+            moreinfo = moreinfo[0]
+        except IndexError:
+            print(userstatus, "moreinfo", moreinfo)
         userstatus.update({"recents_jobstatus": moreinfo})
 
     return userstatus
@@ -144,7 +145,7 @@ def load_preconfig(input):
 
     dataCollection_root = os.path.expanduser("~/eht_dataset")
     dataCollection_json = os.path.join(
-        dataCollection_root, input["dataCollection"], f'{input["dataCollection"]}.json'
+        dataCollection_root, input["dataCollection"], f"{input['dataCollection']}.json"
     )
     with open(dataCollection_json, "r") as f:
         dataCollection = json.load(f)
@@ -203,7 +204,7 @@ def validate_batch_staging(input):
 
     workspace = get_workspace()
     stage_json = {**input, **v}
-    stage_file = os.path.join(workspace["staging"], f'{v["experimentId"]}.json')
+    stage_file = os.path.join(workspace["staging"], f"{v['experimentId']}.json")
     with open(stage_file, "w") as f:
         json.dump(stage_json, f)
 
@@ -309,7 +310,7 @@ def validate_explorer_staging(input):
     workspace = get_workspace()
     # generate batchfile
     # osdf:///ospool/uc-shared/public/eht/GRMHD_kharma-v3/Ma+0.5_w4/torus.out0.04011.h5,7f283e457a6d15ca5ef3b5f03e62ba4b,04011,1,10,3.797623637989993e+17
-    url_prefix = f'osdf:///ospool/uc-shared/public/eht/{input["dataCollection"]}/{input["dataset"]}'
+    url_prefix = f"osdf:///ospool/uc-shared/public/eht/{input['dataCollection']}/{input['dataset']}"
     batchdata = []
     for job in para_combines:
         inputh5 = job[0]
@@ -343,7 +344,7 @@ def validate_explorer_staging(input):
     v_out["validateInformation"] = ""
 
     stage_json = {**input, **v_out}
-    stage_file = os.path.join(workspace["staging"], f'{v_out["experimentId"]}.json')
+    stage_file = os.path.join(workspace["staging"], f"{v_out['experimentId']}.json")
     with open(stage_file, "w") as f:
         json.dump(stage_json, f)
 
@@ -517,11 +518,12 @@ def load_jobjson(experimentid):
 
     return {"job": data}
 
+
 def test():
     """test function"""
-    results=checkuser(username="JunWang")
+    results = checkuser(username="JunWang")
     print(results)
-    results=checkuser(username="RobertQuick")
+    results = checkuser(username="RobertQuick")
     print(results)
 
 
