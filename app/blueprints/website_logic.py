@@ -148,4 +148,4 @@ def settings():
 def lab():
     # run jupyterlab
     PORT = "8888"
-    return redirect(f'http://localhost:{PORT}/lab?token="my-token"')
+    return redirect(f'http://eht.scigap.org:{PORT}/lab?token="my-token"')
