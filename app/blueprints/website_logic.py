@@ -119,25 +119,33 @@ def search():
 def jupyterlite(path="index.html"):
     return send_from_directory("static/jupyter", path)
 
+
 @website_blueprint.route("/plottingtool")
 # @login_required
 def plottingtool():
     # return render_template("experiments.html", user=current_user,message = message)
     images = {
-        "bestbet_imgs4":"static/image/plot_images/bestbet_imgs4.png",
-        "bestbet_corr":"static/image/plot_images/bestbet_corr.png",
-        "bestbet_forward":"static/image/plot_images/bestbet_forward.png",
-        "bestbet_liklyhood":"static/image/plot_images/bestbet_liklyhood",
-        "bestbet_sedgrid":"static/image/plot_images/bestbet_sedgrid.png",
-        "bestbet_snapshot":"static/image/plot_images/bestbet_snapshot.png",
-        "bestbet_stat":"static/image/plot_images/bestbet_stat.png",
-        "bestbet_va_sed":"static/image/plot_images/bestbet_va_sed.png",
+        "bestbet_imgs4": "static/image/plot_images/bestbet_imgs4.png",
+        "bestbet_corr": "static/image/plot_images/bestbet_corr.png",
+        "bestbet_forward": "static/image/plot_images/bestbet_forward.png",
+        "bestbet_liklyhood": "static/image/plot_images/bestbet_liklyhood",
+        "bestbet_sedgrid": "static/image/plot_images/bestbet_sedgrid.png",
+        "bestbet_snapshot": "static/image/plot_images/bestbet_snapshot.png",
+        "bestbet_stat": "static/image/plot_images/bestbet_stat.png",
+        "bestbet_va_sed": "static/image/plot_images/bestbet_va_sed.png",
     }
-    return render_template(
-        "EHTPlotting.html", user=current_user, images=images)
+    return render_template("EHTPlotting.html", user=current_user, images=images)
 
 
 @website_blueprint.route("/settings")
 # @login_required
 def settings():
     return render_template("EHTGatewaySettings.html", user=current_user)
+
+
+@website_blueprint.route("/lab")
+# @login_required
+def lab():
+    # run jupyterlab
+    PORT = "8888"
+    return redirect(f'http://localhost:{PORT}/lab?token="my-token"')
