@@ -474,6 +474,15 @@ def update_jobjson_status(experimentid, newinfo):
     return
 
 
+def delete_jobfolder(experimentid):
+    """delete job folder from eht node"""
+    # /home/ehtbot/eht_workdirs/jobs/experimentid
+    cmd = f"rm -rf ~/eht_workdirs/jobs/{experimentid}"
+    run_ssh_cmd(cmd)
+
+    return
+
+
 def kill_job(experimentid):
     """run condor_release with experimentid"""
     cmd = f"""condor_rm -constraint 'JobBatchName == "{experimentid}"'"""
@@ -488,6 +497,27 @@ def kill_job(experimentid):
             "updateTime": datetime.now().isoformat(timespec="seconds"),
         }
         update_jobjson_status(experimentid, newinfo)
+        delete_jobfolder(experimentid)
+        return {"run": "yes", "info": stdout}
+    else:
+        return {"run": "no", "info": f"failed: {cmd}"}
+
+
+def finish_job(experimentid):
+    """run condor_release with experimentid"""
+    cmd = f"""condor_rm -constraint 'JobBatchName == "{experimentid}"'"""
+    condor_release = run_ssh_cmd(cmd)
+    print("runcmdreturn:", condor_release, file=sys.stdout)
+    if hasattr(condor_release, "stdout"):
+        stdout = condor_release.stdout
+        # let the update done throgh cron_update now
+        # # successful, update jobjson
+        # newinfo = {
+        #     "status": "canceled",
+        #     "output": 0,
+        #     "updateTime": datetime.now().isoformat(timespec="seconds"),
+        # }
+        # update_jobjson_status(experimentid, newinfo)
         return {"run": "yes", "info": stdout}
     else:
         return {"run": "no", "info": f"failed: {cmd}"}

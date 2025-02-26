@@ -9,6 +9,7 @@ from .htcondor import (
     job_submit_explorer,
     release_job,
     kill_job,
+    finish_job,
 )
 
 htcondor_blueprint = Blueprint("htcondor", __name__)
@@ -174,4 +175,14 @@ def job_kill(experimentid):
     results = kill_job(experimentid=experimentid)
     return jsonify(results)
 
-    return
+
+# finish the job
+@htcondor_blueprint.route("/htcondor/finish/<experimentid>")
+def job_finish(experimentid):
+    """stop the job
+    -- remove the job from the queue
+    -- keep the output
+    -- update job json ("done")
+    """
+    results = finish_job(experimentid=experimentid)
+    return jsonify(results)
