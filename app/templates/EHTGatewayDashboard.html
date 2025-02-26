@@ -302,7 +302,7 @@
 
       function opennewpage(page) {
         const pageinfo = {
-          "jupyter": '{{url_for("website.lab")}}',
+          "jupyter": '{{url_for("website.jupyterlab")}}',
           "plotting": '{{url_for("website.plottingtool")}}'
         };
         window.open(pageinfo[page], '_blank');
@@ -310,7 +310,7 @@
 
       function opensamepage(page) {
         const pageinfo = {
-          "jupyter": '{{url_for("website.lab")}}',
+          "jupyter": '{{url_for("website.jupyterlab")}}',
           "plotting": '{{url_for("website.plottingtool")}}'
         };
         location.href= pageinfo[page];

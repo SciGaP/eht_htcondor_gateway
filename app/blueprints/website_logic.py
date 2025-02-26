@@ -143,9 +143,9 @@ def settings():
     return render_template("EHTGatewaySettings.html", user=current_user)
 
 
-@website_blueprint.route("/lab")
+@website_blueprint.route("/jupyterlab")
 # @login_required
-def lab():
+def jupyterlab():
     # run jupyterlab
     PORT = "8888"
     return redirect(f'http://eht.scigap.org:{PORT}/lab?token="my-token"')
