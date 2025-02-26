@@ -14,7 +14,7 @@ from whoosh.index import open_dir
 
 from .htcondor import checkuser, checkexperiment, load_jobjson
 from .utilites import get_formatted_date
-import sys
+import sys, os
 
 website_blueprint = Blueprint("website", __name__)
 
@@ -147,4 +147,8 @@ def settings():
 # @login_required
 def jupyterlab():
     # run jupyterlab
-    return redirect('http://eht.scigap.org:8888/lab?token="my-token"')
+    from dotenv import load_dotenv
+
+    load_dotenv()
+    host = os.getenv("jupyterurl")
+    return redirect(host)
