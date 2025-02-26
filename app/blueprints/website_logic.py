@@ -147,5 +147,4 @@ def settings():
 # @login_required
 def jupyterlab():
     # run jupyterlab
-    PORT = "8888"
-    return redirect(f'http://eht.scigap.org:{PORT}/lab?token="my-token"')
+    return redirect("http://eht.scigap.org:8888/lab", token="my-token")
