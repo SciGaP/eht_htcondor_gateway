@@ -147,4 +147,4 @@ def settings():
 # @login_required
 def jupyterlab():
     # run jupyterlab
-    return redirect("http://eht.scigap.org:8888/lab", token="my-token")
+    return redirect('http://eht.scigap.org:8888/lab?token="my-token"')
